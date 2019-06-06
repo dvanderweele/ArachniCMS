@@ -16,6 +16,7 @@ class CreateBandsTable extends Migration
         Schema::create('bands', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->timestamps();
+            $table->text('name');
         });
     }
 

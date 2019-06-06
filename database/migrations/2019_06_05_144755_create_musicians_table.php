@@ -16,6 +16,7 @@ class CreateMusiciansTable extends Migration
         Schema::create('musicians', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->timestamps();
+            $table->text('name');
         });
     }
 

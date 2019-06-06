@@ -16,6 +16,8 @@ class CreateAlbumLinksTable extends Migration
         Schema::create('album_links', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->timestamps();
+            $table->unsignedBigInteger('album_id');
+            $table->unsignedBigInteger('post_id');
         });
     }
 

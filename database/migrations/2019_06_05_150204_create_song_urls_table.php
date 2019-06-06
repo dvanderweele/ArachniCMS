@@ -16,6 +16,10 @@ class CreateSongUrlsTable extends Migration
         Schema::create('song_urls', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->timestamps();
+            $table->unsignedBigInteger('song_id');
+            $table->string('description');
+            $table->text('url');
+            $table->boolean('featured');
         });
     }
 

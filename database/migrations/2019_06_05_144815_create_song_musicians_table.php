@@ -16,6 +16,8 @@ class CreateSongMusiciansTable extends Migration
         Schema::create('song_musicians', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->timestamps();
+            $table->unsignedBigInteger('musician_id');
+            $table->text('instruments');
         });
     }
 

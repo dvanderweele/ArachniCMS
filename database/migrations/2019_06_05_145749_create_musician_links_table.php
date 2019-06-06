@@ -16,6 +16,8 @@ class CreateMusicianLinksTable extends Migration
         Schema::create('musician_links', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->timestamps();
+            $table->unsignedBigInteger('musician_id');
+            $table->unsignedBigInteger('post_id');
         });
     }
 

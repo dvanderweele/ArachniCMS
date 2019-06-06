@@ -16,6 +16,10 @@ class CreateAlbumUrlsTable extends Migration
         Schema::create('album_urls', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->timestamps();
+            $table->unsignedBigInteger('album_id');
+            $table->string('description');
+            $table->text('url');
+            $table->boolean('featured');
         });
     }
 

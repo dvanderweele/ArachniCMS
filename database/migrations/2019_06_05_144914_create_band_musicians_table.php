@@ -16,6 +16,8 @@ class CreateBandMusiciansTable extends Migration
         Schema::create('band_musicians', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->timestamps();
+            $table->unsignedBigInteger('band_id');
+            $table->unsignedBigInteger('musician_id');
         });
     }
 

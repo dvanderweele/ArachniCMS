@@ -16,6 +16,11 @@ class CreateCommentsTable extends Migration
         Schema::create('comments', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->timestamps();
+            $table->unsignedBigInteger('post_id');
+            $table->text('body');
+            $table->text('email');
+            $table->boolean('approved')->default(false);
+            $table->text('ip_address');
         });
     }
 

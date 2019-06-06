@@ -16,6 +16,10 @@ class CreateMusicianUrlsTable extends Migration
         Schema::create('musician_urls', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->timestamps();
+            $table->unsignedBigInteger('musician_id');
+            $table->string('description');
+            $table->text('url');
+            $table->boolean('featured');
         });
     }
 

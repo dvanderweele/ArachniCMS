@@ -15,6 +15,12 @@ class CreateSongsTable extends Migration
     {
         Schema::create('songs', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->text('title');
+            $table->unsignedSmallInteger('runtime_min');
+            $table->unsignedTinyInteger('runtime_sec');
+            $table->mediumText('lyrics')->nullable();
+            $table->text('instruments')->nullable();
+            $table->text('description')->nullable();
             $table->timestamps();
         });
     }

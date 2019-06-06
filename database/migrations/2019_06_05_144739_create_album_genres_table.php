@@ -16,6 +16,8 @@ class CreateAlbumGenresTable extends Migration
         Schema::create('album_genres', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->timestamps();
+            $table->unsignedBigInteger('album_id');
+            $table->unsignedBigInteger('genre_id');
         });
     }
 

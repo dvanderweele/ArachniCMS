@@ -16,6 +16,10 @@ class CreateBandUrlsTable extends Migration
         Schema::create('band_urls', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->timestamps();
+            $table->unsignedBigInteger('band_id');
+            $table->string('description');
+            $table->text('url');
+            $table->boolean('featured');
         });
     }
 

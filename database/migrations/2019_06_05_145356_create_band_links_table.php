@@ -16,6 +16,8 @@ class CreateBandLinksTable extends Migration
         Schema::create('band_links', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->timestamps();
+            $table->unsignedBigInteger('band_id');
+            $table->unsignedBigInteger('post_id');
         });
     }
 
