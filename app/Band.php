@@ -13,4 +13,8 @@ class Band extends Model
   public function bandmusicians(){
     return $this->hasMany('App\BandMusician');
   }
+
+  public function bandurls(){
+    return $this->hasMany('App\BandUrl');
+  }
 }
