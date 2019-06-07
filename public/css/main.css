@@ -7551,6 +7551,26 @@ video {
   z-index: auto;
 }
 
+.theme-light {
+  --bg-background-primary: white;
+  --bg-background-secondary: #edf2f7;
+  --bg-background-tertiary: #cbd5e0;
+  --bg-background-form: white;
+  --text-copy-primary: #2d3748;
+  --text-copy-secondary: #4a5568;
+  --border-border-color-primary: white;
+}
+
+.theme-dark {
+  --bg-background-primary: #1a202c;
+  --bg-background-secondary: #2d3748;
+  --bg-background-tertiary: #4a5568;
+  --bg-background-form: #1a202c;
+  --text-copy-primary: #cbd5e0;
+  --text-copy-secondary: #e2e8f0;
+  --border-border-color-primary:  #1a202c;
+}
+
 @media (min-width: 640px) {
   .sm\:appearance-none {
     -webkit-appearance: none;
