@@ -12,3 +12,7 @@
 */
 
 Auth::routes();
+
+Route::get('/test', function(){
+  return view('nav.guest');
+});
