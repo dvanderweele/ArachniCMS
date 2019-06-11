@@ -9,4 +9,5 @@
       </p>
     </div>
   </div>
+  <!-- Entypo pictograms by Daniel Bruce — www.entypo.com -->
 </div>

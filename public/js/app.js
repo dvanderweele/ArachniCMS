@@ -19246,6 +19246,20 @@ module.exports = function(module) {
  */
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
+document.addEventListener('DOMContentLoaded', function () {
+  var body = document.getElementById('body');
+  var themeSwitch = document.getElementById('theme-switcher');
+  themeSwitch.addEventListener('click', function () {
+    if (body.classList.contains('theme-light')) {
+      body.classList.remove('theme-light');
+      body.classList.add('theme-dark');
+    } else {
+      body.classList.remove('theme-dark');
+      body.classList.add('theme-light');
+    }
+  });
+});
+
 /***/ }),
 
 /***/ "./resources/js/bootstrap.js":

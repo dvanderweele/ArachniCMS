@@ -6,6 +6,8 @@ module.exports = {
         primary: 'var(--bg-background-primary)',
         secondary: 'var(--bg-background-secondary)',
         tertiary: 'var(--bg-background-tertiary)',
+        ruthieslight: 'rgba(255,122,0,0.1)',
+        ruthiesdark: 'rgb(255,122,0)',
   
         form: 'var(--bg-background-form)',
       },
