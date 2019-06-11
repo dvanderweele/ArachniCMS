@@ -1,4 +1,4 @@
-<nav class="min-w-full py-4 m-0 flex flex-row items-center flex-wrap justify-around font-sans">
+<nav class="min-w-full py-4 m-0 flex flex-row items-center flex-wrap justify-around font-sans bg-background-primary">
   <div class="flex flex-row items-center py-2">
     <img class="h-10 mr-8" src="{{ asset('storage/icons/about.svg') }}" alt="An icon portraying a generic online profile.">
     <a href="#">
