@@ -1,4 +1,4 @@
-<div class="min-w-full w-screen mb-0 mt-16 py-4 h-auto bg-background-tertiary text-copy-primary font-sans">
+<div class="min-w-full w-full mx-0 mb-0 mt-16 py-4 h-auto bg-background-tertiary text-copy-primary font-sans">
   <div class="flex flex-row items-center justify-center">
     <div class="flex flex-col items-center justify-around">
       <p class="font-bold">
