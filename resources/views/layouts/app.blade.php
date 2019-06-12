@@ -15,7 +15,7 @@
     <!-- Styles -->
     @yield('css')
 </head>
-<body id="body" class="min-h-screen theme-dark bg-background-secondary relative">
+<body id="body" class="min-h-screen theme-light bg-background-secondary relative">
 
   @yield('nav')
 
