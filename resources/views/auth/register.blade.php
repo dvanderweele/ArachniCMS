@@ -17,7 +17,7 @@
 @endsection
 
 @section('content')
-  <div class="max-w-lg w-10/12 bg-background-primary shadow-lg rounded mx-auto px-8 pt-6 pb-8 mt-16 font-sans">
+  <div class="max-w-lg w-10/12 bg-background-primary shadow-lg rounded mx-auto px-8 pt-6 pb-8 mt-16 font-sans flex-grow">
     <div class="mb-4">
       <h4 class="font-semibold text-2xl text-copy-primary">{{ __('Register') }}</h4>
     </div>
@@ -57,7 +57,8 @@
         <input class="bg-background-form shadow appearance-none border rounded w-full py-2 px-3 text-copy-primary leading-tight focus:outline-none focus:shadow-outline focus:bg-background-ruthieslight" id="password-confirm" name="password-confirmation" type="password" placeholder="*********" required autocomplete="new-password">
       </div>
       <div class="mb-4">
-        <button class="bg-blue-500 hover:bg-blue-700 text-copy-primary hover:text-copy-secondary font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
+        <button class="bg-blue-500 hover:bg-blue-700 text-copy-primary hover:text-copy-secondary 
+        font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
           {{ __('Register') }}
         </button>
       </div>
