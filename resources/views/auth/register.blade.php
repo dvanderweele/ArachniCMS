@@ -17,7 +17,7 @@
 @endsection
 
 @section('content')
-  <div class="max-w-lg w-10/12 bg-background-primary shadow-lg rounded mx-auto px-8 pt-6 pb-8 mt-16 font-sans flex-grow">
+  <div class="max-w-lg w-10/12 bg-background-primary shadow-lg rounded mx-auto px-8 pt-6 pb-8 mt-16 font-sans">
     <div class="mb-4">
       <h4 class="font-semibold text-2xl text-copy-primary">{{ __('Register') }}</h4>
     </div>

@@ -14,5 +14,5 @@
 Auth::routes();
 
 Route::get('/test', function(){
-  return view('nav.guest');
+  return view('auth.passwords.reset');
 });

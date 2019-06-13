@@ -19,7 +19,9 @@
 
   @yield('nav')
 
-  @yield('content')
+  <div class="flex-grow">
+    @yield('content')
+  </div>
 
   @yield('footer')
 
