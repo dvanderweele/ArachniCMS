@@ -45,29 +45,23 @@
       </div>
 
       <div class="mb-4">
-          <div class="col-md-6 offset-md-4">
-              <div class="form-check">
-                  <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-
-                  <label class="form-check-label" for="remember">
-                      {{ __('Remember Me') }}
-                  </label>
-              </div>
-          </div>
+        <label class="block text-copy-secondary font-bold">
+          <input class="mr-2 leading-tight" name="remember" type="checkbox" {{ old('remember') ? 'checked' : '' }}>
+          <span class="text-sm">
+            {{ __('Remember Me') }}
+          </span>
+        </label>
       </div>
 
-      <div class="mb-4">
-          <div class="col-md-8 offset-md-4">
-              <button type="submit" class="btn btn-primary">
-                  {{ __('Login') }}
-              </button>
-
-              @if (Route::has('password.request'))
-                  <a class="btn btn-link" href="{{ route('password.request') }}">
-                      {{ __('Forgot Your Password?') }}
-                  </a>
-              @endif
-          </div>
+      <div class="mb-4 flex items-center justify-between">
+        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
+          {{ __('Login') }}
+        </button>
+        @if (Route::has('password.request'))
+          <a class="inline-block align-baseline font-bold text-sm text-copy-primary hover:text-copy-secondary hover:underline" href="{{ route('password.request') }}">
+            Forgot Password?
+          </a>
+        @endif
       </div>
 
     </form>
