@@ -11,7 +11,7 @@
 |
 */
 
-Auth::routes();
+Auth::routes(['register' => false]);
 
 Route::get('/test', function(){
   return view('auth.passwords.reset');
