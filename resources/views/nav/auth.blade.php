@@ -35,7 +35,7 @@
     </div>
     <div class="flex flex-row items-center py-2 mr-8 ml-4">
       <img src="{{ asset('storage/icons/admin.svg') }}" alt="The icon for the admin area." class="h-12 mr-8">
-      <a class="hover:text-copy-secondary font-semibold" href="#">
+      <a class="hover:text-copy-secondary font-semibold" href="/home">
         Admin
       </a>
     </div>

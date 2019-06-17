@@ -16,3 +16,5 @@ Auth::routes(['register' => false]);
 Route::get('/test', function(){
   return view('auth.passwords.reset');
 });
+
+Route::get('/home', 'HomeController@index');

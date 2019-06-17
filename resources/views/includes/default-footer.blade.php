@@ -2,7 +2,7 @@
   <div class="flex flex-row items-center justify-center">
     <div class="flex flex-col items-center justify-around">
       <p class="font-bold">
-        PocoCMS
+        PocoCMS - <a href="/login">Login</a>
       </p>
       <p>
         Made with love by <a class="italic hover:font-semibold text-copy-secondary" href="https://www.arachni.dev">Arachnidev LLC</a>.
