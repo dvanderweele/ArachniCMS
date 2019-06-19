@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
@@ -12,9 +13,16 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+      if(Auth::check())
+      { // return all posts, including unpublished
+        $posts = Post::sortBy('is_published')->paginate(5);
+      } else 
+      { // only return published posts
+        $posts = Post::where('is_published', true)->paginate(5);
+      }
+      return view('posts.index', ['posts' => $posts]);
     }
 
     /**
@@ -24,7 +32,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+      return view('posts.create');
     }
 
     /**
