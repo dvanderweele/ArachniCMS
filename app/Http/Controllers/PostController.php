@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Purifier;
 
 class PostController extends Controller
 {
@@ -17,7 +18,7 @@ class PostController extends Controller
     {
       if(Auth::check())
       { // return all posts, including unpublished
-        $posts = Post::sortBy('is_published')->paginate(5);
+        $posts = Post::orderBy('is_published')->paginate(5);
       } else 
       { // only return published posts
         $posts = Post::where('is_published', true)->paginate(5);
@@ -43,7 +44,27 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      $post = new Post();
+      $request->validate([
+        'title' => 'required|min:2',
+        'body' => 'required|min:2',
+        'summary' => 'nullable',
+        'is_published' => 'required'
+      ]);
+      Purifier::clean($request->body);
+      $post->title = $request->title;
+      $post->body = $request->body;
+      $post->summary = $request->summary;
+      if ($request->is_published == 'unpublished'){
+        $post->is_published = false;
+      } else if ($request->is_published == 'published'){
+        $post->is_published = true;
+      } else {
+        return back()->withInput();
+      }
+      $post->author_id = auth()->user()->id;
+      $post->save();
+      return redirect()->route('show-post', ['id' => $post->id]);
     }
 
     /**
@@ -52,9 +73,22 @@ class PostController extends Controller
      * @param  \App\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function show(Post $post)
+    public function show($id)
     {
-        //
+      $post = Post::findOrFail($id);
+      if($post->is_published)
+      {
+        return view('posts.show', ['post' => $post]);
+      } else 
+      {
+        if(Auth::check())
+        {
+          return view('posts.show', ['post' => $post]);
+        } else 
+        {
+          return redirect()->route('list-posts');
+        }
+      }
     }
 
     /**

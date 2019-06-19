@@ -10,12 +10,7 @@
   <script>
     document.addEventListener('DOMContentLoaded', (event) => {
       CKEDITOR.config.toolbar = [
-        ['Styles','Format','Font','FontSize'],
-        '/',
-        ['Bold','Italic','Underline','StrikeThrough','-','Undo','Redo','-','Cut',     'Copy','Paste','Find','Replace','-','Outdent','Indent','-','Print'],
-        '/',
-        ['NumberedList','BulletedList','-','JustifyLeft','JustifyCenter',     'JustifyRight','JustifyBlock'],
-        ['Link', 'Unlink']
+        ['Bold','Italic','-','Undo','Redo','-','Cut','Copy','Paste','Find','Replace','Link', 'Unlink']
       ];
       CKEDITOR.replace( 'post-body');
     });
@@ -42,11 +37,18 @@
       <input type="text" name="title" id="post-title" required class="text-copy-primary bg-background-form shadow appearance-none border rounded w-full py-2 px-3 text-copy-primary leading-tight focus:outline-none focus:shadow-outline focus:bg-background-ruthieslight @error('title') border-solid border-red-600 border-2 @enderror" value="{{ old('name') }}" autofocus>
       </div>
       <div class="mb-4">
-      <label for="post-body" class="block text-copy-primary text-sm font-bold mb-2">
-        Post Body
-      </label>
-      <textarea name="body" id="post-body" class="text-copy-primary bg-background-form shadow appearance-none border rounded w-full py-2 px-3 text-copy-primary leading-tight focus:outline-none focus:shadow-outline focus:bg-background-ruthieslight @error('body') border-solid border-red-600 border-2 @enderror" required></textarea>
+        <label for="post-body" class="block text-copy-primary text-sm font-bold mb-2">
+          Post Body
+        </label>
+        <textarea name="body" id="post-body" class="text-copy-primary bg-background-form shadow appearance-none border rounded w-full py-2 px-3 text-copy-primary leading-tight focus:outline-none focus:shadow-outline focus:bg-background-ruthieslight @error('body') border-solid border-red-600 border-2 @enderror" required></textarea>
       </div>
+      <div class="mb-4">
+          <label for="post-summary" class="block text-copy-primary text-sm font-bold mb-2">
+            Post Summary
+          </label>
+          <textarea name="summary" id="post-body" class="text-copy-primary bg-background-form shadow appearance-none border rounded w-full py-2 px-3 text-copy-primary leading-tight focus:outline-none focus:shadow-outline focus:bg-background-ruthieslight @error('body') border-solid border-red-600 border-2 @enderror"></textarea>
+        </div>
+        <small class="text-copy-primary mt-2 mb-4">On some pages, such as the page the displays a paginated list of multiple blog posts, it may be unrealistic to display the whole body of the blog post. Instead, we'll display the short, unstyled summary you type in here. Adding a summary is not required, but advised.</small>
       <div class="mb-4">
       <label for="is-published" class="block text-copy-primary text-sm font-bold mb-2">
         Publication Status

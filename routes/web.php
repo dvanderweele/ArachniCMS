@@ -19,10 +19,10 @@ Route::get('/test', function(){
 
 Route::get('/home', 'HomeController@index');
 
-Route::get('/posts',            'PostController@index');
-Route::get('/posts/create',     'PostController@create');
+Route::get('/posts',            'PostController@index')->name('list-posts');
+Route::get('/posts/create',     'PostController@create')->middleware('auth')->name('create-post');
 Route::post('/posts',           'PostController@store')->middleware('auth');
-Route::get('/posts/{id}',       'PostController@show');
+Route::get('/posts/{id}',       'PostController@show')->name('show-post');
 Route::get('/posts/{id}/edit',  'PostController@edit')->middleware('auth');
 Route::patch('/posts',          'PostController@update')->middleware('auth');
 Route::delete('/posts',         'PostController@destroy')->middleware('auth');
