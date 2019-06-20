@@ -97,9 +97,10 @@ class PostController extends Controller
      * @param  \App\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function edit(Post $post)
+    public function edit($id)
     {
-        //
+      $post = Post::findOrFail($id);
+      return view('posts.edit', ['post' => $post]);
     }
 
     /**
@@ -109,9 +110,28 @@ class PostController extends Controller
      * @param  \App\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Post $post)
+    public function update(Request $request)
     {
-        //
+      $post = Post::findOrFail($request->id);
+      $request->validate([
+        'title' => 'required|min:2',
+        'body' => 'required|min:2',
+        'summary' => 'nullable',
+        'is_published' => 'required'
+      ]);
+      Purifier::clean($request->body);
+      $post->title = $request->title;
+      $post->body = $request->body;
+      $post->summary = $request->summary;
+      if ($request->is_published == 'unpublished'){
+        $post->is_published = false;
+      } else if ($request->is_published == 'published'){
+        $post->is_published = true;
+      } else {
+        return back()->withInput();
+      }
+      $post->save();
+      return redirect()->route('show-post', ['id' => $post->id]);
     }
 
     /**
