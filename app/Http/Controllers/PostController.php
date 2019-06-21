@@ -51,9 +51,8 @@ class PostController extends Controller
         'summary' => 'nullable',
         'is_published' => 'required'
       ]);
-      Purifier::clean($request->body);
       $post->title = $request->title;
-      $post->body = $request->body;
+      $post->body = Purifier::clean($request->body);
       $post->summary = $request->summary;
       if ($request->is_published == 'unpublished'){
         $post->is_published = false;
