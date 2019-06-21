@@ -16,6 +16,6 @@ class UsersTableSeeder extends Seeder
         'name' => "Vin Zeeland",
         'email' => 'vinzeeland@icloud.com',
         'password' => bcrypt('Bxksjeyyaokdn34$-'),
-    ]);
+      ]);
     }
 }

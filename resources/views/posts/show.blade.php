@@ -15,6 +15,31 @@
         anchor.classList.add('underline');
         anchor.classList.add('font-semibold');
       }
+      h1s = postBody.getElementsByTagName("h1");
+      for (let h1 of h1s)
+      {
+        h1.classList.add('text-6xl');
+      }
+      h2s = postBody.getElementsByTagName("h2");
+      for (let h2 of h2s)
+      {
+        h2.classList.add('text-5xl');
+      }
+      h3s = postBody.getElementsByTagName("h3");
+      for (let h3 of h3s)
+      {
+        h3.classList.add('text-4xl');
+      }
+      ols = postBody.getElementsByTagName("ol");
+      for (let ol of ols)
+      {
+        ol.classList.add('list-disc');
+      }
+      uls = postBody.getElementsByTagName("ul");
+      for (let ul of uls)
+      {
+        ul.classList.add('list-decimal');
+      }
     });
   </script>
 @endsection
@@ -49,7 +74,7 @@
       </h1>
     </div>
     @auth<div class="mb-4 cursor-default"><span class="w-auto bg-background-secondary text-copy-primary hover:text-copy-secondary font-semibold rounded-full py-2 px-2 text-sm">{{ $post->is_published ? 'Published' : 'Unpublished' }}</span></div>@endauth
-    <div id="post-body" class="text-copy-primary">
+    <div id="post-body" class="text-copy-primary mx-6">
       {!! $post->body !!}
     </div>
   </div>

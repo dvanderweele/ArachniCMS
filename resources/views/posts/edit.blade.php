@@ -10,7 +10,7 @@
   <script>
     document.addEventListener('DOMContentLoaded', (event) => {
       CKEDITOR.config.toolbar = [
-        ['Bold','Italic','-','Undo','Redo','-','Cut','Copy','Paste','Find','Replace','Link', 'Unlink']
+        ['Format','Bold','Italic','-','NumberedList','BulletedList','-','Undo','Redo','-','Cut','Copy','Paste','Find','Replace','Link', 'Unlink']
       ];
       CKEDITOR.replace( 'post-body');
     });

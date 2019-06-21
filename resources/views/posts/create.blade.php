@@ -6,11 +6,11 @@
 
 @section('js')
   @include('includes.default-js')
-  <script src="{{asset('/vendor/unisharp/laravel-ckeditor/ckeditor.js') }}"></script>
+  <script src="{{ asset('/vendor/unisharp/laravel-ckeditor/ckeditor.js') }}"></script>
   <script>
     document.addEventListener('DOMContentLoaded', (event) => {
       CKEDITOR.config.toolbar = [
-        ['Bold','Italic','-','Undo','Redo','-','Cut','Copy','Paste','Find','Replace','Link', 'Unlink']
+        ['Format','Bold','Italic','-','NumberedList','BulletedList','-','Undo','Redo','-','Cut','Copy','Paste','Find','Replace','Link', 'Unlink']
       ];
       CKEDITOR.replace( 'post-body');
     });
