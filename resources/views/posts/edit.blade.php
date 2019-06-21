@@ -13,6 +13,22 @@
         ['Format','Bold','Italic','-','NumberedList','BulletedList','-','Undo','Redo','-','Cut','Copy','Paste','Find','Replace','Link', 'Unlink']
       ];
       CKEDITOR.replace( 'post-body');
+      deleteButton = document.getElementById("delete");
+      deletionOverlay = document.getElementById("deletionOverlay");
+      deletionModal = document.getElementById("deletionModal");
+      deleteButton.addEventListener("click", function() {
+        deletionModal.classList.replace("hidden", "block");
+        deletionOverlay.classList.replace("hidden", "block");
+      });
+      cancelDelete = document.getElementById("cancelDelete");
+      cancelDelete.addEventListener("click", function(){
+        deletionModal.classList.replace("block", "hidden");
+        deletionOverlay.classList.replace("block", "hidden");
+      });
+      deletionOverlay.addEventListener("click", function(){
+        deletionModal.classList.replace("block", "hidden");
+        deletionOverlay.classList.replace("block", "hidden");
+      });
     });
   </script>
 @endsection
@@ -26,6 +42,25 @@
 @endsection
 
 @section('content')
+  <div id="deletionOverlay" class="fixed inset-0 bg-background-primary z-20 opacity-50 hidden">
+
+  </div>
+  <div id="deletionModal" class="fixed z-30 bg-background-primary border text-copy-primary rounded mx-auto max-w-xl w-11/12 hidden text-center py-4 px-6 container inset-x-0 h-auto my-8 md:my-16">
+    <div class="flex flex-row justify-end">
+      <svg version="1.1" id="cancelDelete" class="fill-current h-8 w-8 cursor-pointer" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 20 20" enable-background="new 0 0 20 20" xml:space="preserve">
+        <path d="M16,2H4C2.9,2,2,2.9,2,4v12c0,1.1,0.9,2,2,2h12c1.1,0,2-0.9,2-2V4C18,2.9,17.1,2,16,2z M13.061,14.789  L10,11.729l-3.061,3.06L5.21,13.061L8.271,10l-3.06-3.061L6.94,5.21L10,8.271l3.059-3.061l1.729,1.729L11.729,10l3.06,3.061  L13.061,14.789z"/>
+      </svg>
+    </div>
+    <p class="font-bold text-2xl">
+      Are you sure you want to permanently delete this post?
+      <form action="/posts" method="post">
+        @csrf 
+        @method('DELETE')
+        <input type="hidden" name="id" value="{{ $post->id }}">
+        <button type="submit" class="bg-background-secondary border text-copy-secondary hover:text-copy-primary font-bold w-full rounded py-2 px-4 mt-4">Delete Forever</button>
+      </form>
+    </p>
+  </div>
   <div class="max-w-lg w-10/12 mt-8 mx-auto flex flex-col items-start">
     <a href="/posts/{{ $post->id }}" class="border bg-background-secondary text-copy-secondary py-2 px-4 rounded hover:bg-background-primary font-bold h-auto">
       <svg version="1.1" class="fill-current h-8 w-8" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 20 20" enable-background="new 0 0 20 20" xml:space="preserve">
@@ -79,6 +114,9 @@
         Update Post
       </button>
     </form>
+    <button type="button" id="delete" class="bg-background-ruthiesdark text-copy-primary py-2 px-4 rounded hover:text-copy-secondary font-bold w-full mt-5">
+      Delete Post
+    </button>
   </div>
 @endsection
 

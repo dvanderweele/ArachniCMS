@@ -23,7 +23,7 @@
     </div>
     <div class="flex flex-row items-center py-2 mr-8 ml-4">
       <img class="h-12 mr-4" src="{{ asset('storage/icons/blog_post.svg') }}" alt="An icon portraying a blog."> 
-      <a class="hover:text-copy-secondary font-semibold" href="#">
+      <a class="hover:text-copy-secondary font-semibold" href="/posts">
         Blog
       </a>
     </div>

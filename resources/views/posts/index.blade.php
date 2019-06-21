@@ -31,7 +31,7 @@
       <h1 class="font-semibold text-2xl text-copy-primary mb-4">
         {{ $post->title }}
       </h1>
-      @auth<div class="my-4 cursor-default"><span class="w-auto bg-background-secondary text-copy-primary hover:text-copy-secondary font-semibold rounded-full py-2 px-2 text-sm">{{ $post->is_published ? 'Published' : 'Unpublished' }}</span></div>@endauth
+      @auth<div class="my-4 cursor-default"><span class="w-auto bg-background-secondary text-copy-primary hover:text-copy-secondary font-semibold rounded-full py-2 px-4 text-sm">{{ $post->is_published ? 'Published' : 'Unpublished' }}</span></div>@endauth
       <div id="post-body" class="text-copy-primary">
         @if($post->summary != null)
           <p class="mb-5">{{ $post->summary }}</p>
