@@ -14,6 +14,7 @@
       {
         anchor.classList.add('underline');
         anchor.classList.add('font-semibold');
+        anchor.classList.add('hover:text-copy-secondary');
       }
       h1s = postBody.getElementsByTagName("h1");
       for (let h1 of h1s)
@@ -73,7 +74,12 @@
         {{ $post->title }}
       </h1>
     </div>
-    @auth<div class="mb-4 cursor-default"><span class="w-auto bg-background-secondary text-copy-primary hover:text-copy-secondary font-semibold rounded-full py-2 px-4 text-sm">{{ $post->is_published ? 'Published' : 'Unpublished' }}</span></div>@endauth
+    <div class="my-4 cursor-default flex flex-row justify-around">
+    @auth
+      <span class="w-auto bg-background-secondary text-copy-primary hover:text-copy-secondary font-semibold rounded-full py-2 px-4 text-sm">{{ $post->is_published ? 'Published' : 'Unpublished' }}</span>
+    @endauth
+      <span class="w-auto bg-background-secondary text-copy-primary hover:text-copy-secondary font-semibold rounded-full py-2 px-4 text-sm">{{ date('F d, Y', strtotime($post->updated_at)) }}</span>
+    </div>
     <div id="post-body" class="text-copy-primary mx-6">
       {!! $post->body !!}
     </div>

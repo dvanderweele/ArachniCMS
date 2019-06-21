@@ -57,7 +57,7 @@
         @csrf 
         @method('DELETE')
         <input type="hidden" name="id" value="{{ $post->id }}">
-        <button type="submit" class="bg-background-secondary border text-copy-secondary hover:text-copy-primary font-bold w-full rounded py-2 px-4 mt-4">Delete Forever</button>
+        <button type="submit" class="bg-background-secondary border text-copy-secondary hover:text-copy-primary font-bold w-5/6 rounded py-2 px-4 mt-4">Delete Forever</button>
       </form>
     </p>
   </div>
@@ -110,11 +110,11 @@
       <div class="mt-2 mb-4">
         <small class="text-copy-primary">This determines whether your post is private (and only you can see it when you're logged in) or public (and all visitors to your blog can read it). You can change this option later.</small>
       </div>
-      <button type="submit" class="border bg-background-secondary text-copy-secondary py-2 px-4 rounded hover:bg-background-primary font-bold">
+      <button type="submit" class="border bg-background-secondary text-copy-secondary py-2 px-4 rounded hover:bg-background-primary font-bold w-full">
         Update Post
       </button>
     </form>
-    <button type="button" id="delete" class="bg-background-ruthiesdark text-copy-primary py-2 px-4 rounded hover:text-copy-secondary font-bold w-full mt-5">
+    <button type="button" id="delete" class="bg-background-ruthiesdark text-copy-primary py-2 px-4 rounded hover:text-copy-secondary font-bold w-full mt-10">
       Delete Post
     </button>
   </div>

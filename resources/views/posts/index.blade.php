@@ -31,7 +31,12 @@
       <h1 class="font-semibold text-2xl text-copy-primary mb-4">
         {{ $post->title }}
       </h1>
-      @auth<div class="my-4 cursor-default"><span class="w-auto bg-background-secondary text-copy-primary hover:text-copy-secondary font-semibold rounded-full py-2 px-4 text-sm">{{ $post->is_published ? 'Published' : 'Unpublished' }}</span></div>@endauth
+      <div class="my-4 cursor-default flex flex-row justify-around">
+      @auth
+        <span class="w-auto bg-background-secondary text-copy-primary hover:text-copy-secondary font-semibold rounded-full py-2 px-4 text-sm">{{ $post->is_published ? 'Published' : 'Unpublished' }}</span>
+      @endauth
+        <span class="w-auto bg-background-secondary text-copy-primary hover:text-copy-secondary font-semibold rounded-full py-2 px-4 text-sm">{{ date('F d, Y', strtotime($post->updated_at)) }}</span>
+      </div>
       <div id="post-body" class="text-copy-primary">
         @if($post->summary != null)
           <p class="mb-5">{{ $post->summary }}</p>
