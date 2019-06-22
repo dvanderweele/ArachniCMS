@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-  @include('includes.default-title')
+  {{ $post->title }} | @include('includes.default-title')
 @endsection
 
 @section('js')

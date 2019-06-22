@@ -16,7 +16,12 @@ class CommentController extends Controller
      */
     public function index()
     {
-        //
+      $unapproved = Comment::where('approved', false)->paginate(5);
+      $approved = Comment::where('approved', true)->paginate(5);
+      return view('comments.index')->with([
+        'unapproved' => $unapproved,
+        'approved' => $approved
+      ]);
     }
 
     /**
