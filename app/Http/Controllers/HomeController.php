@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Comment;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,6 +24,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+      $unapprovedCommentCount = Comment::where('approved', false)->count();
+      return view('home')->with('unapprovedCommentCount', $unapprovedCommentCount);
     }
 }

@@ -41,6 +41,11 @@
       {
         ul.classList.add('list-decimal');
       }
+      ps = postBody.getElementsByTagName("p");
+      for (let p of ps)
+      {
+        p.classList.add('mb-4');
+      }
     });
   </script>
 @endsection
@@ -80,8 +85,128 @@
     @endauth
       <span class="border w-auto bg-background-secondary text-copy-primary hover:text-copy-secondary font-semibold rounded-full py-2 px-4 text-sm">{{ date('F d, Y', strtotime($post->updated_at)) }}</span>
     </div>
-    <div id="post-body" class="text-copy-primary mx-6">
+    <div id="post-body" class="text-copy-primary mx-6 ">
       {!! $post->body !!}
+    </div>
+  </div>
+  <div class="max-w-2xl w-10/12 bg-background-primary shadow-lg rounded mx-auto pt-6 pb-8 mt-8 font-sans relative">
+    <div class="flex flex-col items-start px-8">
+      <h1 class="font-semibold text-2xl text-copy-primary mb-4">
+        Comments
+      </h1>
+      <p class="mb-4 text-copy-primary">
+        @guest 
+          Feel free to leave a respectful comment. All comments, without exception, are subject to a manual approval process. If you misbehave and fail to act like a decent person, you will be banned from the site.
+        @endguest 
+        @auth 
+          Here, visitors to your site will see a warning that admonishes them to be respectful and decent when commenting. It also warns them that they can be banned if they fail to do so.
+        @endauth
+      </p>
+      <p class="mb-4 text-copy-primary">
+        @auth 
+          All comments are shown below, including unapproved ones. Go to the admin area to approve comments.
+        @endauth 
+        @guest 
+          Only comments that have been manually approved are shown below. If yours is awaiting approval, thank you for your patience!
+        @endguest
+      </p>
+    </div>
+    @auth 
+      <form action="/comments" method="post" class="px-8 pb-10">
+        @csrf 
+        <input type="hidden" name="post_id" value="{{ $post->id }}" required>
+        <div class="flex flex-col items-start mt-4 text-copy-secondary">
+          <label for="body" class="font-semibold mb-2">Comment</label>
+          <textarea name="body" id="body" required class="text-copy-primary bg-background-form shadow appearance-none border rounded w-full py-2 px-3 text-copy-primary leading-tight focus:outline-none focus:shadow-outline focus:bg-background-ruthieslight @error('body') border-solid border-red-600 border-2 @enderror">{{ old('body') }}</textarea>
+        </div>
+        <button type="submit" class="border bg-background-secondary text-copy-secondary py-2 px-4 rounded hover:bg-background-primary font-bold mt-4">Submit</button>
+      </form>
+    @endauth
+    @guest
+      <form action="/comments" method="post" class="px-8 pb-10">
+        @csrf 
+        <input type="hidden" name="post_id" value="{{ $post->id }}" required>
+        <div class="flex flex-col items-start">
+          <label for="name" class="font-semibold mb-2 text-copy-secondary">Name</label>
+          <input type="text" name="name" id="name" required class="text-copy-primary bg-background-form shadow appearance-none border rounded w-full py-2 px-3 text-copy-primary leading-tight focus:outline-none focus:shadow-outline focus:bg-background-ruthieslight @error('name') border-solid border-red-600 border-2 @enderror" value="{{ old('name') }}" autofocus>
+        </div>
+        <div class="flex flex-col items-start mt-4">
+          <label for="email" class="font-semibold mb-2 text-copy-secondary">Email Address</label>
+          <input type="email" name="email" id="email" required class="text-copy-primary bg-background-form shadow appearance-none border rounded w-full py-2 px-3 text-copy-primary leading-tight focus:outline-none focus:shadow-outline focus:bg-background-ruthieslight @error('email') border-solid border-red-600 border-2 @enderror" value="{{ old('email') }}">
+        </div>
+        <div class="flex flex-col items-start mt-4 text-copy-secondary">
+          <label for="body" class="font-semibold mb-2">Comment</label>
+          <textarea name="body" id="body" required class="text-copy-primary bg-background-form shadow appearance-none border rounded w-full py-2 px-3 text-copy-primary leading-tight focus:outline-none focus:shadow-outline focus:bg-background-ruthieslight @error('body') border-solid border-red-600 border-2 @enderror">{{ old('body') }}</textarea>
+        </div>
+        <button type="submit" class="border bg-background-secondary text-copy-secondary py-2 px-4 rounded hover:bg-background-primary font-bold mt-4">Submit</button>
+      </form>
+    @endguest
+    <div class="">
+      @if(count($comments) > 0)
+        <div class="mb-4 flex flex-row justify-center items-center text-copy-primary hover:text-copy-secondary cursor-pointer w-auto">
+          <svg version="1.1" class="fill-current h-8 w-8" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 20 20" enable-background="new 0 0 20 20" xml:space="preserve">
+            <path d="M5.8,12.2V6H2C0.9,6,0,6.9,0,8v6c0,1.1,0.9,2,2,2h1v3l3-3h5c1.1,0,2-0.9,2-2v-1.82  c-0.064,0.014-0.132,0.021-0.2,0.021h-7V12.2z M18,1H9C7.9,1,7,1.9,7,3v8h7l3,3v-3h1c1.1,0,2-0.899,2-2V3C20,1.9,19.1,1,18,1z"/>
+            </svg>&nbsp;x&nbsp;<span class="font-bold">
+              @guest
+                {{ count($comments->where('approved', true)) }}
+              @endguest
+              @auth 
+                {{ count($comments) }}
+              @endauth
+            </span>
+        </div>
+        @foreach($comments as $comment)
+          @auth
+            <div class="hover:bg-background-primary bg-background-secondary hover:text-copy-primary px-8 text-copy-secondary py-4 mb-3">
+              <div class="mb-4">
+                <p class="font-semibold">Commenter Name: </p>{{ $comment->name }}
+              </div>
+              <div class="mb-3">
+                <p class="font-semibold">Commenter Email: </p>{{ $comment->email }}
+              </div>
+              <div class="mb-3">
+                <p class="font-semibold">Commenter IP Address: </p>{{ $comment->ip_address }}
+              </div>
+              <div class="mb-3">
+                <p class="font-semibold">Date: </p>{{ date('F d, Y', strtotime($comment->created_at)) }}
+              </div>
+              <div class="mb-3">
+                <p class="font-semibold">Approved: </p>
+                @if($comment->approved)
+                  {{ date('F d, Y', strtotime($comment->updated_at)) }}
+                @else 
+                  Not yet.
+                @endif
+              </div>
+              <div class="mb-3">
+                <p class="font-semibold">Comment: </p>{{ $comment->body }}
+              </div>
+            </div>
+          @endauth
+          @guest
+            @if($comment->approved)
+            <div class="hover:bg-background-primary bg-background-secondary hover:text-copy-primary px-8 text-copy-secondary py-4 mb-3">
+              <div class="mb-4">
+                <p class="font-semibold">Commenter Name: </p>{{ $comment->name }}
+              </div>
+              <div class="mb-3">
+                <p class="font-semibold">Date: </p>{{ date('F d, Y', strtotime($comment->created_at)) }}
+              </div>
+              <div class="mb-3">
+                <p class="font-semibold">Comment: </p>{{ $comment->body }}
+              </div>
+            </div>
+            @endif
+          @endguest
+        @endforeach
+        <p class="my-4 pt-2">
+          {{ $comments->links() }}
+        </p>
+      @else 
+      <p class="font-semibold text-lg text-copy-primary">
+        No comments yet. This is your opportunity!
+      </p>
+      @endif
     </div>
   </div>
 @endsection

@@ -26,3 +26,5 @@ Route::get('/posts/{id}',       'PostController@show')->name('show-post');
 Route::get('/posts/{id}/edit',  'PostController@edit')->middleware('auth');
 Route::patch('/posts',          'PostController@update')->middleware('auth');
 Route::delete('/posts',         'PostController@destroy')->middleware('auth');
+
+Route::post('/comments',        'CommentController@store');

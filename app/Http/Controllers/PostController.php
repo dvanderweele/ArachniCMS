@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Post;
+use App\Comment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Purifier;
@@ -75,14 +76,15 @@ class PostController extends Controller
     public function show($id)
     {
       $post = Post::findOrFail($id);
+      $comments = Comment::where('post_id', $post->id)->paginate(5);
       if($post->is_published)
       {
-        return view('posts.show', ['post' => $post]);
+        return view('posts.show', ['post' => $post, 'comments' => $comments]);
       } else 
       {
         if(Auth::check())
         {
-          return view('posts.show', ['post' => $post]);
+          return view('posts.show', ['post' => $post, 'comments' => $comments]);
         } else 
         {
           return redirect()->route('list-posts');
