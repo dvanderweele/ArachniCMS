@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\YoutubeVidCode;
+use App\YoutubeVidEmbed;
 use Illuminate\Http\Request;
 
 class YoutubeVidCodeController extends Controller
@@ -14,7 +15,8 @@ class YoutubeVidCodeController extends Controller
      */
     public function index()
     {
-        //
+      $codes = YoutubeVidCode::latest()->paginate(20);
+      return view('youtubevidcodes.index')->with('codes', $codes);
     }
 
     /**
@@ -35,7 +37,15 @@ class YoutubeVidCodeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      $request->validate([
+        'name' => 'required|unique:youtube_vid_codes',
+        'code' => 'required'
+      ]);
+      $vidcode = new YoutubeVidCode();
+      $vidcode->name = $request->name;
+      $vidcode->vidcode = $request->code;
+      $vidcode->save();
+      return redirect()->route('list-vidcodes');
     }
 
     /**
@@ -78,8 +88,14 @@ class YoutubeVidCodeController extends Controller
      * @param  \App\YoutubeVidCode  $youtubeVidCode
      * @return \Illuminate\Http\Response
      */
-    public function destroy(YoutubeVidCode $youtubeVidCode)
+    public function destroy(Request $request)
     {
-        //
+      $vidcode = YoutubeVidCode::findOrFail($request->id);
+      $vidembeds = $vidcode->youtubevidembeds;
+      foreach($vidembeds as $vid){
+        $vid->delete();
+      }
+      $vidcode->delete();
+      return redirect()->route('list-vidcodes');
     }
 }

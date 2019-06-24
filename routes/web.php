@@ -31,3 +31,7 @@ Route::get('/comments',         'CommentController@index')->middleware('auth');
 Route::post('/comments',        'CommentController@store');
 Route::patch('/comments',      'CommentController@update')->middleware('auth');
 Route::delete('/comments',      'CommentController@destroy')->middleware('auth');
+
+Route::get('/youtubevidcodes',  'YoutubeVidCodeController@index')->middleware('auth')->name('list-vidcodes');
+Route::post('/youtubevidcodes', 'YoutubeVidCodeController@store')->middleware('auth');
+Route::delete('/youtubevidcodes', 'YoutubeVidCodeController@destroy')->middleware('auth');
