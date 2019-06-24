@@ -71,6 +71,7 @@
   <style>
     blockquote {
       padding-left: .75rem;
+      padding-right: .75rem;
       padding-top: .5rem;
       padding-bottom: .5rem;
       background: var(--bg-background-secondary);
@@ -170,15 +171,15 @@
             <p class="font-bold mb-2">
               Name
             </p>
-            <p class="mb-4">
+            <blockquote class="mb-4">
               {{ $code->name }}
-            </p>  
+            </blockquote>  
             <p class="font-bold mb-2">
               Video Code
             </p>
-            <p>
+            <blockquote>
               {{ $code->vidcode }}
-            </p>  
+            </blockquote>  
           </div>
           <div>
             <button type="button" class="trash" data-id="{{ $code->id }}">

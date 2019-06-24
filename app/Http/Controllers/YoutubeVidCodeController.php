@@ -20,16 +20,6 @@ class YoutubeVidCodeController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -48,39 +38,6 @@ class YoutubeVidCodeController extends Controller
       return redirect()->route('list-vidcodes');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\YoutubeVidCode  $youtubeVidCode
-     * @return \Illuminate\Http\Response
-     */
-    public function show(YoutubeVidCode $youtubeVidCode)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\YoutubeVidCode  $youtubeVidCode
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(YoutubeVidCode $youtubeVidCode)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\YoutubeVidCode  $youtubeVidCode
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, YoutubeVidCode $youtubeVidCode)
-    {
-        //
-    }
 
     /**
      * Remove the specified resource from storage.
