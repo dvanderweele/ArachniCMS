@@ -29,3 +29,5 @@ Route::delete('/posts',         'PostController@destroy')->middleware('auth');
 
 Route::get('/comments',         'CommentController@index')->middleware('auth');
 Route::post('/comments',        'CommentController@store');
+Route::patch('/comments',      'CommentController@update')->middleware('auth');
+Route::delete('/comments',      'CommentController@destroy')->middleware('auth');

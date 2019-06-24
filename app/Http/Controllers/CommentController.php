@@ -101,9 +101,18 @@ class CommentController extends Controller
      * @param  \App\Comment  $comment
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Comment $comment)
+    public function update(Request $request)
     {
-        //
+      $comment = Comment::findOrFail($request->id);
+      if($request->has('approve')){
+        $comment->approved = true;
+      }
+      if($request->has('unapprove')){
+        $comment->approved = false;
+      }
+      $comment->save();
+      $post = $comment->post;
+      return redirect()->route('show-post', ['id' => $post->id]);
     }
 
     /**
@@ -112,8 +121,11 @@ class CommentController extends Controller
      * @param  \App\Comment  $comment
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Comment $comment)
+    public function destroy(Request $request)
     {
-        //
+      $comment = Comment::findOrFail($request->id);
+      $post = $comment->post;
+      $comment->delete();
+      return redirect()->route('show-post', ['id' => $post->id]);
     }
 }

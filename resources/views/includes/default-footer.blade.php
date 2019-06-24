@@ -2,7 +2,13 @@
   <div class="flex flex-row items-center justify-center">
     <div class="flex flex-col items-center justify-around">
       <p class="font-bold">
-        PocoCMS - <a href="/login">Login</a>
+        PocoCMS - 
+        @guest
+          <a href="/login">Login</a>
+        @endguest
+        @auth 
+          Hello, {{ auth()->user()->name }}!
+        @endauth
       </p>
       <p>
         Made with love by <a class="italic hover:font-semibold text-copy-secondary" href="https://www.arachni.dev">Arachnidev LLC</a>.

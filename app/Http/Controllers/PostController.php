@@ -76,15 +76,35 @@ class PostController extends Controller
     public function show($id)
     {
       $post = Post::findOrFail($id);
-      $comments = Comment::where('post_id', $post->id)->paginate(5);
+      $approved = Comment::where('post_id', $post->id)->where('approved', true)->paginate(5);
       if($post->is_published)
-      {
+      { 
+        if(Auth::check())
+        {
+          $unapproved = Comment::where('post_id', $post->id)->where('approved', false)->paginate(5);
+          return view('posts.show', [
+            'post' => $post, 
+            'approved' => $approved,
+            'unapproved' => $unapproved
+          ]);
+        } else 
+        {
+          return view('posts.show', [
+            'post' => $post, 
+            'approved' => $approved
+          ]);
+        }
         return view('posts.show', ['post' => $post, 'comments' => $comments]);
       } else 
       {
         if(Auth::check())
         {
-          return view('posts.show', ['post' => $post, 'comments' => $comments]);
+          $unapproved = Comment::where('post_id', $post->id)->where('approved', false)->paginate(5);
+          return view('posts.show', [
+            'post' => $post, 
+            'approved' => $approved,
+            'unapproved' => $unapproved
+          ]);
         } else 
         {
           return redirect()->route('list-posts');

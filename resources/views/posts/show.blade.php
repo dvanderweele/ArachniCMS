@@ -6,7 +6,7 @@
 
 @section('js')
   @include('includes.default-js')
-  <script>
+  <script defer>
     document.addEventListener('DOMContentLoaded', (event) => {
       postBody = document.getElementById('post-body');
       anchors = postBody.getElementsByTagName("a");
@@ -48,6 +48,141 @@
       }
     });
   </script>
+  @auth 
+    <script defer>
+      // modal management section
+      document.addEventListener("DOMContentLoaded", (event) => {
+        let KEYCODE_TAB = 9;
+        // grab relevant dom elements
+        const modalOverlay = document.querySelector("#modalOverlay");
+        const commentBody = document.querySelector("#body");
+        const deleteCommentModal = document.querySelector("#deleteCommentModal");
+        const approveCommentModal = document.querySelector("#approveCommentModal");
+        const unapproveCommentModal = document.querySelector("#unapproveCommentModal");
+        const dcmCancel = document.querySelector("#dcmCancel");
+        const acmCancel = document.querySelector("#acmCancel");
+        const ucmCancel = document.querySelector("#ucmCancel");
+        const deleteButtons = document.querySelectorAll(".deleteBtn");
+        const approveButtons = document.querySelectorAll(".approvalBtn");
+        const unapproveButtons = document.querySelectorAll(".unapprovalBtn");
+        const deleteTarget = document.querySelector("#deleteTarget");
+        const approveTarget = document.querySelector("#approveTarget");
+        const unapproveTarget = document.querySelector("#unapproveTarget");
+        const submitDelete = document.querySelector("#submitDelete");
+        const submitApproval = document.querySelector("#submitApproval");
+        const submitUnapproval = document.querySelector("#submitUnapproval");
+        
+        for (let deleteBtn of deleteButtons){
+          deleteBtn.addEventListener("click", function(e){
+            let id = e.target.dataset.id;
+            deleteTarget.value = id;
+            openModal(deleteCommentModal);
+            dcmCancel.focus();
+          });
+        }
+        for (let approveBtn of approveButtons){
+          approveBtn.addEventListener("click", function(e){
+            let id = e.target.dataset.id;
+            approveTarget.value = id;
+            openModal(approveCommentModal);
+            acmCancel.focus();
+          });
+        }
+        for (let unapproveBtn of unapproveButtons){
+          unapproveBtn.addEventListener("click", function(e){
+            let id = e.target.dataset.id;
+            unapproveTarget.value = id;
+            openModal(unapproveCommentModal);
+            ucmCancel.focus();
+          });
+        }
+        modalOverlay.addEventListener("click", function(e){
+          closeModal(deleteCommentModal);
+          closeModal(approveCommentModal);
+          closeModal(unapproveCommentModal);
+        });
+        dcmCancel.addEventListener("click", function(e){
+          closeModal(deleteCommentModal);
+        });
+        acmCancel.addEventListener("click", function(e){
+          closeModal(approveCommentModal);
+        });
+        ucmCancel.addEventListener("click", function(e){
+          closeModal(unapproveCommentModal);
+        });
+        deleteCommentModal.addEventListener("keydown", function(e){
+          if (e.key === 'Tab' || e.keyCode === KEYCODE_TAB) {
+            if ( e.shiftKey ) /* shift + tab */ {
+              if (document.activeElement === dcmCancel) {
+                submitDelete.focus();
+                e.preventDefault();
+              }
+            } else /* tab */ {
+              if (document.activeElement === submitDelete) {
+                dcmCancel.focus();
+                e.preventDefault();
+              }
+            }
+          }
+          if (e.key === "Escape") {
+            closeModal(deleteCommentModal);
+            modalOverlay.classList.replace("block", "hidden");
+            commentBody.focus();
+          }
+        });
+        approveCommentModal.addEventListener("keydown", function(e){
+          if (e.key === 'Tab' || e.keyCode === KEYCODE_TAB) {
+            if ( e.shiftKey ) /* shift + tab */ {
+              if (document.activeElement === acmCancel) {
+              submitApproval.focus();
+                e.preventDefault();
+              }
+            } else /* tab */ {
+              if (document.activeElement ===submitApproval) {
+                acmCancel.focus();
+                e.preventDefault();
+              }
+            }
+          }
+          if (e.key === "Escape") {
+            closeModal(approveCommentModal);
+            modalOverlay.classList.replace("block", "hidden");
+            commentBody.focus();
+          }
+        });
+        unapproveCommentModal.addEventListener("keydown", function(e){
+          if (e.key === 'Tab' || e.keyCode === KEYCODE_TAB) {
+            if ( e.shiftKey ) /* shift + tab */ {
+              if (document.activeElement === ucmCancel) {
+                submitUnapproval.focus();
+                e.preventDefault();
+              }
+            } else /* tab */ {
+              if (document.activeElement === submitUnapproval) {
+                ucmCancel.focus();
+                e.preventDefault();
+              }
+            }
+          }
+          if (e.key === "Escape") {
+            closeModal(unapproveCommentModal);
+            modalOverlay.classList.replace("block", "hidden");
+            commentBody.focus();
+          }
+        });
+      });
+
+      function openModal(modal){
+        modalOverlay.classList.replace("hidden", "block");
+        modal.classList.replace("hidden", "block");
+      }
+
+      function closeModal(modal){
+        modalOverlay.classList.replace("block", "hidden");
+        modal.classList.replace("block", "hidden");
+      }
+    </script>
+  @endauth
 @endsection
 
 @section('css')
@@ -59,6 +194,58 @@
 @endsection
 
 @section('content')
+  <div id="modalOverlay" class="fixed inset-0 bg-background-primary z-20 opacity-50 hidden">
+  </div>
+  <div id="deleteCommentModal" class="fixed z-30 bg-background-primary border text-copy-primary rounded mx-auto max-w-3xl w-11/12 hidden text-center py-4 px-6 container inset-x-0 h-auto my-8 md:my-16">
+    <div class="flex flex-row justify-end">
+      <button type="button" id="dcmCancel"><svg version="1.1" class="fill-current h-8 w-8 cursor-pointer" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 20 20" enable-background="new 0 0 20 20" xml:space="preserve">
+        <path d="M16,2H4C2.9,2,2,2.9,2,4v12c0,1.1,0.9,2,2,2h12c1.1,0,2-0.9,2-2V4C18,2.9,17.1,2,16,2z M13.061,14.789  L10,11.729l-3.061,3.06L5.21,13.061L8.271,10l-3.06-3.061L6.94,5.21L10,8.271l3.059-3.061l1.729,1.729L11.729,10l3.06,3.061  L13.061,14.789z"/>
+      </svg></button>
+    </div>
+    <p class="font-bold text-2xl">
+      Are you sure you want to permanently delete this comment?
+      <form action="/comments" method="post">
+        @csrf 
+        @method('DELETE')
+        <input type="hidden" name="id" id="deleteTarget" value="">
+        <button type="submit" id="submitDelete" class="bg-background-secondary border text-copy-secondary hover:text-copy-primary font-bold w-5/6 rounded py-2 px-4 mt-4">Delete Forever</button>
+      </form>
+    </p>
+  </div>
+  <div id="approveCommentModal" class="fixed z-30 bg-background-primary border text-copy-primary rounded mx-auto max-w-3xl w-11/12 hidden text-center py-4 px-6 container inset-x-0 h-auto my-8 md:my-16">
+    <div class="flex flex-row justify-end">
+      <button type="button" id="acmCancel"><svg version="1.1" class="fill-current h-8 w-8 cursor-pointer" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 20 20" enable-background="new 0 0 20 20" xml:space="preserve">
+        <path d="M16,2H4C2.9,2,2,2.9,2,4v12c0,1.1,0.9,2,2,2h12c1.1,0,2-0.9,2-2V4C18,2.9,17.1,2,16,2z M13.061,14.789  L10,11.729l-3.061,3.06L5.21,13.061L8.271,10l-3.06-3.061L6.94,5.21L10,8.271l3.059-3.061l1.729,1.729L11.729,10l3.06,3.061  L13.061,14.789z"/>
+      </svg></button>
+    </div>
+    <p class="font-bold text-2xl">
+      Are you sure you want to approve this comment and make it publicly visible?
+      <form action="/comments" method="post">
+        @csrf 
+        @method('PATCH')
+        <input type="hidden" name="id" id="approveTarget" value="">
+        <input type="hidden" name="approve" value="true">
+        <button type="submit" id="submitApproval" class="bg-background-secondary border text-copy-secondary hover:text-copy-primary font-bold w-5/6 rounded py-2 px-4 mt-4">Approve Comment</button>
+      </form>
+    </p>
+  </div>
+  <div id="unapproveCommentModal" class="fixed z-30 bg-background-primary border text-copy-primary rounded mx-auto max-w-3xl w-11/12 hidden text-center py-4 px-6 container inset-x-0 h-auto my-8 md:my-16">
+    <div class="flex flex-row justify-end">
+      <button type="button" id="ucmCancel"><svg version="1.1" class="fill-current h-8 w-8 cursor-pointer" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 20 20" enable-background="new 0 0 20 20" xml:space="preserve">
+        <path d="M16,2H4C2.9,2,2,2.9,2,4v12c0,1.1,0.9,2,2,2h12c1.1,0,2-0.9,2-2V4C18,2.9,17.1,2,16,2z M13.061,14.789  L10,11.729l-3.061,3.06L5.21,13.061L8.271,10l-3.06-3.061L6.94,5.21L10,8.271l3.059-3.061l1.729,1.729L11.729,10l3.06,3.061  L13.061,14.789z"/>
+      </svg></button>
+    </div>
+    <p class="font-bold text-2xl">
+      Are you sure you want to unapprove this comment and hide it from public view?
+      <form action="/comments" method="post">
+        @csrf 
+        @method('PATCH')
+        <input type="hidden" name="id" id="unapproveTarget" value="">
+        <input type="hidden" name="unapprove" value="true">
+        <button type="submit" id="submitUnapproval" class="bg-background-secondary border text-copy-secondary hover:text-copy-primary font-bold w-5/6 rounded py-2 px-4 mt-4">Unapprove Comment</button>
+      </form>
+    </p>
+  </div>
   <div class="max-w-2xl w-10/12 mt-8 mx-auto flex flex-col items-start">
     <a href="/posts" class="border bg-background-primary text-copy-secondary py-2 px-4 rounded hover:bg-background-secondary font-bold h-auto">
       <svg version="1.1" class="fill-current h-8 w-8" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 20 20" enable-background="new 0 0 20 20" xml:space="preserve">
@@ -104,7 +291,7 @@
       </p>
       <p class="mb-4 text-copy-primary">
         @auth 
-          All comments are shown below, including unapproved ones. Go to the admin area to approve comments.
+          All comments are shown below. There is one section each for approved and unapproved comments.
         @endauth 
         @guest 
           Only comments that have been manually approved are shown below. If yours is awaiting approval, thank you for your patience!
@@ -138,24 +325,68 @@
           <label for="body" class="font-semibold mb-2">Comment</label>
           <textarea name="body" id="body" required class="text-copy-primary bg-background-form shadow appearance-none border rounded w-full py-2 px-3 text-copy-primary leading-tight focus:outline-none focus:shadow-outline focus:bg-background-ruthieslight @error('body') border-solid border-red-600 border-2 @enderror">{{ old('body') }}</textarea>
         </div>
-        <button type="submit" class="border bg-background-secondary text-copy-secondary py-2 px-4 rounded hover:bg-background-primary font-bold mt-4">Submit</button>
+        <button type="submit" class="border bg-background-secondary text-copy-secondary py-2 px-4 rounded hover:bg-background-primary font-bold">Submit</button>
       </form>
     @endguest
     <div class="">
-      @if(count($comments) > 0)
-        <div class="mb-4 flex flex-row justify-center items-center text-copy-primary hover:text-copy-secondary cursor-pointer w-auto">
-          <svg version="1.1" class="fill-current h-8 w-8" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 20 20" enable-background="new 0 0 20 20" xml:space="preserve">
-            <path d="M5.8,12.2V6H2C0.9,6,0,6.9,0,8v6c0,1.1,0.9,2,2,2h1v3l3-3h5c1.1,0,2-0.9,2-2v-1.82  c-0.064,0.014-0.132,0.021-0.2,0.021h-7V12.2z M18,1H9C7.9,1,7,1.9,7,3v8h7l3,3v-3h1c1.1,0,2-0.899,2-2V3C20,1.9,19.1,1,18,1z"/>
-            </svg>&nbsp;x&nbsp;<span class="font-bold">
-              @guest
-                {{ count($comments->where('approved', true)) }}
-              @endguest
-              @auth 
-                {{ count($comments) }}
-              @endauth
-            </span>
+      @auth 
+        @if(count($unapproved) > 0)
+          <div class="mb-4 flex flex-col justify-center items-center text-copy-primary hover:text-copy-secondary cursor-pointer w-auto">
+            <p class="text-xl font-bold text-copy-primary">Unapproved</p>
+            <div class="flex flex-row mt-2">
+              <span class="font-bold">
+                {{ $unapproved->count() }} of {{ $unapproved->total() }}
+              </span>&nbsp;x&nbsp;
+              <svg version="1.1" class="fill-current h-8 w-8" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 20 20" enable-background="new 0 0 20 20" xml:space="preserve">
+                <path d="M5.8,12.2V6H2C0.9,6,0,6.9,0,8v6c0,1.1,0.9,2,2,2h1v3l3-3h5c1.1,0,2-0.9,2-2v-1.82  c-0.064,0.014-0.132,0.021-0.2,0.021h-7V12.2z M18,1H9C7.9,1,7,1.9,7,3v8h7l3,3v-3h1c1.1,0,2-0.899,2-2V3C20,1.9,19.1,1,18,1z"/>
+              </svg>
+            </div>
+          </div>
+          @foreach($unapproved as $comment)
+            <div class="hover:bg-background-primary bg-background-secondary hover:text-copy-primary px-8 text-copy-secondary py-4 mb-3">
+              <div class="mb-4">
+                <p class="font-semibold">Commenter Name: </p>{{ $comment->name }}
+              </div>
+              <div class="mb-3">
+                <p class="font-semibold">Commenter Email: </p>{{ $comment->email }}
+              </div>
+              <div class="mb-3">
+                <p class="font-semibold">Commenter IP Address: </p>{{ $comment->ip_address }}
+              </div>
+              <div class="mb-3">
+                <p class="font-semibold">Date: </p>{{ date('F d, Y', strtotime($comment->created_at)) }}
+              </div>
+              <div class="mb-3">
+                <p class="font-semibold">Comment: </p>{{ $comment->body }}
+              </div>
+              <div class="flex flex-row w-full mb-3 justify-around">
+                <button type="button" class="approvalBtn border bg-background-secondary text-copy-secondary py-2 px-4 rounded hover:bg-background-primary font-bold" data-id="{{ $comment->id }}">Approve</button>
+                <button type="button" class="deleteBtn border bg-background-secondary text-copy-secondary py-2 px-4 rounded hover:bg-background-primary font-bold" data-id="{{ $comment->id }}">Delete</button>
+              </div>
+            </div>
+          @endforeach
+          <p class="my-4 pt-2">
+            {{ $unapproved->links() }}
+          </p>
+        @else 
+          <p class="px-8 pt-4 font-semibold text-lg text-copy-primary">
+            No unapproved comments right now.
+          </p>
+        @endif
+      @endauth
+      @if(count($approved) > 0)
+        <div class="mb-4 flex flex-col justify-center items-center text-copy-primary hover:text-copy-secondary cursor-pointer w-auto">
+          <p class="text-xl font-bold text-copy-primary">Approved</p>
+          <div class="flex flex-row mt-2">
+            <span class="font-bold">
+                {{ $approved->count() }} of {{ $approved->total() }}
+            </span>&nbsp;&nbsp;
+            <svg version="1.1" class="fill-current h-8 w-8" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 20 20" enable-background="new 0 0 20 20" xml:space="preserve">
+              <path d="M5.8,12.2V6H2C0.9,6,0,6.9,0,8v6c0,1.1,0.9,2,2,2h1v3l3-3h5c1.1,0,2-0.9,2-2v-1.82  c-0.064,0.014-0.132,0.021-0.2,0.021h-7V12.2z M18,1H9C7.9,1,7,1.9,7,3v8h7l3,3v-3h1c1.1,0,2-0.899,2-2V3C20,1.9,19.1,1,18,1z"/>
+            </svg>
+          </div>
         </div>
-        @foreach($comments as $comment)
+        @foreach($approved as $comment)
           @auth
             <div class="hover:bg-background-primary bg-background-secondary hover:text-copy-primary px-8 text-copy-secondary py-4 mb-3">
               <div class="mb-4">
@@ -171,20 +402,15 @@
                 <p class="font-semibold">Date: </p>{{ date('F d, Y', strtotime($comment->created_at)) }}
               </div>
               <div class="mb-3">
-                <p class="font-semibold">Approved: </p>
-                @if($comment->approved)
-                  {{ date('F d, Y', strtotime($comment->updated_at)) }}
-                @else 
-                  Not yet.
-                @endif
-              </div>
-              <div class="mb-3">
                 <p class="font-semibold">Comment: </p>{{ $comment->body }}
+              </div>
+              <div class="flex flex-row w-full mb-3 justify-around">
+                <button type="button" class="unapprovalBtn border bg-background-secondary text-copy-secondary py-2 px-4 rounded hover:bg-background-primary font-bold" data-id="{{ $comment->id }}">Unapprove</button>
+                <button type="button" class="deleteBtn border bg-background-secondary text-copy-secondary py-2 px-4 rounded hover:bg-background-primary font-bold" data-id="{{ $comment->id }}">Delete</button>
               </div>
             </div>
           @endauth
           @guest
-            @if($comment->approved)
             <div class="hover:bg-background-primary bg-background-secondary hover:text-copy-primary px-8 text-copy-secondary py-4 mb-3">
               <div class="mb-4">
                 <p class="font-semibold">Commenter Name: </p>{{ $comment->name }}
@@ -196,15 +422,19 @@
                 <p class="font-semibold">Comment: </p>{{ $comment->body }}
               </div>
             </div>
-            @endif
           @endguest
         @endforeach
         <p class="my-4 pt-2">
-          {{ $comments->links() }}
+          {{ $approved->links() }}
         </p>
       @else 
-      <p class="font-semibold text-lg text-copy-primary">
-        No comments yet. This is your opportunity!
+      <p class="px-8 pt-4 font-semibold text-lg text-copy-primary">
+        @auth 
+          No approved comments right now.
+        @endauth
+        @guest 
+          No comments yet. This is your chance!
+        @endguest
       </p>
       @endif
     </div>

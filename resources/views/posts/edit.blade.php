@@ -6,8 +6,8 @@
 
 @section('js')
   @include('includes.default-js')
-  <script src="{{asset('/vendor/unisharp/laravel-ckeditor/ckeditor.js') }}"></script>
-  <script>
+  <script defer src="{{asset('/vendor/unisharp/laravel-ckeditor/ckeditor.js') }}"></script>
+  <script defer>
     document.addEventListener('DOMContentLoaded', (event) => {
       CKEDITOR.config.toolbar = [
         ['Format','Bold','Italic','-','NumberedList','BulletedList','-','Undo','Redo','-','Cut','Copy','Paste','Find','Replace','Link', 'Unlink']
@@ -16,18 +16,46 @@
       deleteButton = document.getElementById("delete");
       deletionOverlay = document.getElementById("deletionOverlay");
       deletionModal = document.getElementById("deletionModal");
+      cancelDelete = document.getElementById("cancelDelete");
+      titleField = document.getElementById("post-title");
+      submitDelete = document.getElementById("submitDelete");
       deleteButton.addEventListener("click", function() {
         deletionModal.classList.replace("hidden", "block");
         deletionOverlay.classList.replace("hidden", "block");
+        cancelDelete.focus();
+        
+        let KEYCODE_TAB = 9;
+
+        deletionModal.addEventListener("keydown", function(e){
+          if (e.key === 'Tab' || e.keyCode === KEYCODE_TAB) {
+            if ( e.shiftKey ) /* shift + tab */ {
+              if (document.activeElement === cancelDelete) {
+                submitDelete.focus();
+                e.preventDefault();
+              }
+            } else /* tab */ {
+              if (document.activeElement === submitDelete) {
+                cancelDelete.focus();
+                e.preventDefault();
+              }
+            }
+          }
+          if (e.key === "Escape") {
+            deletionModal.classList.replace("block", "hidden");
+            deletionOverlay.classList.replace("block", "hidden");
+            titleField.focus();
+          }
+        });
       });
-      cancelDelete = document.getElementById("cancelDelete");
       cancelDelete.addEventListener("click", function(){
         deletionModal.classList.replace("block", "hidden");
         deletionOverlay.classList.replace("block", "hidden");
+        titleField.focus();
       });
       deletionOverlay.addEventListener("click", function(){
         deletionModal.classList.replace("block", "hidden");
         deletionOverlay.classList.replace("block", "hidden");
+        titleField.focus();
       });
     });
   </script>
@@ -47,7 +75,7 @@
   </div>
   <div id="deletionModal" class="fixed z-30 bg-background-primary border text-copy-primary rounded mx-auto max-w-3xl w-11/12 hidden text-center py-4 px-6 container inset-x-0 h-auto my-8 md:my-16">
     <div class="flex flex-row justify-end">
-      <svg version="1.1" id="cancelDelete" class="fill-current h-8 w-8 cursor-pointer" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 20 20" enable-background="new 0 0 20 20" xml:space="preserve">
+      <button type="button" id="cancelDelete"><svg version="1.1" class="fill-current h-8 w-8 cursor-pointer" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 20 20" enable-background="new 0 0 20 20" xml:space="preserve">
         <path d="M16,2H4C2.9,2,2,2.9,2,4v12c0,1.1,0.9,2,2,2h12c1.1,0,2-0.9,2-2V4C18,2.9,17.1,2,16,2z M13.061,14.789  L10,11.729l-3.061,3.06L5.21,13.061L8.271,10l-3.06-3.061L6.94,5.21L10,8.271l3.059-3.061l1.729,1.729L11.729,10l3.06,3.061  L13.061,14.789z"/>
       </svg>
     </div>
@@ -57,7 +85,7 @@
         @csrf 
         @method('DELETE')
         <input type="hidden" name="id" value="{{ $post->id }}">
-        <button type="submit" class="bg-background-secondary border text-copy-secondary hover:text-copy-primary font-bold w-5/6 rounded py-2 px-4 mt-4">Delete Forever</button>
+        <button type="submit" id="submitDelete" class="bg-background-secondary border text-copy-secondary hover:text-copy-primary font-bold w-5/6 rounded py-2 px-4 mt-4">Delete Forever</button>
       </form>
     </p>
   </div>
