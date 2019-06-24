@@ -325,7 +325,7 @@
           <label for="body" class="font-semibold mb-2">Comment</label>
           <textarea name="body" id="body" required class="text-copy-primary bg-background-form shadow appearance-none border rounded w-full py-2 px-3 text-copy-primary leading-tight focus:outline-none focus:shadow-outline focus:bg-background-ruthieslight @error('body') border-solid border-red-600 border-2 @enderror">{{ old('body') }}</textarea>
         </div>
-        <button type="submit" class="border bg-background-secondary text-copy-secondary py-2 px-4 rounded hover:bg-background-primary font-bold">Submit</button>
+        <button type="submit" class="border bg-background-secondary text-copy-secondary py-2 px-4 rounded hover:bg-background-primary font-bold mt-4">Submit</button>
       </form>
     @endguest
     <div class="">
@@ -336,7 +336,7 @@
             <div class="flex flex-row mt-2">
               <span class="font-bold">
                 {{ $unapproved->count() }} of {{ $unapproved->total() }}
-              </span>&nbsp;x&nbsp;
+              </span>&nbsp;&nbsp;
               <svg version="1.1" class="fill-current h-8 w-8" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 20 20" enable-background="new 0 0 20 20" xml:space="preserve">
                 <path d="M5.8,12.2V6H2C0.9,6,0,6.9,0,8v6c0,1.1,0.9,2,2,2h1v3l3-3h5c1.1,0,2-0.9,2-2v-1.82  c-0.064,0.014-0.132,0.021-0.2,0.021h-7V12.2z M18,1H9C7.9,1,7,1.9,7,3v8h7l3,3v-3h1c1.1,0,2-0.899,2-2V3C20,1.9,19.1,1,18,1z"/>
               </svg>
@@ -369,13 +369,13 @@
             {{ $unapproved->links() }}
           </p>
         @else 
-          <p class="px-8 pt-4 font-semibold text-lg text-copy-primary">
+          <p class="px-8 pt-4 font-semibold text-lg text-copy-primary text-center">
             No unapproved comments right now.
           </p>
         @endif
       @endauth
       @if(count($approved) > 0)
-        <div class="mb-4 flex flex-col justify-center items-center text-copy-primary hover:text-copy-secondary cursor-pointer w-auto">
+        <div class="my-4 flex flex-col justify-center items-center text-copy-primary hover:text-copy-secondary cursor-pointer w-auto">
           <p class="text-xl font-bold text-copy-primary">Approved</p>
           <div class="flex flex-row mt-2">
             <span class="font-bold">
@@ -428,7 +428,7 @@
           {{ $approved->links() }}
         </p>
       @else 
-      <p class="px-8 pt-4 font-semibold text-lg text-copy-primary">
+      <p class="px-8 pt-4 font-semibold text-lg text-copy-primary text-center">
         @auth 
           No approved comments right now.
         @endauth

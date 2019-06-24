@@ -19,10 +19,10 @@ class PostController extends Controller
     {
       if(Auth::check())
       { // return all posts, including unpublished
-        $posts = Post::orderBy('is_published')->paginate(5);
+        $posts = Post::latest()->paginate(5);
       } else 
       { // only return published posts
-        $posts = Post::where('is_published', true)->paginate(5);
+        $posts = Post::where('is_published', true)->latest()->paginate(5);
       }
       return view('posts.index', ['posts' => $posts]);
     }
@@ -76,12 +76,12 @@ class PostController extends Controller
     public function show($id)
     {
       $post = Post::findOrFail($id);
-      $approved = Comment::where('post_id', $post->id)->where('approved', true)->paginate(5);
+      $approved = Comment::where('post_id', $post->id)->where('approved', true)->latest()->paginate(5);
       if($post->is_published)
       { 
         if(Auth::check())
         {
-          $unapproved = Comment::where('post_id', $post->id)->where('approved', false)->paginate(5);
+          $unapproved = Comment::where('post_id', $post->id)->where('approved', false)->latest()->paginate(5);
           return view('posts.show', [
             'post' => $post, 
             'approved' => $approved,
@@ -99,7 +99,7 @@ class PostController extends Controller
       {
         if(Auth::check())
         {
-          $unapproved = Comment::where('post_id', $post->id)->where('approved', false)->paginate(5);
+          $unapproved = Comment::where('post_id', $post->id)->where('approved', false)->latest()->paginate(5);
           return view('posts.show', [
             'post' => $post, 
             'approved' => $approved,
