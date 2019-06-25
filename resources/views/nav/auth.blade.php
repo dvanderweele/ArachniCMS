@@ -11,7 +11,7 @@
     </div>
     <div class="flex flex-row items-center py-2 mr-8 ml-4">
       <img class="h-10 mr-4" src="{{ asset('storage/icons/about.svg') }}" alt="An icon portraying a generic online profile.">
-      <a class="hover:text-copy-secondary font-semibold" href="#">
+      <a class="hover:text-copy-secondary font-semibold" href="/about">
         About
       </a>
     </div>

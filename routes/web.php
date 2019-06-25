@@ -19,6 +19,15 @@ Route::get('/test', function(){
 
 Route::get('/home', 'HomeController@index');
 
+Route::get('/about',        'AboutController@show')->name('show-about');
+Route::get('/about/create', 'AboutController@create')->name('create-about')->middleware('auth');
+Route::post('/about',       'AboutController@store')->middleware('auth');
+Route::get('/about/edit',   'AboutController@edit')->middleware('auth');
+Route::patch('/about',      'AboutController@update')->middleware('auth');
+Route::delete('/about',     'AboutController@destroy')->middleware('auth');
+
+Route::get('/contact', 'ContactController@show')->name('show-contact');
+
 Route::get('/posts',            'PostController@index')->name('list-posts');
 Route::get('/posts/create',     'PostController@create')->middleware('auth')->name('create-post');
 Route::post('/posts',           'PostController@store')->middleware('auth');

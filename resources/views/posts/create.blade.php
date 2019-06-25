@@ -41,7 +41,7 @@
       <label for="post-title" class="block text-copy-primary text-sm font-bold mb-2">
         Post Title
       </label>
-      <input type="text" name="title" id="post-title" required class="text-copy-primary bg-background-form shadow appearance-none border rounded w-full py-2 px-3 text-copy-primary leading-tight focus:outline-none focus:shadow-outline focus:bg-background-ruthieslight @error('title') border-solid border-red-600 border-2 @enderror" value="{{ old('name') }}" autofocus>
+      <input type="text" name="title" id="post-title" required class="text-copy-primary bg-background-form shadow appearance-none border rounded w-full py-2 px-3 text-copy-primary leading-tight focus:outline-none focus:shadow-outline focus:bg-background-ruthieslight @error('title') border-solid border-red-600 border-2 @enderror" value="{{ old('title') }}" autofocus>
       </div>
       <div class="mb-4">
         <label for="post-body" class="block text-copy-primary text-sm font-bold mb-2">
@@ -53,7 +53,7 @@
           <label for="post-summary" class="block text-copy-primary text-sm font-bold mb-2">
             Post Summary
           </label>
-          <textarea name="summary" id="post-body" class="text-copy-primary bg-background-form shadow appearance-none border rounded w-full py-2 px-3 text-copy-primary leading-tight focus:outline-none focus:shadow-outline focus:bg-background-ruthieslight @error('body') border-solid border-red-600 border-2 @enderror"></textarea>
+          <textarea name="summary" id="post-summary" class="text-copy-primary bg-background-form shadow appearance-none border rounded w-full py-2 px-3 text-copy-primary leading-tight focus:outline-none focus:shadow-outline focus:bg-background-ruthieslight @error('summary') border-solid border-red-600 border-2 @enderror"></textarea>
         </div>
         <small class="text-copy-primary">On some pages, such as the page the displays a paginated list of multiple blog posts, it may be unrealistic to display the whole body of the blog post. Instead, we'll display the short, unstyled summary you type in here. Adding a summary is not required, but advised.</small>
       <div class="mt-4 mb-4">

@@ -17,7 +17,7 @@ class YoutubeVidEmbedController extends Controller
     public function create($id)
     {
       $post = Post::findOrFail($id);
-      $youtubevidcodes = YoutubeVidCode::paginate(2);
+      $youtubevidcodes = YoutubeVidCode::paginate(15);
       return view('youtubevidembeds.create')->with([
         'post' => $post,
         'youtubevidcodes' => $youtubevidcodes
