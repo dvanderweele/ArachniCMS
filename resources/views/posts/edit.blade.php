@@ -63,6 +63,21 @@
 
 @section('css')
   @include('includes.default-css')
+  <style>
+    .videoWrapper {
+      position: relative;
+      padding-bottom: 56.25%; /* 16:9 */
+      padding-top: 25px;
+      height: 0;
+    }
+    .videoWrapper iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+  </style>
 @endsection
 
 @section('nav')
@@ -142,9 +157,33 @@
         Update Post
       </button>
     </form>
-    <button type="button" id="delete" class="bg-background-ruthiesdark text-copy-primary py-2 px-4 rounded hover:text-copy-secondary font-bold w-full mt-10">
+    <button type="button" id="delete" class="bg-orange-500 hover:bg-orange-600 text-white hover:text-gray-200 py-2 px-4 rounded font-bold w-full mt-10">
       Delete Post
     </button>
+  </div>
+  <div class="max-w-2xl w-10/12 bg-background-primary shadow-lg rounded mx-auto px-8 pt-6 pb-8 mt-8 font-sans">
+    <h1 class="font-semibold text-2xl text-copy-primary mb-4">Youtube Videos</h1>
+    @if(count($post->youtubevidembeds) > 0)
+      @foreach($post->youtubevidembeds as $embed)
+        <div class="mb-8 videoWrapper absolute w-full h-0">
+          <iframe width="560" height="349" src="https://www.youtube.com/embed/{{ $embed->youtubevidcode->vidcode }}" frameborder="0" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        <form action="/youtubevidembeds" method="post" class="mb-16">
+          @csrf 
+          @method('DELETE') 
+          <input type="hidden" name="embed_id" value="{{ $embed->id }}">
+          <button type="submit" class="bg-orange-500 hover:bg-orange-600 text-white hover:text-gray-200 py-2 px-4 rounded font-bold w-full">
+            Remove Video from Post
+          </button>
+        </form>
+      @endforeach
+      <a href="/youtubevidembeds/{{ $post->id }}" class="border bg-background-secondary text-copy-secondary py-2 px-4 rounded hover:bg-background-primary font-bold text-center">Embed More Videos</a>
+    @else 
+      <p class="text-copy-primary mb-8">
+        Looks like you haven't embedded any YouTube videos in this post yet. Click the button below to get started. <span class="font-bold">WARNING: if you decide to click that button to start adding videos, you will navigate to a different page, and any unsaved progress on your post above will be lost.</span>
+      </p>
+      <a href="/youtubevidembeds/{{ $post->id }}" class="border bg-background-secondary text-copy-secondary py-2 px-4 rounded hover:bg-background-primary font-bold text-center">Embed Videos</a>
+    @endif
   </div>
 @endsection
 

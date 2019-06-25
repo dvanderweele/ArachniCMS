@@ -187,6 +187,21 @@
 
 @section('css')
   @include('includes.default-css')
+  <style>
+    .videoWrapper {
+      position: relative;
+      padding-bottom: 56.25%; /* 16:9 */
+      padding-top: 25px;
+      height: 0;
+    }
+    .videoWrapper iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+  </style>
 @endsection
 
 @section('nav')
@@ -272,8 +287,15 @@
     @endauth
       <span class="border w-auto bg-background-secondary text-copy-primary hover:text-copy-secondary font-semibold rounded-full py-2 px-4 text-sm">{{ date('F d, Y', strtotime($post->updated_at)) }}</span>
     </div>
-    <div id="post-body" class="text-copy-primary mx-6 ">
+    <div id="post-body" class="text-copy-primary mx-6 my-4">
       {!! $post->body !!}
+    </div>
+    <div class="mb-8 mx-6">
+      @foreach($post->youtubevidembeds as $embed)
+        <div class="mb-8 videoWrapper absolute w-full h-0">
+          <iframe width="560" height="349" src="https://www.youtube.com/embed/{{ $embed->youtubevidcode->vidcode }}" frameborder="0" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+      @endforeach
     </div>
   </div>
   <div class="max-w-2xl w-10/12 bg-background-primary shadow-lg rounded mx-auto pt-6 pb-8 mt-8 font-sans relative">

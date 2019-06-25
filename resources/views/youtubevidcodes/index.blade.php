@@ -105,7 +105,7 @@
       </form>
     </p>
   </div>
-  <div class="max-w-lg w-10/12 bg-background-primary shadow-lg rounded mx-auto px-8 pt-6 pb-8 mt-8 font-sans text-copy-primary">
+  <div class="max-w-lg w-10/12 bg-background-primary shadow-lg rounded mx-auto px-8 pt-6 pb-8 mt-8 font-sans text-copy-primary" id="vidcodeinfo">
     <h1 class="font-semibold text-2xl mb-4">
       Add Youtube Video Codes
     </h1>
@@ -128,7 +128,7 @@
       Go ahead and copy that code. <b>Note that you don't need to include the '=' sign.</b> Then, paste that code into the code box below. Before submitting the video code, make sure to also think of a unique name for the code so that it's distinguishable from other videos that you embed in your blog. 
     </p>
     <p class="mb-4">
-      That's it! After you've added at least one video code in the form below, a dropdown will appear on the edit page for all blog posts. <i>Note: you can't add embed videos from the page where you initially create blog posts; instead, you'll need to create the blog post first and then go to the edit page for that blog post.</i> It will allow you to embed as many Youtube Videos as you want in any individual blog post!
+      That's it! After you've added at least one video code in the form below, a section will appear on the edit page for all blog posts. <i>Note: you can't add embed videos from the page where you initially create blog posts; instead, you'll need to create the blog post first and then go to the edit page for that blog post.</i> It will allow you to embed as many Youtube Videos as you want in any individual blog post!
     </p>
     <p class="mb-4">
       Have fun!

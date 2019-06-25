@@ -2,29 +2,26 @@
 
 namespace App\Http\Controllers;
 
+use App\Post;
+use App\YoutubeVidCode;
 use App\YoutubeVidEmbed;
 use Illuminate\Http\Request;
 
 class YoutubeVidEmbedController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
-        //
+      $post = Post::findOrFail($id);
+      $youtubevidcodes = YoutubeVidCode::paginate(2);
+      return view('youtubevidembeds.create')->with([
+        'post' => $post,
+        'youtubevidcodes' => $youtubevidcodes
+      ]);
     }
 
     /**
@@ -35,41 +32,13 @@ class YoutubeVidEmbedController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\YoutubeVidEmbed  $youtubeVidEmbed
-     * @return \Illuminate\Http\Response
-     */
-    public function show(YoutubeVidEmbed $youtubeVidEmbed)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\YoutubeVidEmbed  $youtubeVidEmbed
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(YoutubeVidEmbed $youtubeVidEmbed)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\YoutubeVidEmbed  $youtubeVidEmbed
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, YoutubeVidEmbed $youtubeVidEmbed)
-    {
-        //
+      $post = Post::findOrFail($request->post_id);
+      $vidcode = YoutubeVidCode::findOrFail($request->vidcode_id);
+      $embed = new YoutubeVidEmbed();
+      $embed->post_id = $post->id;
+      $embed->youtube_vid_code_id = $vidcode->id;
+      $embed->save();
+      return redirect()->route('edit-post', ['id' => $post->id]);
     }
 
     /**
@@ -78,8 +47,11 @@ class YoutubeVidEmbedController extends Controller
      * @param  \App\YoutubeVidEmbed  $youtubeVidEmbed
      * @return \Illuminate\Http\Response
      */
-    public function destroy(YoutubeVidEmbed $youtubeVidEmbed)
+    public function destroy(Request $request)
     {
-        //
+      $embed = YoutubeVidEmbed::findOrFail($request->embed_id);
+      $post = $embed->post;
+      $embed->delete();
+      return redirect()->route('edit-post', ['id' => $post->id]);
     }
 }

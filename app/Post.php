@@ -10,7 +10,7 @@ class Post extends Model
     return $this->belongsTo('App\User');
   }
   public function youtubevidembeds(){
-    return $this->hasMany('App\YoutubeVidEmbeds');
+    return $this->hasMany('App\YoutubeVidEmbed');
   }
   public function comments(){
     return $this->hasMany('App\Comment');
