@@ -76,7 +76,7 @@
       @if($about->image_location != null && $about->image_description != null)
         <img src="/storage/{{ $about->image_location }}" alt="{{ $about->image_description }}" class="w-5/6 sm:w-2/3 md:w-1/3 lg:w-1/4 xl:w-1/ h-auto mb-6 rounded-lg mx-auto">
       @endif
-      <div class="text-copy-primary select-none" id="about-body-display">
+      <div class="text-copy-primary select-none px-8" id="about-body-display">
         {!! $about->body !!}
       </div>
   @else 

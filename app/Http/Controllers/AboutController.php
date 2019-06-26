@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\About;
 use Illuminate\Http\Request;
 use Purifier;
+use Illuminate\Support\Facades\Storage;
 
 class AboutController extends Controller
 {
@@ -53,7 +54,7 @@ class AboutController extends Controller
           $filenameWithExt = $request->file('image_file')->getClientOriginalName();
           $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
           $extension = $request->file('image_file')->getClientOriginalExtension();
-          $fileNameToStore= $filename.'_'.time().'.'.$extension;
+          $fileNameToStore = $filename.'_'.time().'.'.$extension;
           $path = $request->file('image_file')->storeAs('public', $fileNameToStore);
 
           $about->image_location = $fileNameToStore;
@@ -103,18 +104,35 @@ class AboutController extends Controller
     public function update(Request $request)
     {
       $about = About::firstOrFail();
-      
-    }
+      $request->validate([
+        'title' => 'required|min:2',
+        'body' => 'required|min:2',
+        'image_file' => 'image|nullable|max:1999',
+        'image_description' => 'nullable'
+      ]);
+      $about->title = $request->title;
+      $about->body = Purifier::clean($request->body);
+      if($request->hasFile('image_file'))
+      {
+        if($request->image_description == null){
+          return redirect()->back();
+        } else {
+          if ($about->image_location != null)
+          {
+            Storage::delete($about->image_location);
+          }
+          //now let's save the new image and its info
+          $filenameWithExt = $request->file('image_file')->getClientOriginalName();
+          $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+          $extension = $request->file('image_file')->getClientOriginalExtension();
+          $fileNameToStore = $filename.'_'.time().'.'.$extension;
+          $path = $request->file('image_file')->storeAs('public', $fileNameToStore);
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-      $about = About::firstOrFail();
-      
+          $about->image_location = $fileNameToStore;
+          $about->image_description = $request->image_description;
+        }
+      }
+      $about->save();
+      return redirect()->route('show-about');
     }
 }
