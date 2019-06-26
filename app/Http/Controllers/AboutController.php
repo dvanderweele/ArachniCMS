@@ -31,6 +31,10 @@ class AboutController extends Controller
      */
     public function store(Request $request)
     {
+      $about = About::first();
+      if($about != null){
+        return redirect()->route('show-about');
+      }
       $request->validate([
         'title' => 'required|min:2',
         'about_body' => 'required|min:2',
@@ -86,7 +90,7 @@ class AboutController extends Controller
     public function edit()
     {
       $about = About::firstOrFail();
-
+      return view('about.edit')->with('about', $about);
     }
 
     /**
