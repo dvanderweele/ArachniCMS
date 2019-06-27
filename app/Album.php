@@ -18,4 +18,7 @@ class Album extends Model
   public function albumsongs(){
     return $this->hasMany('App\AlbumSong');
   }
+  public function images(){
+    return $this->morphToMany('App\Image', 'imageable');
+  }
 }

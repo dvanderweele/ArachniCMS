@@ -48,3 +48,7 @@ Route::delete('/youtubevidcodes', 'YoutubeVidCodeController@destroy')->middlewar
 Route::get('/youtubevidembeds/{post}', 'YoutubeVidEmbedController@create')->middleware('auth');
 Route::post('/youtubevidembeds',        'YoutubeVidEmbedController@store')->middleware('auth');
 Route::delete('/youtubevidembeds',      'YoutubeVidEmbedController@destroy')->middleware('auth');
+
+Route::get('/images', 'ImageController@index')->middleware('auth')->name('list-images');
+Route::post('/images', 'ImageController@store')->middleware('auth');
+Route::delete('/images', 'ImageController@destroy')->middleware('auth');

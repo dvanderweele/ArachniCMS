@@ -36,12 +36,12 @@
       ols = postBody.getElementsByTagName("ol");
       for (let ol of ols)
       {
-        ol.classList.add('list-disc');
+        ol.classList.add("list-decimal", "ml-4", "mb-4");
       }
       uls = postBody.getElementsByTagName("ul");
       for (let ul of uls)
       {
-        ul.classList.add('list-decimal');
+        ul.classList.add("list-disc", "ml-4", "mb-4");
       }
       ps = postBody.getElementsByTagName("p");
       for (let p of ps)

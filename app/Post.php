@@ -27,4 +27,7 @@ class Post extends Model
   public function songlinks(){
     return $this->hasMany('App\SongLink');
   }
+  public function images(){
+    return $this->morphToMany('App\Image', 'imageable');
+  }
 }
