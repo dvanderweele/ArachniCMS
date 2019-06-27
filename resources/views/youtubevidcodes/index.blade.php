@@ -33,25 +33,25 @@
         closeModal(modal);
       });
       modal.addEventListener("keydown", function(e){
-          if (e.key === 'Tab' || e.keyCode === KEYCODE_TAB) {
-            if ( e.shiftKey ) /* shift + tab */ {
-              if (document.activeElement === dvmCancel) {
-                submitDelete.focus();
-                e.preventDefault();
-              }
-            } else /* tab */ {
-              if (document.activeElement === submitDelete) {
-                dvmCancel.focus();
-                e.preventDefault();
-              }
+        if (e.key === 'Tab' || e.keyCode === KEYCODE_TAB) {
+          if ( e.shiftKey ) /* shift + tab */ {
+            if (document.activeElement === dvmCancel) {
+              submitDelete.focus();
+              e.preventDefault();
+            }
+          } else /* tab */ {
+            if (document.activeElement === submitDelete) {
+              dvmCancel.focus();
+              e.preventDefault();
             }
           }
-          if (e.key === "Escape") {
-            closeModal(modal);
-            modalOverlay.classList.replace("block", "hidden");
-            nameInput.focus();
-          }
-        });
+        }
+        if (e.key === "Escape") {
+          closeModal(modal);
+          modalOverlay.classList.replace("block", "hidden");
+          nameInput.focus();
+        }
+      });
     });
 
     function openModal(modal){
