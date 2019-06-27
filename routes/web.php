@@ -51,4 +51,6 @@ Route::delete('/youtubevidembeds',      'YoutubeVidEmbedController@destroy')->mi
 
 Route::get('/images', 'ImageController@index')->middleware('auth')->name('list-images');
 Route::post('/images', 'ImageController@store')->middleware('auth');
+Route::get('/images/{image}/edit', 'ImageController@edit')->middleware('auth');
+Route::patch('/images', 'ImageController@update')->middleware('auth');
 Route::delete('/images', 'ImageController@destroy')->middleware('auth');

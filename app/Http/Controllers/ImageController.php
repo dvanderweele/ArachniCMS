@@ -48,17 +48,6 @@ class ImageController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  \App\Image  $image
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Image $image)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      *
      * @param  \App\Image  $image
@@ -66,7 +55,7 @@ class ImageController extends Controller
      */
     public function edit(Image $image)
     {
-        //
+      return view('images.edit')->with('image', $image);
     }
 
     /**
@@ -78,7 +67,13 @@ class ImageController extends Controller
      */
     public function update(Request $request)
     {
-        //
+      $request->validate([
+        'description' => 'required|min:2'
+      ]);
+      $image = Image::findOrFail($request->id);
+      $image->description = $request->description;
+      $image->save();
+      return redirect()->route('list-images');
     }
 
     /**

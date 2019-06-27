@@ -164,7 +164,7 @@
           <div>
             <img src="/storage/img/{{ $image->location }}" alt="{{ $image->description }}" class="w-2/3 mb-4"> 
             <p class="font-bold mb-2">
-              Image Description
+              Image Description - <a href="/images/{{ $image->id }}/edit" class="text-blue-500 hover:underline">Edit</a>
             </p>
             <blockquote>
               {{ $image->description }}
