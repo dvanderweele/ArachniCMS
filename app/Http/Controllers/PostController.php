@@ -89,6 +89,7 @@ class PostController extends Controller
           ]);
         } else 
         {
+          $post->increment('views', 1);
           return view('posts.show', [
             'post' => $post, 
             'approved' => $approved
