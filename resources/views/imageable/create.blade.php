@@ -32,7 +32,7 @@
   <div class="max-w-2xl w-10/12 bg-background-primary text-copy-primary shadow-lg rounded mx-auto pt-6 pb-8 mt-8 font-sans">
     <h1 class="font-semibold text-2xl mb-4 px-8">Embed Photos</h1>
     @if($post)
-      <p class="text-lg mb-6 px-8"><span class="text-copy-secondary font-bold">Post Title:</span><br class="mb-3">{{ $post->title }}</p>
+      <p class="text-lg mb-6 px-8"><span class="text-copy-secondary font-bold">Post Title:</span><br class="mb-3"><a href="/posts/{{ $post->url_string }}/edit" class="text-blue-500 underline">{{ $post->title }}</a></p>
       @if($post->summary != null)
         <p class="text-lg mb-6 px-8"><span class="text-copy-secondary font-bold">Post Description:</span><br class="mb-3">{{ $post->summary }}</p>
       @else 
@@ -54,7 +54,7 @@
               <form action="/imageables" method="post">
                 @csrf 
                 <input type="hidden" name="imageable_type" value="App\Post">
-                <input type="hidden" name="imageable_id" value="{{ $post->id }}">
+                <input type="hidden" name="imageable_id" value="{{ $post->url_string }}">
                 <input type="hidden" name="image_id" value="{{ $image->id }}">
                 <button type="submit">
                   <svg version="1.1" class="fill-current hover:text-copy-secondary w-8 h-8" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 20 20" enable-background="new 0 0 20 20" xml:space="preserve">

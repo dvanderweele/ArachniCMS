@@ -155,7 +155,7 @@
       <form action="/posts" method="post">
         @csrf 
         @method('DELETE')
-        <input type="hidden" name="id" value="{{ $post->id }}">
+        <input type="hidden" name="url_string" value="{{ $post->url_string }}">
         <button type="submit" id="submitDelete" class="bg-background-secondary border text-copy-secondary hover:text-copy-primary font-bold w-5/6 rounded py-2 px-4 mt-4">Delete Forever</button>
       </form>
     </p>
@@ -172,14 +172,14 @@
         @csrf 
         @method('DELETE')
         <input type="hidden" name="imageable_type" value="App\Post">
-        <input type="hidden" name="imageable_id" value="{{ $post->id }}">
+        <input type="hidden" name="imageable_id" value="{{ $post->url_string }}">
         <input type="hidden" name="image_id" value="" id="imageableImageIdInput">
         <button type="submit" id="deleteImageableBtn" class="bg-background-secondary border text-copy-secondary hover:text-copy-primary font-bold w-5/6 rounded py-2 px-4 mt-4">Delete</button>
       </form>
     </p>
   </div>
   <div class="max-w-2xl w-10/12 mt-8 mx-auto flex flex-col items-start">
-    <a href="/posts/{{ $post->id }}" class="border bg-background-primary text-copy-secondary py-2 px-4 rounded hover:bg-background-secondary font-bold h-auto">
+    <a href="/posts/{{ $post->url_string }}" class="border bg-background-primary text-copy-secondary py-2 px-4 rounded hover:bg-background-secondary font-bold h-auto">
       <svg version="1.1" class="fill-current h-8 w-8" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 20 20" enable-background="new 0 0 20 20" xml:space="preserve">
       <path d="M19,16.685c0,0-2.225-9.732-11-9.732V2.969L1,9.542l7,6.69v-4.357C12.763,11.874,16.516,12.296,19,16.685z"/>
       </svg>
@@ -190,7 +190,7 @@
     <form action="/posts" method="post">
       @method('PATCH')
       @csrf 
-      <input type="hidden" name="id" value="{{ $post->id }}">
+      <input type="hidden" name="url_string" value="{{ $post->url_string }}">
       <div class="mb-4">
       <label for="post-title" class="block text-copy-primary text-sm font-bold mb-2">
         Post Title
@@ -251,13 +251,13 @@
           </button>
         </form>
       @endforeach
-      <a href="/youtubevidembeds/{{ $post->id }}" class="border bg-background-secondary text-copy-secondary py-2 px-4 rounded hover:bg-background-primary font-bold text-center">Embed More Videos</a>
-      <p class="mb-2 font-bold">WARNING: if you decide to click that button to start embedding videos, you will navigate to a different page, and any unsaved progress on your post above will be lost.</p>
+      <button type="button" class="border bg-background-secondary text-copy-secondary rounded hover:bg-background-primary py-2 px-4 mb-2"><a href="/youtubevidembeds/{{ $post->url_string }}" class="font-bold text-center">Embed More Videos</a></button>
+      <p class="mb-2 font-bold text-copy-primary">WARNING: if you decide to click that button to start embedding videos, you will navigate to a different page, and any unsaved progress on your post above will be lost.</p>
     @else 
-      <p class="text-copy-primary mb-8">
+      <p class="text-copy-primary mb-8 text-copy-primary">
         Looks like you haven't embedded any YouTube videos in this post yet. Click the button below to get started. <span class="font-bold">WARNING: if you decide to click that button to start adding videos, you will navigate to a different page, and any unsaved progress on your post above will be lost.</span>
       </p>
-      <a href="/youtubevidembeds/{{ $post->id }}" class="border bg-background-secondary text-copy-secondary py-2 px-4 rounded hover:bg-background-primary font-bold text-center">Embed Videos</a>
+      <a href="/youtubevidembeds/{{ $post->url_string }}" class="border bg-background-secondary text-copy-secondary py-2 px-4 rounded hover:bg-background-primary font-bold text-center">Embed Videos</a>
     @endif
   </div>
   <div class="max-w-2xl w-10/12 bg-background-primary shadow-lg rounded mx-auto px-8 pt-6 pb-8 mt-8 font-sans">
@@ -265,7 +265,7 @@
     @if(count($post->images) > 0)
       @foreach($post->images as $image)
       <div class="flex flex-row justify-between">
-        <div class="mb-6">
+        <div class="mb-6 text-copy-primary">
           <img src="/storage/img/{{ $image->location }}" alt="{{ $image->description }}" class="w-2/3 mb-4">
           <p class="font-bold mb-2">
             Image Description
@@ -276,20 +276,20 @@
         </div>
         <div>
           <button type="button" class="trashImageable" data-id="{{ $image->id }}">
-            <svg version="1.1" class="fill-current w-8 h-8 hover:text-copy-primary" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 20 20" enable-background="new 0 0 20 20" xml:space="preserve">
+            <svg version="1.1" class="fill-current w-8 h-8 text-copy-primary hover:text-copy-secondary" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 20 20" enable-background="new 0 0 20 20" xml:space="preserve">
               <path d="M3.389,7.113L4.49,18.021C4.551,18.482,6.777,19.998,10,20c3.225-0.002,5.451-1.518,5.511-1.979  l1.102-10.908C14.929,8.055,12.412,8.5,10,8.5C7.59,8.5,5.072,8.055,3.389,7.113z M13.168,1.51l-0.859-0.951  C11.977,0.086,11.617,0,10.916,0H9.085c-0.7,0-1.061,0.086-1.392,0.559L6.834,1.51C4.264,1.959,2.4,3.15,2.4,4.029v0.17  C2.4,5.746,5.803,7,10,7c4.198,0,7.601-1.254,7.601-2.801v-0.17C17.601,3.15,15.738,1.959,13.168,1.51z M12.07,4.34L11,3H9  L7.932,4.34h-1.7c0,0,1.862-2.221,2.111-2.522C8.533,1.588,8.727,1.5,8.979,1.5h2.043c0.253,0,0.447,0.088,0.637,0.318  C11.907,2.119,13.77,4.34,13.77,4.34H12.07z"/>
             </svg>
           </button>
         </div>
       </div>
       @endforeach
-      <button class=""><a href="/imageables/post/{{ $post->id }}/create" class="border bg-background-secondary text-copy-secondary py-2 px-4 rounded hover:bg-background-primary font-bold text-center">Embed More Photos</a></button>
-      <p class="mb-2 font-bold my-4">WARNING: if you decide to click that button to start embedding photos, you will navigate to a different page, and any unsaved progress on your post above will be lost.</p>
+      <button class=""><a href="/imageables/post/{{ $post->url_string }}/create" class="border bg-background-secondary text-copy-secondary py-2 px-4 rounded hover:bg-background-primary font-bold text-center">Embed More Photos</a></button>
+      <p class="mb-2 font-bold my-4 text-copy-primary">WARNING: if you decide to click that button to start embedding photos, you will navigate to a different page, and any unsaved progress on your post above will be lost.</p>
     @else 
-      <p class="text-copy-primary mb-8">
+      <p class="text-copy-primary mb-8 text-copy-primary">
         Looks like you haven't embedded any photos in this post yet. Click the button below to get started. <span class="font-bold">WARNING: if you decide to click that button to start adding photos, you will navigate to a different page, and any unsaved progress on your post above will be lost.</span>
       </p>
-      <a href="/imageables/post/{{ $post->id }}/create" class="border bg-background-secondary text-copy-secondary py-2 px-4 rounded hover:bg-background-primary font-bold text-center">Embed Photos</a>
+      <a href="/imageables/post/{{ $post->url_string }}/create" class="border bg-background-secondary text-copy-secondary py-2 px-4 rounded hover:bg-background-primary font-bold text-center">Embed Photos</a>
     @endif
   </div>
 @endsection

@@ -14,9 +14,8 @@ class YoutubeVidEmbedController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create($id)
+    public function create(Post $post)
     {
-      $post = Post::findOrFail($id);
       $youtubevidcodes = YoutubeVidCode::paginate(15);
       return view('youtubevidembeds.create')->with([
         'post' => $post,
@@ -32,13 +31,13 @@ class YoutubeVidEmbedController extends Controller
      */
     public function store(Request $request)
     {
-      $post = Post::findOrFail($request->post_id);
+      $post = Post::where('url_string', $request->post_url_string)->firstOrFail();
       $vidcode = YoutubeVidCode::findOrFail($request->vidcode_id);
       $embed = new YoutubeVidEmbed();
       $embed->post_id = $post->id;
       $embed->youtube_vid_code_id = $vidcode->id;
       $embed->save();
-      return redirect()->route('edit-post', ['id' => $post->id]);
+      return redirect()->route('edit-post', ['post' => $post->url_string]);
     }
 
     /**
@@ -52,6 +51,6 @@ class YoutubeVidEmbedController extends Controller
       $embed = YoutubeVidEmbed::findOrFail($request->embed_id);
       $post = $embed->post;
       $embed->delete();
-      return redirect()->route('edit-post', ['id' => $post->id]);
+      return redirect()->route('edit-post', ['post' => $post->url_string]);
     }
 }

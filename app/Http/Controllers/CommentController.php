@@ -42,7 +42,7 @@ class CommentController extends Controller
      */
     public function store(Request $request)
     {
-      $post = Post::findOrFail($request->post_id);
+      $post = Post::where('url_string', $request->post_url_string)->firstOrFail();
       $comment = new Comment();
       $comment->post_id = $post->id;
       if(Auth::check()){
@@ -56,7 +56,7 @@ class CommentController extends Controller
         $comment->body = $request->body;
         $comment->ip_address = $request->ip();
         $comment->save();
-        return redirect()->route('show-post', ['id' => $post->id]);
+        return redirect()->route('show-post', ['post' => $post->url_string]);
       } else {
         $request->validate([
           'name' => 'required|min:2',
@@ -68,30 +68,8 @@ class CommentController extends Controller
         $comment->body = $request->body;
         $comment->ip_address = $request->ip();
         $comment->save();
-        return redirect()->route('show-post', ['id' => $post->id]);
+        return redirect()->route('show-post', ['post' => $post->url_string]);
       }
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Comment  $comment
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Comment $comment)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Comment  $comment
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Comment $comment)
-    {
-        //
     }
 
     /**
@@ -112,7 +90,7 @@ class CommentController extends Controller
       }
       $comment->save();
       $post = $comment->post;
-      return redirect()->route('show-post', ['id' => $post->id]);
+      return redirect()->route('show-post', ['post' => $post->url_string]);
     }
 
     /**
@@ -126,6 +104,6 @@ class CommentController extends Controller
       $comment = Comment::findOrFail($request->id);
       $post = $comment->post;
       $comment->delete();
-      return redirect()->route('show-post', ['id' => $post->id]);
+      return redirect()->route('show-post', ['post' => $post->url_string]);
     }
 }

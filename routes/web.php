@@ -31,8 +31,8 @@ Route::get('/contact',                    'ContactController@show')->name('show-
 Route::get('/posts',                      'PostController@index')->name('list-posts');
 Route::get('/posts/create',               'PostController@create')->middleware('auth')->name('create-post');
 Route::post('/posts',                     'PostController@store')->middleware('auth');
-Route::get('/posts/{id}',                 'PostController@show')->name('show-post');
-Route::get('/posts/{id}/edit',            'PostController@edit')->middleware('auth')->name('edit-post');
+Route::get('/posts/{post}',                 'PostController@show')->name('show-post');
+Route::get('/posts/{post}/edit',            'PostController@edit')->middleware('auth')->name('edit-post');
 Route::patch('/posts',                    'PostController@update')->middleware('auth');
 Route::delete('/posts',                   'PostController@destroy')->middleware('auth');
 

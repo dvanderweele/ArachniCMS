@@ -64,7 +64,7 @@ class PostController extends Controller
       }
       $post->author_id = auth()->user()->id;
       $post->save();
-      return redirect()->route('show-post', ['id' => $post->id]);
+      return redirect()->route('show-post', ['post' => $post->url_string]);
     }
 
     /**
@@ -73,9 +73,8 @@ class PostController extends Controller
      * @param  \App\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Post $post)
     {
-      $post = Post::findOrFail($id);
       $approved = Comment::where('post_id', $post->id)->where('approved', true)->latest()->paginate(5);
       if($post->is_published)
       { 
@@ -119,9 +118,8 @@ class PostController extends Controller
      * @param  \App\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Post $post)
     {
-      $post = Post::findOrFail($id);
       return view('posts.edit', ['post' => $post]);
     }
 
@@ -134,7 +132,7 @@ class PostController extends Controller
      */
     public function update(Request $request)
     {
-      $post = Post::findOrFail($request->id);
+      $post = Post::where('url_string', $request->url_string)->firstOrFail();
       $request->validate([
         'title' => 'required|min:2',
         'body' => 'required|min:2',
@@ -152,7 +150,7 @@ class PostController extends Controller
         return back()->withInput();
       }
       $post->save();
-      return redirect()->route('show-post', ['id' => $post->id]);
+      return redirect()->route('show-post', ['post' => $post->url_string]);
     }
 
     /**
@@ -163,7 +161,7 @@ class PostController extends Controller
      */
     public function destroy(Request $request)
     {
-      $post = Post::findOrFail($request->id)->delete();
+      $post = Post::where('url_string', $request->url_string)->delete();
       return redirect()->route('list-posts');
     }
 }

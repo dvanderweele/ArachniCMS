@@ -19,7 +19,7 @@ class ImageableController extends Controller
     {
       if($type == 'post')
       {
-        $post = Post::findOrFail($id);
+        $post = Post::where('url_string', $id)->firstOrFail();
         $imageables = Imageable::where('imageable_type', 'App\Post')->get();
         $images = Image::get();
         foreach($imageables as $imageable){
@@ -31,7 +31,7 @@ class ImageableController extends Controller
         $perPage = 10;
         $currentPageSearchResults = $images->slice(($currentPage - 1) * $perPage, $perPage)->all();
         $images = new Paginator($currentPageSearchResults, count($images), $perPage, null, [
-          'path' => '/imageables/post/'.$post->id.'/create',
+          'path' => '/imageables/post/'.$post->url_string.'/create',
         ]);
         return view('imageable.create')->with([
           'post' => $post,
@@ -58,7 +58,7 @@ class ImageableController extends Controller
       ]);
       $image = Image::findOrFail($request->image_id);
       if($request->imageable_type == 'App\Post'){
-        $post = Post::findOrFail($request->imageable_id);
+        $post = Post::where('url_string', $request->imageable_id)->firstOrFail();
         $imageable = Imageable::where([
           ['imageable_type', '=', 'App\Post'],
           ['imageable_id', '=', $post->id],
@@ -66,6 +66,7 @@ class ImageableController extends Controller
         ])->get();
         if(count($imageable) > 0){
           // this imageable already exists, deny request
+          return redirect()->route('create-imageable', ['type' => 'post', 'id' => $post->url_string]);
         } else {
           // this imageable doesn't exist, let's make it
           $imageable = new Imageable();
@@ -73,45 +74,11 @@ class ImageableController extends Controller
           $imageable->imageable_id = $post->id;
           $imageable->image_id = $image->id;
           $imageable->save();
-          return redirect()->route('create-imageable', ['post', $post->id]);
+          return redirect()->route('create-imageable', ['type' => 'post', 'id' => $post->url_string]);
         }
       } elseif ($request->imageable_type == 'App\Album'){
         return;
       }
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
     }
 
     /**
@@ -138,10 +105,10 @@ class ImageableController extends Controller
         if($imageable->count()){
           // this imageable does exist, delete it
           $imageable->delete();
-          return redirect()->route('edit-post', ['id' => $post->id]);
+          return redirect()->route('edit-post', ['post' => $post->url_string]);
         } else {
           // this imageable doesn't exist, let's redirect
-          return redirect()->route('edit-post', ['id' => $post->id]);
+          return redirect()->route('edit-post', ['post' => $post->url_string]);
         }
       } elseif ($request->imageable_type == 'App\Album'){
         return;

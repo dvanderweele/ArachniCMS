@@ -78,7 +78,7 @@
             @endif
             <form action="/youtubevidembeds" method="post">
               @csrf 
-              <input type="hidden" name="post_id" value="{{ $post->id }}">
+              <input type="hidden" name="post_url_string" value="{{ $post->url_string }}">
               <input type="hidden" name="vidcode_id" value="{{ $code->id }}">
               <button type="submit" class="border bg-background-secondary text-copy-secondary py-2 px-4 rounded hover:bg-background-primary font-bold w-full">Embed Video</button>
             </form>

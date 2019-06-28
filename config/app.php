@@ -165,6 +165,7 @@ return [
         /*
          * Package Service Providers...
          */
+        \App\Providers\HashIdModelProvider::class,
 
         /*
          * Application Service Providers...
