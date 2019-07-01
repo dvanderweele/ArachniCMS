@@ -10,7 +10,7 @@
     </a>
   </p>
   <p class="hover:text-copy-secondary hover:bg-background-secondary text-copy-primary lg:w-full py-3 px-4 text-center lg:text-left cursor-pointer lg:border-none border-black border-b">
-    <a href="#" class="font-semibold">
+    <a href="/settings" class="font-semibold">
       Settings
     </a>
   </p>

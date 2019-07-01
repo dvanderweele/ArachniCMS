@@ -286,13 +286,22 @@
       <span class="border w-auto bg-background-secondary text-copy-primary hover:text-copy-secondary font-semibold rounded-full py-2 px-4 text-sm mx-4 my-2 mx-auto">{{ $post->is_published ? 'Published' : 'Unpublished' }}</span>
       <p class="border w-auto bg-background-secondary text-copy-primary hover:text-copy-secondary font-semibold rounded-full py-2 px-4 text-sm flex flex-row items-center align-center mx-4 my-2 mx-auto">
         <svg version="1.1" class="fill-current w-4 h-4" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 20 20" enable-background="new 0 0 20 20" xml:space="preserve">
-          <path fill="#FFFFFF" d="M10,4.4C3.439,4.4,0,9.232,0,10c0,0.766,3.439,5.6,10,5.6c6.56,0,10-4.834,10-5.6C20,9.232,16.56,4.4,10,4.4  z M10,14.307c-2.455,0-4.445-1.928-4.445-4.307S7.545,5.691,10,5.691s4.444,1.93,4.444,4.309S12.455,14.307,10,14.307z M10,10  c-0.407-0.447,0.663-2.154,0-2.154c-1.228,0-2.223,0.965-2.223,2.154S8.772,12.154,10,12.154c1.227,0,2.223-0.965,2.223-2.154  C12.223,9.453,10.346,10.379,10,10z"/>
+          <path d="M10,4.4C3.439,4.4,0,9.232,0,10c0,0.766,3.439,5.6,10,5.6c6.56,0,10-4.834,10-5.6C20,9.232,16.56,4.4,10,4.4  z M10,14.307c-2.455,0-4.445-1.928-4.445-4.307S7.545,5.691,10,5.691s4.444,1.93,4.444,4.309S12.455,14.307,10,14.307z M10,10  c-0.407-0.447,0.663-2.154,0-2.154c-1.228,0-2.223,0.965-2.223,2.154S8.772,12.154,10,12.154c1.227,0,2.223-0.965,2.223-2.154  C12.223,9.453,10.346,10.379,10,10z"/>
         </svg>&nbsp;&nbsp;{{ $post->views }}
       </p>
     @endauth
+    @guest
+    @if($settings->view_count_policy)
+      <p class="border w-auto bg-background-secondary text-copy-primary hover:text-copy-secondary font-semibold rounded-full py-2 px-4 text-sm flex flex-row items-center align-center mx-4 my-2 mx-auto">
+        <svg version="1.1" class="fill-current w-4 h-4" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 20 20" enable-background="new 0 0 20 20" xml:space="preserve">
+          <path d="M10,4.4C3.439,4.4,0,9.232,0,10c0,0.766,3.439,5.6,10,5.6c6.56,0,10-4.834,10-5.6C20,9.232,16.56,4.4,10,4.4  z M10,14.307c-2.455,0-4.445-1.928-4.445-4.307S7.545,5.691,10,5.691s4.444,1.93,4.444,4.309S12.455,14.307,10,14.307z M10,10  c-0.407-0.447,0.663-2.154,0-2.154c-1.228,0-2.223,0.965-2.223,2.154S8.772,12.154,10,12.154c1.227,0,2.223-0.965,2.223-2.154  C12.223,9.453,10.346,10.379,10,10z"/>
+        </svg>&nbsp;&nbsp;{{ $post->views }}
+      </p>
+    @endif
+    @endguest
       <span class="border w-auto bg-background-secondary text-copy-primary hover:text-copy-secondary font-semibold rounded-full py-2 px-4 text-sm mx-4 my-2 mx-auto">{{ date('F d, Y', strtotime($post->updated_at)) }}</span>
     </div>
-    <div id="post-body" class="text-copy-primary mx-6 my-4">
+    <div id="post-body" class="text-copy-primary mx-6 my-4 {{ $settings->text_selection_policy ? '' : 'select-none' }}">
       {!! $post->body !!}
     </div>
     <div class="mb-8 mx-6">
@@ -308,14 +317,30 @@
       <h1 class="font-semibold text-2xl text-copy-primary mb-4">
         Comments
       </h1>
-      <p class="mb-4 text-copy-primary">
+      <div class="mb-4 text-copy-primary flex flex-col">
         @guest 
-          Feel free to leave a respectful comment. All comments, without exception, are subject to a manual approval process. If you misbehave and fail to act like a decent person, you will be banned from the site.
+          @if(!$post->comments_locked)
+            <p>Feel free to leave a respectful comment. All comments, without exception, are subject to a manual approval process. If you misbehave and fail to act like a decent person, you will be banned from the site.</p>
+          @else 
+          <div class="flex flex-row items-center justify-center">
+            <svg version="1.1" class="fill-current w-8 h-8" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 20 20" enable-background="new 0 0 20 20" xml:space="preserve">
+              <path  d="M15.8,8H14V5.6C14,2.703,12.665,1,10,1C7.334,1,6,2.703,6,5.6V8H4C3.447,8,3,8.646,3,9.199V17  c0,0.549,0.428,1.139,0.951,1.307l1.197,0.387C5.672,18.861,6.55,19,7.1,19h5.8c0.549,0,1.428-0.139,1.951-0.307l1.196-0.387  C16.571,18.139,17,17.549,17,17V9.199C17,8.646,16.352,8,15.8,8z M12,8H8V5.199C8,3.754,8.797,3,10,3s2,0.754,2,2.199V8z"/>
+            </svg>
+            <span class="font-bold">&nbsp;&nbsp;Comments locked.&nbsp;&nbsp;</span>
+            <svg version="1.1" class="fill-current w-8 h-8" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 20 20" enable-background="new 0 0 20 20" xml:space="preserve">
+              <path  d="M15.8,8H14V5.6C14,2.703,12.665,1,10,1C7.334,1,6,2.703,6,5.6V8H4C3.447,8,3,8.646,3,9.199V17  c0,0.549,0.428,1.139,0.951,1.307l1.197,0.387C5.672,18.861,6.55,19,7.1,19h5.8c0.549,0,1.428-0.139,1.951-0.307l1.196-0.387  C16.571,18.139,17,17.549,17,17V9.199C17,8.646,16.352,8,15.8,8z M12,8H8V5.199C8,3.754,8.797,3,10,3s2,0.754,2,2.199V8z"/>
+            </svg>
+          </div>
+          @endif
         @endguest 
         @auth 
-          Here, visitors to your site will see a warning that admonishes them to be respectful and decent when commenting. It also warns them that they can be banned if they fail to do so.
+          @if($post->comments_locked)
+            <p>Looks like you have comments locked on this post. You can still comment, but your visitors won't be able to.</p>
+          @else
+            <p>Here, visitors to your site will see a warning that admonishes them to be respectful and decent when commenting. It also warns them that they can be banned if they fail to do so.</p>
+          @endif
         @endauth
-      </p>
+      </div>
       <p class="mb-4 text-copy-primary">
         @auth 
           All comments are shown below. There is one section each for approved and unapproved comments.
@@ -337,6 +362,7 @@
       </form>
     @endauth
     @guest
+      @if(!$post->comments_locked)
       <form action="/comments" method="post" class="px-8 pb-10">
         @csrf 
         <input type="hidden" name="post_url_string" value="{{ $post->url_string }}" required>
@@ -354,6 +380,7 @@
         </div>
         <button type="submit" class="border bg-background-secondary text-copy-secondary py-2 px-4 rounded hover:bg-background-primary font-bold mt-4">Submit</button>
       </form>
+      @endif
     @endguest
     <div class="">
       @auth 
@@ -370,7 +397,7 @@
             </div>
           </div>
           @foreach($unapproved as $comment)
-            <div class="hover:bg-background-primary bg-background-secondary hover:text-copy-primary px-8 text-copy-secondary py-4 mb-3">
+            <div class="bg-background-primary hover:text-copy-primary px-8 text-copy-secondary py-4 mb-3 cursor-default">
               <div class="mb-4">
                 <p class="font-semibold">Commenter Name: </p>{{ $comment->name }}
               </div>
@@ -415,7 +442,7 @@
         </div>
         @foreach($approved as $comment)
           @auth
-            <div class="hover:bg-background-primary bg-background-secondary hover:text-copy-primary px-8 text-copy-secondary py-4 mb-3">
+            <div class="bg-background-primary hover:text-copy-primary px-8 text-copy-secondary py-4 mb-3 cursor-default">
               <div class="mb-4">
                 <p class="font-semibold">Commenter Name: </p>{{ $comment->name }}
               </div>
@@ -438,7 +465,7 @@
             </div>
           @endauth
           @guest
-            <div class="hover:bg-background-primary bg-background-secondary hover:text-copy-primary px-8 text-copy-secondary py-4 mb-3">
+            <div class="bg-background-primary hover:text-copy-primary px-8 text-copy-secondary py-4 mb-3 cursor-default">
               <div class="mb-4">
                 <p class="font-semibold">Commenter Name: </p>{{ $comment->name }}
               </div>

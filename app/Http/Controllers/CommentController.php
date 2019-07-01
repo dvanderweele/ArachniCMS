@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Post;
 use App\Comment;
+use App\Settings;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Post;
 
 class CommentController extends Controller
 {
@@ -22,16 +23,6 @@ class CommentController extends Controller
         'unapproved' => $unapproved,
         'approved' => $approved
       ]);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
     }
 
     /**
@@ -58,6 +49,13 @@ class CommentController extends Controller
         $comment->save();
         return redirect()->route('show-post', ['post' => $post->url_string]);
       } else {
+        $settings = Settings::firstOrFail();
+        if($settings->comment_lock_policy){
+          return redirect()->route('show-post', ['post' => $post->url_string]);
+        }
+        if($post->comments_locked){
+          return redirect()->route('show-post', ['post' => $post->url_string]);
+        }
         $request->validate([
           'name' => 'required|min:2',
           'email' => 'required',
@@ -67,6 +65,12 @@ class CommentController extends Controller
         $comment->email = $request->email;
         $comment->body = $request->body;
         $comment->ip_address = $request->ip();
+        $settings = Settings::firstOrFail();
+        if($settings->comment_approval_policy){
+          $comment->approved = true;
+        } else {
+          $comment->approved = false;
+        }
         $comment->save();
         return redirect()->route('show-post', ['post' => $post->url_string]);
       }

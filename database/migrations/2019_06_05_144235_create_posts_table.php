@@ -18,6 +18,7 @@ class CreatePostsTable extends Migration
             $table->timestamps();
             $table->text('title');
             $table->longText('body');
+            $table->tinyInteger('comments_locked')->default(false);
             $table->unsignedBigInteger('author_id');
         });
     }

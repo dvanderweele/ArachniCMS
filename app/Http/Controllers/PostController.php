@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Post;
 use App\Comment;
+use App\Settings;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Purifier;
@@ -17,6 +18,7 @@ class PostController extends Controller
      */
     public function index(Request $request)
     {
+      $settings = Settings::firstOrFail();
       if(Auth::check())
       { // return all posts, including unpublished
         $posts = Post::latest()->paginate(5);
@@ -24,7 +26,7 @@ class PostController extends Controller
       { // only return published posts
         $posts = Post::where('is_published', true)->latest()->paginate(5);
       }
-      return view('posts.index', ['posts' => $posts]);
+      return view('posts.index', ['posts' => $posts, 'settings' => $settings]);
     }
 
     /**
@@ -34,7 +36,8 @@ class PostController extends Controller
      */
     public function create()
     {
-      return view('posts.create');
+      $settings = Settings::firstOrFail();
+      return view('posts.create')->with('settings', $settings);
     }
 
     /**
@@ -50,11 +53,18 @@ class PostController extends Controller
         'title' => 'required|min:2',
         'body' => 'required|min:2',
         'summary' => 'nullable',
-        'is_published' => 'required'
+        'is_published' => 'required',
+        'comments_locked' => 'required'
       ]);
+      $settings = Settings::firstOrFail();
       $post->title = $request->title;
       $post->body = Purifier::clean($request->body);
       $post->summary = $request->summary;
+      if($settings->comment_lock_policy){
+        $post->comments_locked = true;
+      } else {
+        $post->comments_locked = $request->comments_locked == "true" ? true : false;
+      }
       if ($request->is_published == 'unpublished'){
         $post->is_published = false;
       } else if ($request->is_published == 'published'){
@@ -76,6 +86,7 @@ class PostController extends Controller
     public function show(Post $post)
     {
       $approved = Comment::where('post_id', $post->id)->where('approved', true)->latest()->paginate(5);
+      $settings = Settings::firstOrFail();
       if($post->is_published)
       { 
         if(Auth::check())
@@ -84,14 +95,16 @@ class PostController extends Controller
           return view('posts.show', [
             'post' => $post, 
             'approved' => $approved,
-            'unapproved' => $unapproved
+            'unapproved' => $unapproved, 
+            'settings' => $settings
           ]);
         } else 
         {
           $post->increment('views', 1);
           return view('posts.show', [
             'post' => $post, 
-            'approved' => $approved
+            'approved' => $approved, 
+            'settings' => $settings
           ]);
         }
         return view('posts.show', ['post' => $post, 'comments' => $comments]);
@@ -103,7 +116,8 @@ class PostController extends Controller
           return view('posts.show', [
             'post' => $post, 
             'approved' => $approved,
-            'unapproved' => $unapproved
+            'unapproved' => $unapproved, 
+            'settings' => $settings
           ]);
         } else 
         {
@@ -137,11 +151,13 @@ class PostController extends Controller
         'title' => 'required|min:2',
         'body' => 'required|min:2',
         'summary' => 'nullable',
-        'is_published' => 'required'
+        'is_published' => 'required',
+        'comments_locked' => 'required'
       ]);
       $post->title = $request->title;
       $post->body = Purifier::clean($request->body);
       $post->summary = $request->summary;
+      $post->comments_locked = $request->comments_locked == "true" ? true : false;
       if ($request->is_published == 'unpublished'){
         $post->is_published = false;
       } else if ($request->is_published == 'published'){

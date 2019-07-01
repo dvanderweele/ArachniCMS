@@ -58,3 +58,6 @@ Route::delete('/images',                    'ImageController@destroy')->middlewa
 Route::get('/imageables/{type}/{id}/create', 'ImageableController@create')->middleware('auth')->name('create-imageable');
 Route::post('/imageables',                   'ImageableController@store')->middleware('auth');
 Route::delete('/imageables',                 'ImageableController@destroy')->middleware('auth');
+
+Route::get('/settings',                       'SettingsController@show')->middleware('auth')->name('show-settings');
+Route::put('/settings',                     'SettingsController@update')->middleware('auth');
