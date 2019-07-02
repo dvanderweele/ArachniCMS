@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Post;
 use App\Comment;
 use App\Settings;
+use App\Imageable;
+use App\YoutubeVidEmbed;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Purifier;
@@ -177,7 +179,19 @@ class PostController extends Controller
      */
     public function destroy(Request $request)
     {
-      $post = Post::where('url_string', $request->url_string)->delete();
+      $post = Post::where('url_string', $request->url_string)->firstOrFail();
+      foreach($post->comments as $comment){
+        $comment->delete();
+      }
+      $imageables = Imageable::where('imageable_type', 'App\Post')->where('imageable_id', $post->id)->get();
+      foreach($imageables as $img){
+        $img->delete();
+      }
+      $youtubevidembeds = YoutubeVidEmbed::where('post_id', $post->id)->get();
+      foreach($youtubevidembeds as $embed){
+        $embed->delete();
+      }
+      $post->delete();
       return redirect()->route('list-posts');
     }
 }
