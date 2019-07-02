@@ -39,7 +39,7 @@ class ImageController extends Controller
       $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
       $extension = $request->file('image_file')->getClientOriginalExtension();
       $fileNameToStore = $filename.'_'.time().'.'.$extension;
-      $path = $request->file('image_file')->storeAs('public/img/', $fileNameToStore);
+      $path = $request->file('image_file')->storeAs('public/storage/img/', $fileNameToStore);
 
       $image->location = $fileNameToStore;
       $image->save();
