@@ -77,8 +77,8 @@
           </div>
         @endif
       @else 
-        <p class="mb-4 text-copy-primary text-lg">
-          Looks like you haven't uploaded any photos yet! You have to upload photos to your collection before you can embed them in your blog posts. <a href="/images" class="text-blue-500 underline">Go here&nbsp;</a>to upload images and manage your collection. You can also get there by going to the Admin section.
+        <p class="mb-4 text-copy-primary text-lg px-8">
+          Looks like you haven't uploaded any photos yet! You have to upload photos to your collection before you can embed them in your blog posts. <a href="/images" class="text-blue-500 underline">Go here</a> to upload images and manage your collection. You can also get there by going to the Admin section.
         </p>
       @endif
     @elseif ($album)

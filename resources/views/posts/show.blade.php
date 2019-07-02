@@ -6,6 +6,25 @@
 
 @section('js')
   @include('includes.default-js')
+  @if(count($post->images))
+    <script defer>
+      document.addEventListener('DOMContentLoaded', (event) => {
+        const thumbnails = document.querySelectorAll(".thumbnail");
+        const gallery = document.querySelector("#image-gallery");
+        const caption = document.querySelector("#caption");
+        gallery.src = thumbnails.item(0).src;
+        gallery.alt = thumbnails.item(0).alt;
+        caption.innerText = thumbnails.item(0).alt;
+        for (let thumbnail of thumbnails){
+          thumbnail.addEventListener("click", function(e){
+            gallery.src = thumbnail.src;
+            gallery.alt = thumbnail.alt;
+            caption.innerText = thumbnail.alt;
+          });
+        }
+      });
+    </script>
+  @endif
   <script defer>
     document.addEventListener('DOMContentLoaded', (event) => {
       postBody = document.getElementById('post-body');
@@ -281,6 +300,17 @@
         {{ $post->title }}
       </h1>
     </div>
+    @if(count($post->images))
+      <img src="" alt="" class="h-64 mx-auto mb-4" id="image-gallery">
+      <p class="w-full bg-background-secondary rounded px-4 py-2 text-copy-primary hover:text-copy-secondary cursor-default">
+        <span class="font-bold">Caption:&nbsp;</span><span id="caption"></span>
+      </p>
+      <div class="my-6 w-full overflow-x-auto px-2 rounded bg-background-secondary flex flex-row ">
+        @foreach($post->images as $image)
+          <img src="/storage/img/{{ $image->location }}" alt="{{ $image->description }}" class="thumbnail w-1/4 mx-2 cursor-pointer flex-shrink-0">
+        @endforeach
+      </div>
+    @endif
     <div class="my-4 cursor-default flex flex-row flex-wrap justify-around">
     @auth
       <span class="border w-auto bg-background-secondary text-copy-primary hover:text-copy-secondary font-semibold rounded-full py-2 px-4 text-sm mx-4 my-2 mx-auto">{{ $post->is_published ? 'Published' : 'Unpublished' }}</span>
