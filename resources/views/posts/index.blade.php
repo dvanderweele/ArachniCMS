@@ -83,7 +83,7 @@
                   @endauth
                 </span>
             </div>
-            <a href="/posts/{{ $post->url_string }}" class="border bg-background-secondary text-copy-secondary py-2 px-4 rounded hover:bg-background-primary font-bold h-auto">Read more...</a>
+            <a href="/posts/{{ $post->url_string }}"><button class="border bg-background-secondary text-copy-secondary py-2 px-4 rounded hover:bg-background-primary font-bold h-auto">Read more...</button></a>
           </div>
         </div>
       </div>
