@@ -20,6 +20,10 @@ class CreatePostsTable extends Migration
             $table->longText('body');
             $table->tinyInteger('comments_locked')->default(false);
             $table->unsignedBigInteger('author_id');
+            $table->string('url_string')->nullable();
+            $table->unsignedBigInteger('views')->default(0);
+            $table->mediumText('summary')->nullable();
+            $table->boolean('is_published');
         });
     }
 

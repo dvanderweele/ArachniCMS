@@ -23,6 +23,7 @@ class CreateCommentsTable extends Migration
             $table->text('email');
             $table->boolean('approved')->default(false);
             $table->text('ip_address');
+            $table->string('url_string')->nullable();
         });
     }
 

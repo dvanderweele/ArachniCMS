@@ -17,6 +17,7 @@ class CreateYoutubeVidCodesTable extends Migration
             $table->bigIncrements('id');
             $table->timestamps();
             $table->text('vidcode');
+            $table->string('name');
         });
     }
 

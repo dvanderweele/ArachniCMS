@@ -13,7 +13,8 @@ class CreateImageableTable extends Migration
      */
     public function up()
     {
-        Schema::create('imageable', function (Blueprint $table) {
+        Schema::create('imageables', function (Blueprint $table) {
+            $table->bigIncrements('id');
             $table->unsignedBigInteger('image_id');
             $table->unsignedBigInteger('imageable_id');
             $table->string('imageable_type');
@@ -28,6 +29,6 @@ class CreateImageableTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('imageable');
+        Schema::dropIfExists('imageables');
     }
 }
