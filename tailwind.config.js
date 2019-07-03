@@ -57,6 +57,29 @@ module.exports = {
         },
       },
     },
+    fontFamily: {
+      'sans': ['-apple-system', 'BlinkMacSystemFont', '"Segoe UI"', 'Roboto', '"Helvetica Neue"', 'Arial', '"Noto Sans"', 'sans-serif', '"Apple Color Emoji"', '"Segoe UI Emoji"', '"Segoe UI Symbol"', '"Noto Color Emoji"'],
+
+      'serif': ['Georgia', 'Cambria', '"Times New Roman"', 'Times', 'serif'],
+
+      'mono': ['SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'Liberation Mono', '"Courier New"', 'monospace'],
+
+      'alegreya': ['alegreyaregular', 'Georgia', 'Cambria', '"Times New Roman"', 'Times', 'serif'],
+
+      'alegreya-sc': ['alegreya_scregular', 'Georgia', 'Cambria', '"Times New Roman"', 'Times', 'serif'],
+
+      'alegreya-sans': ['alegreya_sansregular', 'Georgia', 'Cambria', '"Times New Roman"', 'Times', 'serif'],
+
+      'alegreya-sans-sc': ['alegreya_sans_scregular', 'Georgia', 'Cambria', '"Times New Roman"', 'Times', 'serif'],
+
+      'fira-code': ['fira_coderegular', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', '"Liberation Mono"', '"Courier New"', 'monospace'],
+      
+      'hack': ['hackregular', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', '"Liberation Mono"', '"Courier New"', 'monospace'],
+
+      'montserrat': ['montserratregular', 'Georgia', 'Cambria', '"Times New Roman"', 'Times', 'serif'],
+
+      'quicksand': ['quicksandregular', 'Georgia', 'Cambria', '"Times New Roman"', 'Times', 'serif'],
+    },
     pagination: {
       link: 'bg-background-primary px-3 py-1 border-r border-t border-b text-copy-primary no-underline',
       linkActive: 'bg-background-secondary font-bold',

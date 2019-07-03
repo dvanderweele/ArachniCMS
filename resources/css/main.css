@@ -2,6 +2,78 @@
 
 @tailwind components;
 
+
+@font-face {
+  font-family: 'alegreyaregular';
+  src: url('../fonts/alegreya-regular-webfont.woff2') format('woff2'),
+       url('../fonts/alegreya-regular-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+
+}
+
+@font-face {
+  font-family: 'alegreya_scregular';
+  src: url('../fonts/alegreyasc-regular-webfont.woff2') format('woff2'),
+       url('../fonts/alegreyasc-regular-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+
+}
+
+@font-face {
+  font-family: 'alegreya_sansregular';
+  src: url('../fonts/alegreyasans-regular-webfont.woff2') format('woff2'),
+       url('../fonts/alegreyasans-regular-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+
+}
+
+@font-face {
+  font-family: 'alegreya_sans_scregular';
+  src: url('../fonts/alegreyasanssc-regular-webfont.woff2') format('woff2'),
+       url('../fonts/alegreyasanssc-regular-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+
+}
+
+@font-face {
+  font-family: 'fira_coderegular';
+  src: url('../fonts/firacode-regular-webfont.woff2') format('woff2'),
+       url('../fonts/firacode-regular-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+
+}
+
+@font-face {
+  font-family: 'hackregular';
+  src: url('../fonts/hack-regular-webfont.woff2') format('woff2'),
+       url('../fonts/hack-regular-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+
+}
+
+@font-face {
+  font-family: 'montserratregular';
+  src: url('../fonts/montserrat-regular-webfont.woff2') format('woff2'),
+       url('../fonts/montserrat-regular-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+
+}
+
+@font-face {
+  font-family: 'quicksandregular';
+  src: url('../fonts/quicksand-regular-webfont.woff2') format('woff2'),
+       url('../fonts/quicksand-regular-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
 @tailwind utilities;
 
 .theme-light {

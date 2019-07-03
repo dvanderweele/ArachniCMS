@@ -563,7 +563,7 @@ pre,
 code,
 kbd,
 samp {
-  font-family: Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-family: SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, "Courier New", monospace;
 }
 
 /**
@@ -684,6 +684,94 @@ video {
 .pagination .page-item.disabled .page-link {
   background-color: #f1f5f8;
   color: #8795a1;
+}
+
+@font-face {
+  font-family: 'alegreyaregular';
+
+  src: url(/fonts/alegreya-regular-webfont.woff2?09f501f08d2e3818f9c08031110f5664) format('woff2'),
+       url(/fonts/alegreya-regular-webfont.woff?20aff6ca2f8dd73a63dddaf074f33036) format('woff');
+
+  font-weight: normal;
+
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'alegreya_scregular';
+
+  src: url(/fonts/alegreyasc-regular-webfont.woff2?b300bdb15a189fa978134ffa89ec7a4d) format('woff2'),
+       url(/fonts/alegreyasc-regular-webfont.woff?2e71ef10da0b3defec100a3d125028b7) format('woff');
+
+  font-weight: normal;
+
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'alegreya_sansregular';
+
+  src: url(/fonts/alegreyasans-regular-webfont.woff2?4c57fcf501038006b3769cf308c88112) format('woff2'),
+       url(/fonts/alegreyasans-regular-webfont.woff?3508a4fed3f566fca6e01b24e128e4da) format('woff');
+
+  font-weight: normal;
+
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'alegreya_sans_scregular';
+
+  src: url(/fonts/alegreyasanssc-regular-webfont.woff2?e92c67fecaa2340cf8cd8f4178672071) format('woff2'),
+       url(/fonts/alegreyasanssc-regular-webfont.woff?d8a30c4ffad45199760aed9eba27c569) format('woff');
+
+  font-weight: normal;
+
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'fira_coderegular';
+
+  src: url(/fonts/firacode-regular-webfont.woff2?144ec8012fed5d4ce906743ca7bbfe10) format('woff2'),
+       url(/fonts/firacode-regular-webfont.woff?d0709ded132350819ba2988cf21f335d) format('woff');
+
+  font-weight: normal;
+
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'hackregular';
+
+  src: url(/fonts/hack-regular-webfont.woff2?ce1938bf6e3f12267acea74959dd23d1) format('woff2'),
+       url(/fonts/hack-regular-webfont.woff?51fef2b99f8c7a154cb1895f15a2c470) format('woff');
+
+  font-weight: normal;
+
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'montserratregular';
+
+  src: url(/fonts/montserrat-regular-webfont.woff2?bb01446ee4040072065d1745ab08c61f) format('woff2'),
+       url(/fonts/montserrat-regular-webfont.woff?c5137135d65d90c8013213f4070bdf7a) format('woff');
+
+  font-weight: normal;
+
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'quicksandregular';
+
+  src: url(/fonts/quicksand-regular-webfont.woff2?3558618a94855f5c63571cc3cce2cf68) format('woff2'),
+       url(/fonts/quicksand-regular-webfont.woff?f4382a2ef5125bd21ebdb8fe91c30c5d) format('woff');
+
+  font-weight: normal;
+
+  font-style: normal;
 }
 
 .appearance-none {
@@ -3815,7 +3903,39 @@ video {
 }
 
 .font-mono {
-  font-family: Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-family: SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, "Courier New", monospace;
+}
+
+.font-alegreya {
+  font-family: alegreyaregular, Georgia, Cambria, "Times New Roman", Times, serif;
+}
+
+.font-alegreya-sc {
+  font-family: alegreya_scregular, Georgia, Cambria, "Times New Roman", Times, serif;
+}
+
+.font-alegreya-sans {
+  font-family: alegreya_sansregular, Georgia, Cambria, "Times New Roman", Times, serif;
+}
+
+.font-alegreya-sans-sc {
+  font-family: alegreya_sans_scregular, Georgia, Cambria, "Times New Roman", Times, serif;
+}
+
+.font-fira-code {
+  font-family: fira_coderegular, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+.font-hack {
+  font-family: hackregular, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+.font-montserrat {
+  font-family: montserratregular, Georgia, Cambria, "Times New Roman", Times, serif;
+}
+
+.font-quicksand {
+  font-family: quicksandregular, Georgia, Cambria, "Times New Roman", Times, serif;
 }
 
 .font-hairline {
@@ -11048,7 +11168,39 @@ video {
   }
 
   .sm\:font-mono {
-    font-family: Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    font-family: SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, "Courier New", monospace;
+  }
+
+  .sm\:font-alegreya {
+    font-family: alegreyaregular, Georgia, Cambria, "Times New Roman", Times, serif;
+  }
+
+  .sm\:font-alegreya-sc {
+    font-family: alegreya_scregular, Georgia, Cambria, "Times New Roman", Times, serif;
+  }
+
+  .sm\:font-alegreya-sans {
+    font-family: alegreya_sansregular, Georgia, Cambria, "Times New Roman", Times, serif;
+  }
+
+  .sm\:font-alegreya-sans-sc {
+    font-family: alegreya_sans_scregular, Georgia, Cambria, "Times New Roman", Times, serif;
+  }
+
+  .sm\:font-fira-code {
+    font-family: fira_coderegular, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  }
+
+  .sm\:font-hack {
+    font-family: hackregular, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  }
+
+  .sm\:font-montserrat {
+    font-family: montserratregular, Georgia, Cambria, "Times New Roman", Times, serif;
+  }
+
+  .sm\:font-quicksand {
+    font-family: quicksandregular, Georgia, Cambria, "Times New Roman", Times, serif;
   }
 
   .sm\:font-hairline {
@@ -18262,7 +18414,39 @@ video {
   }
 
   .md\:font-mono {
-    font-family: Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    font-family: SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, "Courier New", monospace;
+  }
+
+  .md\:font-alegreya {
+    font-family: alegreyaregular, Georgia, Cambria, "Times New Roman", Times, serif;
+  }
+
+  .md\:font-alegreya-sc {
+    font-family: alegreya_scregular, Georgia, Cambria, "Times New Roman", Times, serif;
+  }
+
+  .md\:font-alegreya-sans {
+    font-family: alegreya_sansregular, Georgia, Cambria, "Times New Roman", Times, serif;
+  }
+
+  .md\:font-alegreya-sans-sc {
+    font-family: alegreya_sans_scregular, Georgia, Cambria, "Times New Roman", Times, serif;
+  }
+
+  .md\:font-fira-code {
+    font-family: fira_coderegular, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  }
+
+  .md\:font-hack {
+    font-family: hackregular, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  }
+
+  .md\:font-montserrat {
+    font-family: montserratregular, Georgia, Cambria, "Times New Roman", Times, serif;
+  }
+
+  .md\:font-quicksand {
+    font-family: quicksandregular, Georgia, Cambria, "Times New Roman", Times, serif;
   }
 
   .md\:font-hairline {
@@ -25476,7 +25660,39 @@ video {
   }
 
   .lg\:font-mono {
-    font-family: Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    font-family: SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, "Courier New", monospace;
+  }
+
+  .lg\:font-alegreya {
+    font-family: alegreyaregular, Georgia, Cambria, "Times New Roman", Times, serif;
+  }
+
+  .lg\:font-alegreya-sc {
+    font-family: alegreya_scregular, Georgia, Cambria, "Times New Roman", Times, serif;
+  }
+
+  .lg\:font-alegreya-sans {
+    font-family: alegreya_sansregular, Georgia, Cambria, "Times New Roman", Times, serif;
+  }
+
+  .lg\:font-alegreya-sans-sc {
+    font-family: alegreya_sans_scregular, Georgia, Cambria, "Times New Roman", Times, serif;
+  }
+
+  .lg\:font-fira-code {
+    font-family: fira_coderegular, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  }
+
+  .lg\:font-hack {
+    font-family: hackregular, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  }
+
+  .lg\:font-montserrat {
+    font-family: montserratregular, Georgia, Cambria, "Times New Roman", Times, serif;
+  }
+
+  .lg\:font-quicksand {
+    font-family: quicksandregular, Georgia, Cambria, "Times New Roman", Times, serif;
   }
 
   .lg\:font-hairline {
@@ -32690,7 +32906,39 @@ video {
   }
 
   .xl\:font-mono {
-    font-family: Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    font-family: SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, "Courier New", monospace;
+  }
+
+  .xl\:font-alegreya {
+    font-family: alegreyaregular, Georgia, Cambria, "Times New Roman", Times, serif;
+  }
+
+  .xl\:font-alegreya-sc {
+    font-family: alegreya_scregular, Georgia, Cambria, "Times New Roman", Times, serif;
+  }
+
+  .xl\:font-alegreya-sans {
+    font-family: alegreya_sansregular, Georgia, Cambria, "Times New Roman", Times, serif;
+  }
+
+  .xl\:font-alegreya-sans-sc {
+    font-family: alegreya_sans_scregular, Georgia, Cambria, "Times New Roman", Times, serif;
+  }
+
+  .xl\:font-fira-code {
+    font-family: fira_coderegular, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  }
+
+  .xl\:font-hack {
+    font-family: hackregular, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  }
+
+  .xl\:font-montserrat {
+    font-family: montserratregular, Georgia, Cambria, "Times New Roman", Times, serif;
+  }
+
+  .xl\:font-quicksand {
+    font-family: quicksandregular, Georgia, Cambria, "Times New Roman", Times, serif;
   }
 
   .xl\:font-hairline {
