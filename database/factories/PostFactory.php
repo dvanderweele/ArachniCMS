@@ -9,7 +9,7 @@ use Faker\Generator as Faker;
 $factory->define(Post::class, function (Faker $faker) {
     return [
       'title' => $faker->sentence($nbWords = 6, $variableNbWords = true),
-      'body' => $faker->paragraph($nbSentences = 40, $variableNbSentences = true),
+      'body' => '<p>'.implode('</p><p>',$faker->paragraphs(7, false)).'</p>',
       'comments_locked' => $faker->boolean($chanceOfGettingTrue = 50),
       'author_id' => User::firstOrFail()->id,
       'views' => $faker->numberBetween($min = 0, $max = 6000),
