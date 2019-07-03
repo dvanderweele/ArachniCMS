@@ -28,7 +28,7 @@
         <label class="block text-copy-primary text-sm font-bold mb-2" for="email">
           {{ __('E-Mail Address') }}
         </label>
-        <input class="text-copy-primary bg-background-form shadow appearance-none border rounded w-full py-2 px-3 text-copy-primary leading-tight focus:outline-none focus:shadow-outline focus:bg-background-ruthieslight @error('email') border-solid border-red-600 border-2 @enderror" id="email" name="email" type="text" placeholder="email@example.com" value="{{ old('email') }}" required autocomplete="email">
+        <input class="text-copy-primary bg-background-form shadow appearance-none border rounded w-full py-2 px-3 text-copy-primary leading-tight focus:outline-none focus:shadow-outline focus:bg-background-ruthieslight @error('email') border-solid border-red-600 border-2 @enderror" id="email" name="email" type="text" placeholder="email@example.com" value="{{ old('email') }}" required autocomplete="email" autofocus>
         @error('email')
           <p class="text-red-500 text-xs italic">{{ $message }}</p>
         @enderror

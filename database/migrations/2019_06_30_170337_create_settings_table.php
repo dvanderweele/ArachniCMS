@@ -22,6 +22,7 @@ class CreateSettingsTable extends Migration
           $table->tinyInteger('landing_tagline')->nullable();
           $table->tinyInteger('text_selection_policy');
           $table->string('contact_form_email')->nullable();
+          $table->string('font_pref');
           $table->timestamps();
       });
     }

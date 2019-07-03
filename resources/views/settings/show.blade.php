@@ -121,6 +121,95 @@
         </p>
         <input type="text" name="contactFormEmail" class="text-copy-primary bg-background-form shadow appearance-none border rounded w-full py-2 px-3 text-copy-primary leading-tight focus:outline-none focus:shadow-outline focus:bg-background-ruthieslight @error('contactFormEmail') border-solid border-red-600 border-2 @enderror" value="{{ $settings->contact_form_email }}" placeholder="{{ auth()->user()->email }}">
       </div>
+      <div class="flex flex-col items-start mb-4 py-4 text-copy-secondary">
+        <p class="font-semibold text-xl mb-2">
+          Font Preference
+        </p>
+        <p class="mb-2">
+          <small>Your selection here determines which font will be preferred for key areas of your website like blog posts and your landing page.</small>
+        </p>
+        <div class="py-4 pl-2 my-2 flex flex-row justify-between focus:text-copy-primary bg-background-secondary rounded-lg font-sans pr-6">
+          <input type="radio" name="fontPref" id="generic-sans" value="generic-sans" class="mr-6" {{ $settings->font_pref == 'gsa' ? 'checked' : '' }}>
+          <label for="generic-sans">
+            <p class="font-semibold text-lg mb-2">Generic Sans</p>
+            <p class="mb-2"><small>Sample:</small></p>
+            <p class="font-semibold text-lg mb-2">The Quick Brown Fox Jumps Over The Lazy Dog</p>
+            <p>Jived fox nymph grabs quick waltz. Glib jocks quiz nymph to vex dwarf. Sphinx of black quartz, judge my vow. How vexingly quick daft zebras jump! The five boxing wizards jump quickly. Pack my box with five dozen liquor jugs.</p>
+          </label>
+        </div>
+        <div class="py-4 pl-2 my-2 flex flex-row justify-between focus:text-copy-primary bg-background-secondary rounded-lg font-serif pr-6">
+          <input type="radio" name="fontPref" id="generic-serif" value="generic-serif" class="mr-6" {{ $settings->font_pref == 'gse' ? 'checked' : '' }}>
+          <label for="generic-serif">
+            <p class="font-semibold text-lg mb-2">Generic Serif</p>
+            <p class="mb-2"><small>Sample:</small></p>
+            <p class="font-semibold text-lg mb-2">The Quick Brown Fox Jumps Over The Lazy Dog</p>
+            <p>Jived fox nymph grabs quick waltz. Glib jocks quiz nymph to vex dwarf. Sphinx of black quartz, judge my vow. How vexingly quick daft zebras jump! The five boxing wizards jump quickly. Pack my box with five dozen liquor jugs.</p>
+          </label>
+        </div>
+        <div class="py-4 pl-2 my-2 flex flex-row justify-between focus:text-copy-primary bg-background-secondary rounded-lg font-mono pr-6">
+          <input type="radio" name="fontPref" id="generic-mono" value="generic-mono" class="mr-6" {{ $settings->font_pref == 'gmo' ? 'checked' : '' }}>
+          <label for="generic-mono">
+            <p class="font-semibold text-lg mb-2">Generic Mono</p>
+            <p class="mb-2"><small>Sample:</small></p>
+            <p class="font-semibold text-lg mb-2">The Quick Brown Fox Jumps Over The Lazy Dog</p>
+            <p>Jived fox nymph grabs quick waltz. Glib jocks quiz nymph to vex dwarf. Sphinx of black quartz, judge my vow. How vexingly quick daft zebras jump! The five boxing wizards jump quickly. Pack my box with five dozen liquor jugs.</p>
+          </label>
+        </div>
+        <div class="py-4 pl-2 my-2 flex flex-row justify-between focus:text-copy-primary bg-background-secondary rounded-lg font-alegreya-sans pr-6">
+          <input type="radio" name="fontPref" id="alegreya-sans" value="alegreya-sans" class="mr-6" {{ $settings->font_pref == 'asa' ? 'checked' : '' }}>
+          <label for="alegreya-sans">
+              <p class="font-semibold text-lg mb-2">Alegreya Sans</p>
+              <p class="mb-2 "><small>Sample:</small></p>
+              <p class="font-semibold text-lg mb-2 font-alegreya-sans-sc">The Quick Brown Fox Jumps Over The Lazy Dog</p>
+              <p class="">Jived fox nymph grabs quick waltz. Glib jocks quiz nymph to vex dwarf. Sphinx of black quartz, judge my vow. How vexingly quick daft zebras jump! The five boxing wizards jump quickly. Pack my box with five dozen liquor jugs.</p>
+            </label>
+        </div>
+        <div class="py-4 pl-2 my-2 flex flex-row justify-between focus:text-copy-primary bg-background-secondary rounded-lg font-alegreya pr-6">
+          <input type="radio" name="fontPref" id="alegreya-serif" value="alegreya-serif" class="mr-6" {{ $settings->font_pref == 'ase' ? 'checked' : '' }}>
+          <label for="alegreya-serif">
+            <p class="font-semibold text-lg mb-2">Alegreya Serif</p>
+            <p class="mb-2"><small>Sample:</small></p>
+            <p class="font-semibold text-lg mb-2 font-alegreya-sc">The Quick Brown Fox Jumps Over The Lazy Dog</p>
+            <p>Jived fox nymph grabs quick waltz. Glib jocks quiz nymph to vex dwarf. Sphinx of black quartz, judge my vow. How vexingly quick daft zebras jump! The five boxing wizards jump quickly. Pack my box with five dozen liquor jugs.</p>
+          </label>
+        </div>
+        <div class="py-4 pl-2 my-2 flex flex-row justify-between focus:text-copy-primary bg-background-secondary rounded-lg font-fira-code pr-6">
+          <input type="radio" name="fontPref" id="fira-code" value="fira-code" class="mr-6" {{ $settings->font_pref == 'fco' ? 'checked' : '' }}>
+          <label for="fira-code">
+            <p class="font-semibold text-lg mb-2">Fira Code</p>
+            <p class="mb-2"><small>Sample:</small></p>
+            <p class="font-semibold text-lg mb-2">The Quick Brown Fox Jumps Over The Lazy Dog</p>
+            <p>Jived fox nymph grabs quick waltz. Glib jocks quiz nymph to vex dwarf. Sphinx of black quartz, judge my vow. How vexingly quick daft zebras jump! The five boxing wizards jump quickly. Pack my box with five dozen liquor jugs.</p>
+          </label>
+        </div>
+        <div class="py-4 pl-2 my-2 flex flex-row justify-between focus:text-copy-primary bg-background-secondary rounded-lg font-hack pr-6">
+          <input type="radio" name="fontPref" id="hack" value="hack" class="mr-6" {{ $settings->font_pref == 'hac' ? 'checked' : '' }}>
+          <label for="hack">
+            <p class="font-semibold text-lg mb-2">Hack</p>
+            <p class="mb-2"><small>Sample:</small></p>
+            <p class="font-semibold text-lg mb-2">The Quick Brown Fox Jumps Over The Lazy Dog</p>
+            <p>Jived fox nymph grabs quick waltz. Glib jocks quiz nymph to vex dwarf. Sphinx of black quartz, judge my vow. How vexingly quick daft zebras jump! The five boxing wizards jump quickly. Pack my box with five dozen liquor jugs.</p>
+          </label>
+        </div>
+        <div class="py-4 pl-2 my-2 flex flex-row justify-between focus:text-copy-primary bg-background-secondary rounded-lg font-montserrat pr-6">
+          <input type="radio" name="fontPref" id="montserrat" value="montserrat" class="mr-6" {{ $settings->font_pref == 'mon' ? 'checked' : '' }}>
+          <label for="montserrat">
+            <p class="font-semibold text-lg mb-2">Montserrat</p>
+            <p class="mb-2"><small>Sample:</small></p>
+            <p class="font-semibold text-lg mb-2">The Quick Brown Fox Jumps Over The Lazy Dog</p>
+            <p>Jived fox nymph grabs quick waltz. Glib jocks quiz nymph to vex dwarf. Sphinx of black quartz, judge my vow. How vexingly quick daft zebras jump! The five boxing wizards jump quickly. Pack my box with five dozen liquor jugs.</p>
+          </label>
+        </div>
+        <div class="py-4 pl-2 my-2 flex flex-row justify-between focus:text-copy-primary bg-background-secondary rounded-lg font-quicksand pr-6">
+          <input type="radio" name="fontPref" id="quicksand" value="quicksand" class="mr-6" {{ $settings->font_pref == 'qui' ? 'checked' : '' }}>
+          <label for="quicksand">
+            <p class="font-semibold text-lg mb-2">Quicksand</p>
+            <p class="mb-2"><small>Sample:</small></p>
+            <p class="font-semibold text-lg mb-2">The Quick Brown Fox Jumps Over The Lazy Dog</p>
+            <p>Jived fox nymph grabs quick waltz. Glib jocks quiz nymph to vex dwarf. Sphinx of black quartz, judge my vow. How vexingly quick daft zebras jump! The five boxing wizards jump quickly. Pack my box with five dozen liquor jugs.</p>
+          </label>
+        </div>
+      </div>
       <button type="submit" class="border bg-background-secondary text-copy-secondary py-2 px-4 rounded hover:bg-background-primary font-bold mt-4">Save Settings</button>
     </form>
   </div>
