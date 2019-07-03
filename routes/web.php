@@ -13,6 +13,8 @@
 
 Auth::routes(['register' => false]);
 
+Route::feeds();
+
 Route::get('/test', function(){
   return view('auth.passwords.reset');
 });

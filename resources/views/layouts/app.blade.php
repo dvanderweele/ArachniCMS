@@ -9,6 +9,8 @@
 
     <title>@yield('title')</title>
 
+    @include('feed::links')
+
     <!-- Scripts -->
     @yield('js')
 
