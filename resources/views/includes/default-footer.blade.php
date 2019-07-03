@@ -2,7 +2,7 @@
   <div class="flex flex-row items-center justify-center">
     <div class="flex flex-col items-center justify-around">
       <p class="font-bold">
-        PocoCMS - 
+        ArachniCMS - 
         @guest
           <a href="/login">Login</a>
         @endguest
