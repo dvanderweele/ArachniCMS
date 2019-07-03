@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\About;
+use App\Settings;
 use Illuminate\Http\Request;
 use Purifier;
 use Illuminate\Support\Facades\Storage;
@@ -79,7 +80,11 @@ class AboutController extends Controller
     public function show()
     {
       $about = About::first();
-      return view('about.show')->with('about', $about);
+      $settings = Settings::firstOrFail();
+      return view('about.show')->with([
+        'about' => $about,
+        'settings' => $settings
+      ]);
     }
 
     /**
