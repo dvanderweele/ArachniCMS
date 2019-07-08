@@ -18,8 +18,8 @@ class CreateSettingsTable extends Migration
           $table->tinyInteger('view_count_policy');
           $table->tinyInteger('comment_lock_policy');
           $table->tinyInteger('comment_approval_policy');
-          $table->tinyInteger('landing_header')->nullable();
-          $table->tinyInteger('landing_tagline')->nullable();
+          $table->text('landing_header')->nullable();
+          $table->text('landing_tagline')->nullable();
           $table->tinyInteger('text_selection_policy');
           $table->string('contact_form_email')->nullable();
           $table->text('logo_location')->nullable();
