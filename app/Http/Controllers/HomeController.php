@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Comment;
+use App\Settings;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller

@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use Purifier;
 use App\About;
 use App\Settings;
 use Illuminate\Http\Request;
-use Purifier;
 use Illuminate\Support\Facades\Storage;
 
 class AboutController extends Controller
@@ -97,7 +97,11 @@ class AboutController extends Controller
     public function edit()
     {
       $about = About::firstOrFail();
-      return view('about.edit')->with('about', $about);
+      $settings = Settings::firstOrFail();
+      return view('about.edit')->with([
+        'about' => $about,
+        'settings' => $settings,
+      ]);
     }
 
     /**

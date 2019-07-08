@@ -36,7 +36,7 @@
       @if($post->summary != null)
         <p class="text-lg mb-6 px-8"><span class="text-copy-secondary font-bold">Post Description:</span><br class="mb-3">{{ $post->summary }}</p>
       @else 
-        <p class="text-lg mb-4 px-8"><span class="text-copy-secondary font-bold">Post Description:</span>None.</p>
+        <p class="text-lg mb-4 px-8"><span class="text-copy-secondary font-bold">Post Description:&nbsp;</span>None.</p>
       @endif
       @if(count($images) > 0)
         <div class="flex flex-row mt-2 mx-auto w-full justify-center">

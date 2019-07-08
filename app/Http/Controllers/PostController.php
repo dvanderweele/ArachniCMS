@@ -139,7 +139,7 @@ class PostController extends Controller
       $settings = Settings::firstOrFail();
       return view('posts.edit', [
         'post' => $post,
-        'settings' => $post
+        'settings' => $settings
       ]);
     }
 

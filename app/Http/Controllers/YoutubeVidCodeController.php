@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Settings;
 use App\YoutubeVidCode;
 use App\YoutubeVidEmbed;
 use Illuminate\Http\Request;

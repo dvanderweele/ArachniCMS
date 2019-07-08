@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Settings;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class SettingsController extends Controller
 {
@@ -85,6 +86,11 @@ class SettingsController extends Controller
       if($request->logo_description == null){
         return redirect()->back();
       } else {
+        // first let's get rid of the old image if there is one
+        if($settings->logo_location != null){
+          Storage::delete($settings->logo_location);
+        }
+        // let's validate and store that logo
         $request->validate([
           'logo' => 'image|dimensions:min_width=500,max_width=800,min_height=100,max_height=300|max:1999',
           'logo_description' => 'required|min:2'
