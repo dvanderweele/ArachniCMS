@@ -63,3 +63,4 @@ Route::delete('/imageables',                 'ImageableController@destroy')->mid
 
 Route::get('/settings',                       'SettingsController@show')->middleware('auth')->name('show-settings');
 Route::put('/settings',                     'SettingsController@update')->middleware('auth');
+

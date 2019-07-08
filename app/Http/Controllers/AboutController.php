@@ -17,11 +17,12 @@ class AboutController extends Controller
      */
     public function create()
     {
+      $settings = Settings::firstOrFail();
       $about = About::first();
       if($about != null){
         return redirect()->route('show-about');
       } else {
-        return view('about.create');
+        return view('about.create')->with('settings', $settings);
       }
     }
 

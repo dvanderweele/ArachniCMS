@@ -136,7 +136,11 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-      return view('posts.edit', ['post' => $post]);
+      $settings = Settings::firstOrFail();
+      return view('posts.edit', [
+        'post' => $post,
+        'settings' => $post
+      ]);
     }
 
     /**

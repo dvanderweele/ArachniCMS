@@ -16,7 +16,11 @@ class ImageController extends Controller
      */
     public function index()
     {
-      return view('images.index')->with('images', Image::paginate(10));
+      $settings = Settings::firstOrFail();
+      return view('images.index')->with([
+        'images' => Image::paginate(10),
+        'settings' => $settings
+      ]);
     }
 
     /**
@@ -55,7 +59,11 @@ class ImageController extends Controller
      */
     public function edit(Image $image)
     {
-      return view('images.edit')->with('image', $image);
+      $settings = Settings::firstOrFail();
+      return view('images.edit')->with([
+        'image' => $image,
+        'settings' => $settings
+      ]);
     }
 
     /**

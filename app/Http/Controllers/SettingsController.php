@@ -80,6 +80,25 @@ class SettingsController extends Controller
       default: 
         $settings->font_pref = 'gsa';        
     }
+    if($request->hasFile('logo'))
+    {
+      if($request->logo_description == null){
+        return redirect()->back();
+      } else {
+        $request->validate([
+          'logo' => 'image|dimensions:min_width=500,max_width=800,min_height=100,max_height=300|max:1999',
+          'logo_description' => 'required|min:2'
+        ]);
+        $filenameWithExt = $request->file('logo')->getClientOriginalName();
+        $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+        $extension = $request->file('logo')->getClientOriginalExtension();
+        $fileNameToStore = $filename.'_'.time().'.'.$extension;
+        $path = $request->file('logo')->storeAs('public', $fileNameToStore);
+
+        $settings->logo_location = $fileNameToStore;
+        $settings->logo_description = $request->logo_description;
+      }
+    }
     $settings->save();
     return view('settings.show')->with([
       'settings' => $settings

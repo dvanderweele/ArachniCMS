@@ -15,8 +15,12 @@ class YoutubeVidCodeController extends Controller
      */
     public function index()
     {
+      $settings = Settings::firstOrFail();
       $codes = YoutubeVidCode::latest()->paginate(20);
-      return view('youtubevidcodes.index')->with('codes', $codes);
+      return view('youtubevidcodes.index')->with([
+        'codes' => $codes,
+        'settings' => $settings
+      ]);
     }
 
     /**

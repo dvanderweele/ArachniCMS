@@ -23,7 +23,7 @@
         Global Site Settings
       </h1>
     </div>
-    <form action="/settings" method="post">
+    <form action="/settings" method="post" enctype="multipart/form-data">
       @csrf 
       @method('PUT')
       <div class="flex flex-col items-start mb-4">
@@ -84,7 +84,7 @@
         <p class="mb-2 text-copy-secondary">
           <small>The text that you put here will become the header on the landing page of the site. It is advised to put something here, otherwise your site visitors will see the name of this CMS software.</small>
         </p>
-        <input type="text" name="landingHeader" class="text-copy-primary bg-background-form shadow appearance-none border rounded w-full py-2 px-3 text-copy-primary leading-tight focus:outline-none focus:shadow-outline focus:bg-background-ruthieslight @error('landingHeader') border-solid border-red-600 border-2 @enderror" value="{{ $settings->landing_header != null ? $settings->landing_header : '' }}" placeholder="PocoCMS">
+        <input type="text" name="landingHeader" class="text-copy-primary bg-background-form shadow appearance-none border rounded w-full py-2 px-3 text-copy-primary leading-tight focus:outline-none focus:shadow-outline focus:bg-background-ruthieslight @error('landingHeader') border-solid border-red-600 border-2 @enderror" value="{{ $settings->landing_header != null ? $settings->landing_header : '' }}" placeholder="ArachniCMS">
       </div>
       <div class="flex flex-col items-start mb-4">
         <label for="name" class="font-semibold mb-2 text-copy-secondary">
@@ -120,6 +120,33 @@
           <small>If you would like to have your contact form submissions sent to an email address other than your login email, put that here. Otherwise, all such submissions will be sent to your login email address.</small>
         </p>
         <input type="text" name="contactFormEmail" class="text-copy-primary bg-background-form shadow appearance-none border rounded w-full py-2 px-3 text-copy-primary leading-tight focus:outline-none focus:shadow-outline focus:bg-background-ruthieslight @error('contactFormEmail') border-solid border-red-600 border-2 @enderror" value="{{ $settings->contact_form_email }}" placeholder="{{ auth()->user()->email }}">
+      </div>
+      <div class="flex flex-col items-start mb-4">
+        <label for="name" class="font-semibold mb-2 text-copy-secondary">
+          Logo Image
+        </label>
+        <p class="mb-2 text-copy-secondary">
+          <small>This is optional but highly recommended. The file you upload here will be the logo displayed in the navigation area at the top of the site. If you don't upload one, users will see the name of this software instead. The ideal dimensions of your logo would be something like 650 pixels wide and 200 pixels high, including a bit of embedded padding. However, the upload will allow an image with the following dimensional parameters: minimum height - 100 pixels; maximum height - 300 pixels; minimum width - 500 pixels; maximum width - 800 pixels. Like other images, upload size is limited to 2MB.</small>
+        </p>
+        @if($settings->logo_location == null)
+          <p class="mb-2 text-copy-secondary">
+            <small>Looks like you haven't uploaded a logo yet. Go ahead!</small>
+          </p>
+        @else 
+          <p class="mb-2 text-copy-secondary">
+            <small>Looks like you've already uploaded a logo. You don't have to upload anything here again, unless of course you want to replace the logo with another one.</small>
+          </p>
+        @endif
+        <input type="file" name="logo" class="text-copy-primary bg-background-form shadow appearance-none border rounded w-full py-2 px-3 text-copy-primary leading-tight focus:outline-none focus:shadow-outline focus:bg-background-ruthieslight @error('logo') border-solid border-red-600 border-2 @enderror">
+      </div>
+      <div class="flex flex-col items-start mb-4">
+        <label for="name" class="font-semibold mb-2 text-copy-secondary">
+          Logo Description
+        </label>
+        <p class="mb-2 text-copy-secondary">
+          <small>If you are uploading a logo, you are required to provide a written description of it here. This is to make your site more accessible, such as for users with screen readers or in poor network conditions. If you've already uploaded a logo in the past, you'll find your existing description below. Changes to it will only be saved if you are uploading a new logo.</small>
+        </p>
+        <input type="text" name="logo_description" class="text-copy-primary bg-background-form shadow appearance-none border rounded w-full py-2 px-3 text-copy-primary leading-tight focus:outline-none focus:shadow-outline focus:bg-background-ruthieslight @error('logo_description') border-solid border-red-600 border-2 @enderror" placeholder="This is a pretty nifty logo, eh?" value="{{ $settings->logo_description == null ? '' : $settings->logo_description }}">
       </div>
       <div class="flex flex-col items-start mb-4 py-4 text-copy-secondary">
         <p class="font-semibold text-xl mb-2">

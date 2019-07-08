@@ -43,14 +43,14 @@
         </label>
         <textarea name="body" id="about-body" class="text-copy-primary bg-background-form shadow appearance-none border rounded w-full py-2 px-3 text-copy-primary leading-tight focus:outline-none focus:shadow-outline focus:bg-background-ruthieslight @error('body') border-solid border-red-600 border-2 @enderror" required>{{ $about->body }}</textarea>
       </div>
-      <div class="mb-4">
+      <div class="mb-4 flex flex-col">
         @if($about->image_location != null && $about->image_description != null)
-          <label for="image_file" class="block text-copy-primary text-sm font-bold mb-3">
+          <label for="image_file" class="text-copy-primary text-sm font-bold mb-6 mt-3 py-2">
             Upload An Image<br class="my-2">
             <small class="text-copy-primary font-normal text-xs">It looks like you've already uploaded an image for your About Page. If you're happy with the image you already have, then you don't need to do anything.</small>
             <small class="text-copy-primary font-normal text-xs">If you decide to upload an image to replace the old one, providing a description for the image below is mandatory. Note that the max upload size for an image is 2MB, so if your image is larger than that, you will need to resize it by way of image manipulation software, such as GIMP.</small>
           </label>
-          <input type="file" name="image_file" id="image_file" class="text-copy-primary bg-background-form shadow appearance-none border rounded w-full py-2 px-3 text-copy-primary leading-tight focus:outline-none focus:shadow-outline focus:bg-background-ruthieslight @error('image_file') border-solid border-red-600 border-2 @enderror">
+          <input type="file" name="image_file" id="image_file" class="text-copy-primary bg-background-form shadow appearance-none border rounded w-full mt-0 py-2 px-3 text-copy-primary leading-tight focus:outline-none focus:shadow-outline focus:bg-background-ruthieslight @error('image_file') border-solid border-red-600 border-2 @enderror">
           <label for="image_description" class="block text-copy-primary text-sm font-bold mb-3 mt-4">
             Image Description<br class="my-2">
             <small class="text-copy-primary font-normal text-xs">The description you provide for the image is for situations such as disabled users utilizing screen readers or network conditions preventing image loading for visitors to your site.</small>

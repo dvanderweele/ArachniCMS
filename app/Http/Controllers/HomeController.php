@@ -24,7 +24,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-      $unapprovedCommentCount = Comment::where('approved', false)->count();
-      return view('home')->with('unapprovedCommentCount', $unapprovedCommentCount);
+      $settings = Settings::firstOrFail();
+      return view('home')->with('settings', $settings);
     }
 }

@@ -17,6 +17,7 @@ class ImageableController extends Controller
      */
     public function create($type, $id)
     {
+      $settings = Settings::firstOrFail();
       if($type == 'post')
       {
         $post = Post::where('url_string', $id)->firstOrFail();
@@ -35,7 +36,8 @@ class ImageableController extends Controller
         ]);
         return view('imageable.create')->with([
           'post' => $post,
-          'images' => $images
+          'images' => $images,
+          'settings' => $settings
         ]);
       } elseif($type == 'album')
       {
