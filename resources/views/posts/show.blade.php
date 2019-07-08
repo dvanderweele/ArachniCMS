@@ -395,6 +395,7 @@
     @auth 
       <form action="/comments" method="post" class="px-8 pb-10">
         @csrf 
+        @honeypot
         <input type="hidden" name="post_url_string" value="{{ $post->url_string }}" required>
         <div class="flex flex-col items-start mt-4 text-copy-secondary">
           <label for="body" class="font-semibold mb-2">Comment</label>
@@ -407,6 +408,7 @@
       @if(!$post->comments_locked)
       <form action="/comments" method="post" class="px-8 pb-10">
         @csrf 
+        @honeypot
         <input type="hidden" name="post_url_string" value="{{ $post->url_string }}" required>
         <div class="flex flex-col items-start">
           <label for="name" class="font-semibold mb-2 text-copy-secondary">Name</label>
