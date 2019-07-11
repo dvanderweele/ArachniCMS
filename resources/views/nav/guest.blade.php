@@ -1,3 +1,8 @@
+@php
+  if(!isset($settings)){
+    $settings = \App\Settings::firstOrFail();
+  }
+@endphp
 <nav class="min-w-full py-4 m-0 flex flex-col md:flex-row items-center flex-wrap justify-around font-serif px-6 bg-background-primary text-xl text-copy-primary">
   <div class="flex flex-row items-center">
     @if($settings->logo_location != null && $settings->logo_description != null)

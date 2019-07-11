@@ -24,6 +24,8 @@ class CreateSettingsTable extends Migration
           $table->string('contact_form_email')->nullable();
           $table->text('logo_location')->nullable();
           $table->text('logo_description')->nullable();
+          $table->text('hero_location')->nullable();
+          $table->text('hero_description')->nullable();
           $table->string('font_pref');
           $table->timestamps();
       });

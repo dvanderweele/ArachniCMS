@@ -122,7 +122,7 @@
         <input type="text" name="contactFormEmail" class="text-copy-primary bg-background-form shadow appearance-none border rounded w-full py-2 px-3 text-copy-primary leading-tight focus:outline-none focus:shadow-outline focus:bg-background-ruthieslight @error('contactFormEmail') border-solid border-red-600 border-2 @enderror" value="{{ $settings->contact_form_email }}" placeholder="{{ auth()->user()->email }}">
       </div>
       <div class="flex flex-col items-start mb-4">
-        <label for="name" class="font-semibold mb-2 text-copy-secondary">
+        <label for="logo_file_input" class="font-semibold mb-2 text-copy-secondary">
           Logo Image
         </label>
         <p class="mb-2 text-copy-secondary">
@@ -137,16 +137,43 @@
             <small>Looks like you've already uploaded a logo. You don't have to upload anything here again, unless of course you want to replace the logo with another one.</small>
           </p>
         @endif
-        <input type="file" name="logo" class="text-copy-primary bg-background-form shadow appearance-none border rounded w-full py-2 px-3 text-copy-primary leading-tight focus:outline-none focus:shadow-outline focus:bg-background-ruthieslight @error('logo') border-solid border-red-600 border-2 @enderror">
+        <input type="file" name="logo" class="text-copy-primary bg-background-form shadow appearance-none border rounded w-full py-2 px-3 text-copy-primary leading-tight focus:outline-none focus:shadow-outline focus:bg-background-ruthieslight @error('logo') border-solid border-red-600 border-2 @enderror" id="logo_file_input">
       </div>
       <div class="flex flex-col items-start mb-4">
-        <label for="name" class="font-semibold mb-2 text-copy-secondary">
+        <label for="logo_description_input" class="font-semibold mb-2 text-copy-secondary">
           Logo Description
         </label>
         <p class="mb-2 text-copy-secondary">
           <small>If you are uploading a logo, you are required to provide a written description of it here. This is to make your site more accessible, such as for users with screen readers or in poor network conditions. If you've already uploaded a logo in the past, you'll find your existing description below. Changes to it will only be saved if you are uploading a new logo.</small>
         </p>
-        <input type="text" name="logo_description" class="text-copy-primary bg-background-form shadow appearance-none border rounded w-full py-2 px-3 text-copy-primary leading-tight focus:outline-none focus:shadow-outline focus:bg-background-ruthieslight @error('logo_description') border-solid border-red-600 border-2 @enderror" placeholder="This is a pretty nifty logo, eh?" value="{{ $settings->logo_description == null ? '' : $settings->logo_description }}">
+        <input type="text" name="logo_description" class="text-copy-primary bg-background-form shadow appearance-none border rounded w-full py-2 px-3 text-copy-primary leading-tight focus:outline-none focus:shadow-outline focus:bg-background-ruthieslight @error('logo_description') border-solid border-red-600 border-2 @enderror" placeholder="This is a pretty nifty logo, eh?" value="{{ $settings->logo_description == null ? '' : $settings->logo_description }}" id="logo_description_input">
+      </div>
+      <div class="flex flex-col items-start mb-4">
+        <label for="hero_image_input" class="font-semibold mb-2 text-copy-secondary">
+          Hero Image
+        </label>
+        <p class="mb-2 text-copy-secondary">
+          <small>This is also optional but highly recommended. The file you upload here will be the "hero image" displayed as the background on the landing page. If you don't upload one, users will see a plain background color instead. There are no limits aspect ratio limits, but keep in mind that images with extreme aspect ratios may end up looking very weird in your users' browsers. Like other images, upload size is limited to 2MB.</small>
+        </p>
+        @if($settings->hero_location == null)
+          <p class="mb-2 text-copy-secondary">
+            <small>Looks like you haven't uploaded a hero image yet. Go ahead!</small>
+          </p>
+        @else 
+          <p class="mb-2 text-copy-secondary">
+            <small>Looks like you've already uploaded a hero image. You don't have to upload anything here again, unless of course you want to replace the hero image with another one.</small>
+          </p>
+        @endif
+        <input type="file" name="hero_image" class="text-copy-primary bg-background-form shadow appearance-none border rounded w-full py-2 px-3 text-copy-primary leading-tight focus:outline-none focus:shadow-outline focus:bg-background-ruthieslight @error('hero_image') border-solid border-red-600 border-2 @enderror" id="hero_image_input">
+      </div>
+      <div class="flex flex-col items-start mb-4">
+        <label for="hero_description_input" class="font-semibold mb-2 text-copy-secondary">
+          Hero Description
+        </label>
+        <p class="mb-2 text-copy-secondary">
+          <small>If you are uploading a hero image for your landing page, you are required to provide a written description of it here. This is to make your site more accessible, such as for users with screen readers or in poor network conditions. If you've already uploaded a hero image in the past, you'll find your existing description below. Changes to it will only be saved if you are uploading a new hero image.</small>
+        </p>
+        <input id="hero_description_input" type="text" name="hero_description" class="text-copy-primary bg-background-form shadow appearance-none border rounded w-full py-2 px-3 text-copy-primary leading-tight focus:outline-none focus:shadow-outline focus:bg-background-ruthieslight @error('hero_description') border-solid border-red-600 border-2 @enderror" placeholder="This is a pretty nifty logo, eh?" value="{{ $settings->hero_description == null ? '' : $settings->hero_description }}">
       </div>
       <div class="flex flex-col items-start mb-4 py-4 text-copy-secondary">
         <p class="font-semibold text-xl mb-2">

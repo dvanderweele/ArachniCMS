@@ -105,6 +105,30 @@ class SettingsController extends Controller
         $settings->logo_description = $request->logo_description;
       }
     }
+    if($request->hasFile('hero_image'))
+    {
+      if($request->hero_description == null){
+        return redirect()->back();
+      } else {
+        // first let's get rid of the old image if there is one
+        if($settings->hero_location != null){
+          Storage::delete($settings->hero_location);
+        }
+        // let's validate and store that logo
+        $request->validate([
+          'hero_image' => 'image|required|max:1999',
+          'logo_description' => 'required|min:2'
+        ]);
+        $filenameWithExt = $request->file('hero_image')->getClientOriginalName();
+        $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+        $extension = $request->file('hero_image')->getClientOriginalExtension();
+        $fileNameToStore = $filename.'_'.time().'.'.$extension;
+        $path = $request->file('hero_image')->storeAs('public', $fileNameToStore);
+
+        $settings->hero_location = $fileNameToStore;
+        $settings->hero_description = $request->logo_description;
+      }
+    }
     $settings->save();
     return view('settings.show')->with([
       'settings' => $settings
