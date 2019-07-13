@@ -11,17 +11,24 @@
       document.addEventListener('DOMContentLoaded', (event) => {
         const thumbnails = document.querySelectorAll(".thumbnail");
         const gallery = document.querySelector("#image-gallery");
+        const bigImg = document.querySelector("#big-img")
+        const bigImgCancel = document.querySelector("#big-img-cancel");
         const caption = document.querySelector("#caption");
         gallery.src = thumbnails.item(0).src;
         gallery.alt = thumbnails.item(0).alt;
         caption.innerText = thumbnails.item(0).alt;
         for (let thumbnail of thumbnails){
           thumbnail.addEventListener("click", function(e){
-            gallery.src = thumbnail.src;
-            gallery.alt = thumbnail.alt;
+            bigImg.src = thumbnail.src;
+            bigImg.alt = thumbnail.alt;
             caption.innerText = thumbnail.alt;
+            gallery.classList.replace("hidden", "block");
+            bigImgCancel.focus();
           });
         }
+        bigImgCancel.addEventListener("click", function(){
+          gallery.classList.replace("block", "hidden");
+        });
       });
     </script>
   @endif
@@ -228,6 +235,9 @@
       height:1px;
       overflow:hidden;
     }
+    #big-img {
+      max-height: 85%;
+    }
   </style>
 @endsection
 
@@ -288,6 +298,17 @@
       </form>
     </p>
   </div>
+  <div class="fixed inset-0 bg-black z-20 hidden max-h-screen" id="image-gallery">
+    <div class="flex flex-row justify-end py-4 px-4">
+      <button type="button" id="big-img-cancel"><svg version="1.1" class="fill-current text-copy-primary h-8 w-8 cursor-pointer" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 20 20" enable-background="new 0 0 20 20" xml:space="preserve">
+        <path d="M16,2H4C2.9,2,2,2.9,2,4v12c0,1.1,0.9,2,2,2h12c1.1,0,2-0.9,2-2V4C18,2.9,17.1,2,16,2z M13.061,14.789  L10,11.729l-3.061,3.06L5.21,13.061L8.271,10l-3.06-3.061L6.94,5.21L10,8.271l3.059-3.061l1.729,1.729L11.729,10l3.06,3.061  L13.061,14.789z"/>
+      </svg></button>
+    </div>
+    <img src="" alt="" class="max-w-full w-2/3 mx-auto mb-4" id="big-img">
+    <p class="w-full bg-background-secondary rounded px-4 py-2 text-copy-primary hover:text-copy-secondary cursor-default">
+      <span class="font-bold">Caption:&nbsp;</span><span id="caption"></span>
+    </p>
+  </div>
   <div class="max-w-2xl w-10/12 mt-8 mx-auto flex flex-col items-start">
     <a href="/posts" class="border bg-background-primary text-copy-secondary py-2 px-4 rounded hover:bg-background-secondary font-bold h-auto">
       <svg version="1.1" class="fill-current h-8 w-8" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 20 20" enable-background="new 0 0 20 20" xml:space="preserve">
@@ -309,10 +330,6 @@
       </h1>
     </div>
     @if(count($post->images))
-      <img src="" alt="" class="h-64 mx-auto mb-4" id="image-gallery">
-      <p class="w-full bg-background-secondary rounded px-4 py-2 text-copy-primary hover:text-copy-secondary cursor-default">
-        <span class="font-bold">Caption:&nbsp;</span><span id="caption"></span>
-      </p>
       <div class="my-6 w-full overflow-x-auto px-2 rounded bg-background-secondary flex flex-row ">
         @foreach($post->images as $image)
           <img src="/storage/img/{{ $image->location }}" alt="{{ $image->description }}" class="thumbnail w-1/4 mx-2 cursor-pointer flex-shrink-0">
