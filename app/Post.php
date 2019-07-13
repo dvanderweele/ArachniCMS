@@ -41,18 +41,6 @@ class Post extends Model implements Feedable
   public function comments(){
     return $this->hasMany('App\Comment');
   }
-  public function albumlinks(){
-    return $this->hasMany('App\AlbumLink');
-  }
-  public function bandlinks(){
-    return $this->hasMany('App\BandLink');
-  }
-  public function musicianlinks(){
-    return $this->hasMany('App\MusicianLink');
-  }
-  public function songlinks(){
-    return $this->hasMany('App\SongLink');
-  }
   public function images(){
     return $this->morphToMany('App\Image', 'imageable');
   }
