@@ -3,14 +3,17 @@
 namespace App\Http\Controllers;
 
 use App\Settings;
+use App\Testimonial;
 use Illuminate\Http\Request;
 
 class IndexController extends Controller
 {
   public function show(){
     $settings = Settings::firstOrFail();
+    $testimonials = Testimonial::get();
     return view('welcome')->with([
-      'settings' => $settings
+      'settings' => $settings,
+      'testimonials' => $testimonials
     ]);
   }
 }

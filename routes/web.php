@@ -64,3 +64,9 @@ Route::delete('/imageables',                 'ImageableController@destroy')->mid
 Route::get('/settings',                       'SettingsController@show')->middleware('auth')->name('show-settings');
 Route::put('/settings',                     'SettingsController@update')->middleware('auth');
 
+Route::get('/testimonials',                     'TestimonialController@create')->middleware('auth');
+Route::post('/testimonials',                    'TestimonialController@store')->middleware('auth');
+Route::get('/testimonials/{testimonial}/edit',  'TestimonialController@edit')->middlewarE('auth');
+Route::patch('/testimonials',                   'TestimonialController@update')->middleware('auth');
+Route::delete('/testimonials',                  'TestimonialController@destroy')->middleware('auth');
+

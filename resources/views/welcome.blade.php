@@ -68,6 +68,26 @@
     </p>
   </div>
 
+  @if(count($testimonials))
+    <div class="font-bold py-10 {{ $settings->font_pref == 'gsa' ? 'font-sans' : '' }} {{ $settings->font_pref == 'gsa' ? 'font-sans' : '' }} {{ $settings->font_pref == 'gse' ? 'font-serif' : '' }} {{ $settings->font_pref == 'gmo' ? 'font-mono' : '' }} {{ $settings->font_pref == 'asa' ? 'font-alegreya-sans' : '' }} {{ $settings->font_pref == 'ase' ? 'font-alegreya' : '' }} {{ $settings->font_pref == 'fco' ? 'font-fira-code' : '' }} {{ $settings->font_pref == 'hac' ? 'font-hack' : '' }} {{ $settings->font_pref == 'mon' ? 'font-montserrat' : '' }} {{ $settings->font_pref == 'qui' ? 'font-quicksand' : '' }} flex flex-col items-center justify-center">
+      <h2 class="text-4xl mb-4 {{ $settings->font_pref == 'asa' ? 'font-alegreya-sans-sc' : '' }} {{ $settings->font_pref == 'ase' ? 'font-alegreya-sc' : '' }}">What People Are Saying</h2>
+      <article class="flex flex-row my-6 w-full overflow-x-auto px-2">
+        @foreach($testimonials as $testimonial)
+          <section class="flex flex-col justify-center items-center mb-4 w-full px-3">
+            <p class="font-semibold text-lg w-full">
+              @if($testimonial->link != null)
+                <a href="{{ $testimonial->link }}" _target="blank" class="text-teal-700 hover:text-teal-900 hover:underline">{{$testimonial->name}}</a>
+              @else 
+                {{ $testimonial->name }}
+              @endif
+            </p>
+            <p class="w-full">{{ $testimonial->quote }}</p>
+          </section>
+        @endforeach
+      </article>
+    </div>
+  @endif 
+
 @endsection
 
 @section('footer')
