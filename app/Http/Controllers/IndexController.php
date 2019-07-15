@@ -12,8 +12,9 @@ class IndexController extends Controller
   public function show(){
     $settings = Settings::firstOrFail();
     $testimonials = Testimonial::get();
-    $bestposts = new Post();
-    $bestposts = $bestposts->bestposts();
+    // $bestposts = new Post();
+    // $bestposts = $bestposts->bestposts();
+    $bestposts = null;
     return view('welcome')->with([
       'settings' => $settings,
       'testimonials' => $testimonials,
