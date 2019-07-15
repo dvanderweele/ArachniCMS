@@ -69,19 +69,28 @@
   </div>
 
   @if(count($testimonials))
-    <div class="font-bold py-10 {{ $settings->font_pref == 'gsa' ? 'font-sans' : '' }} {{ $settings->font_pref == 'gsa' ? 'font-sans' : '' }} {{ $settings->font_pref == 'gse' ? 'font-serif' : '' }} {{ $settings->font_pref == 'gmo' ? 'font-mono' : '' }} {{ $settings->font_pref == 'asa' ? 'font-alegreya-sans' : '' }} {{ $settings->font_pref == 'ase' ? 'font-alegreya' : '' }} {{ $settings->font_pref == 'fco' ? 'font-fira-code' : '' }} {{ $settings->font_pref == 'hac' ? 'font-hack' : '' }} {{ $settings->font_pref == 'mon' ? 'font-montserrat' : '' }} {{ $settings->font_pref == 'qui' ? 'font-quicksand' : '' }} flex flex-col items-center justify-center">
-      <h2 class="text-4xl mb-4 {{ $settings->font_pref == 'asa' ? 'font-alegreya-sans-sc' : '' }} {{ $settings->font_pref == 'ase' ? 'font-alegreya-sc' : '' }}">What People Are Saying</h2>
-      <article class="flex flex-row my-6 w-full overflow-x-auto px-2">
+    <div class="font-bold py-10 {{ $settings->font_pref == 'gsa' ? 'font-sans' : '' }} {{ $settings->font_pref == 'gsa' ? 'font-sans' : '' }} {{ $settings->font_pref == 'gse' ? 'font-serif' : '' }} {{ $settings->font_pref == 'gmo' ? 'font-mono' : '' }} {{ $settings->font_pref == 'asa' ? 'font-alegreya-sans' : '' }} {{ $settings->font_pref == 'ase' ? 'font-alegreya' : '' }} {{ $settings->font_pref == 'fco' ? 'font-fira-code' : '' }} {{ $settings->font_pref == 'hac' ? 'font-hack' : '' }} {{ $settings->font_pref == 'mon' ? 'font-montserrat' : '' }} {{ $settings->font_pref == 'qui' ? 'font-quicksand' : '' }} flex flex-col items-center justify-center h-auto">
+      <h2 class="text-4xl {{ $settings->font_pref == 'asa' ? 'font-alegreya-sans-sc' : '' }} {{ $settings->font_pref == 'ase' ? 'font-alegreya-sc' : '' }}">What People Are Saying</h2>
+      <article class="flex flex-row items-start w-full overflow-x-auto px-2 py-1 h-auto">
         @foreach($testimonials as $testimonial)
-          <section class="flex flex-col justify-center items-center mb-4 w-full px-3">
-            <p class="font-semibold text-lg w-full">
+          <section class="flex flex-col justify-center items-center my-auto w-full sm:w-2/3 md:w-1/3 lg:w-1/4 xl:w-1/5 px-3 flex-shrink-0">
+            <p class="font-semibold text-lg mx-4 text-center">
               @if($testimonial->link != null)
                 <a href="{{ $testimonial->link }}" _target="blank" class="text-teal-700 hover:text-teal-900 hover:underline">{{$testimonial->name}}</a>
+                @auth 
+                  <a href="/testimonials/{{ $testimonial->id }}/edit">
+                    <button type="button">
+                      <svg version="1.1" class="fill-current w-6 h-6" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 20 20" enable-background="new 0 0 20 20" xml:space="preserve">
+                        <path d="M17.561,2.439c-1.442-1.443-2.525-1.227-2.525-1.227L8.984,7.264L2.21,14.037L1.2,18.799l4.763-1.01  l6.774-6.771l6.052-6.052C18.788,4.966,19.005,3.883,17.561,2.439z M5.68,17.217l-1.624,0.35c-0.156-0.293-0.345-0.586-0.69-0.932  c-0.346-0.346-0.639-0.533-0.932-0.691l0.35-1.623l0.47-0.469c0,0,0.883,0.018,1.881,1.016c0.997,0.996,1.016,1.881,1.016,1.881  L5.68,17.217z"/>
+                      </svg>
+                    </button>
+                  </a>
+                @endauth
               @else 
                 {{ $testimonial->name }}
               @endif
             </p>
-            <p class="w-full">{{ $testimonial->quote }}</p>
+            <p class="w-full text-center">{{ $testimonial->quote }}</p>
           </section>
         @endforeach
       </article>

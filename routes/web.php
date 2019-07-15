@@ -66,7 +66,7 @@ Route::put('/settings',                     'SettingsController@update')->middle
 
 Route::get('/testimonials',                     'TestimonialController@create')->middleware('auth');
 Route::post('/testimonials',                    'TestimonialController@store')->middleware('auth');
-Route::get('/testimonials/{testimonial}/edit',  'TestimonialController@edit')->middlewarE('auth');
+Route::get('/testimonials/{testimonial}/edit',  'TestimonialController@edit')->middleware('auth');
 Route::patch('/testimonials',                   'TestimonialController@update')->middleware('auth');
 Route::delete('/testimonials',                  'TestimonialController@destroy')->middleware('auth');
 
