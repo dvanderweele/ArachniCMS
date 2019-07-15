@@ -55,7 +55,7 @@
           </label>
           <textarea name="summary" id="post-summary" class="text-copy-primary bg-background-form shadow appearance-none border rounded w-full py-2 px-3 text-copy-primary leading-tight focus:outline-none focus:shadow-outline focus:bg-background-ruthieslight @error('summary') border-solid border-red-600 border-2 @enderror"></textarea>
         </div>
-        <small class="text-copy-primary">On some pages, such as the page the displays a paginated list of multiple blog posts, it may be unrealistic to display the whole body of the blog post. Instead, we'll display the short, unstyled summary you type in here. Adding a summary is not required, but advised.</small>
+        <small class="text-copy-primary">On some pages, such as the page the displays a paginated list of multiple blog posts, it may be unrealistic to display the whole body of the blog post. Instead, we'll display the short, unstyled summary you type in here. Adding a summary is not required, but advised. Your post will never be featured on the landing page no matter how many views it gets, if it has no summary.</small>
       <div class="mt-4 mb-4">
         <label for="is-published" class="block text-copy-primary text-sm font-bold mb-2">
           Publication Status

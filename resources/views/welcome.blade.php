@@ -96,6 +96,32 @@
       </article>
     </div>
   @endif 
+  @if(count($bestposts))
+    <div class="font-bold py-10 {{ $settings->font_pref == 'gsa' ? 'font-sans' : '' }} {{ $settings->font_pref == 'gsa' ? 'font-sans' : '' }} {{ $settings->font_pref == 'gse' ? 'font-serif' : '' }} {{ $settings->font_pref == 'gmo' ? 'font-mono' : '' }} {{ $settings->font_pref == 'asa' ? 'font-alegreya-sans' : '' }} {{ $settings->font_pref == 'ase' ? 'font-alegreya' : '' }} {{ $settings->font_pref == 'fco' ? 'font-fira-code' : '' }} {{ $settings->font_pref == 'hac' ? 'font-hack' : '' }} {{ $settings->font_pref == 'mon' ? 'font-montserrat' : '' }} {{ $settings->font_pref == 'qui' ? 'font-quicksand' : '' }} flex flex-col items-center justify-center h-auto">
+      <h2 class="text-4xl {{ $settings->font_pref == 'asa' ? 'font-alegreya-sans-sc' : '' }} {{ $settings->font_pref == 'ase' ? 'font-alegreya-sc' : '' }}">Top Posts</h2>
+      <section class="flex flex-row flex-wrap items-start justify-around w-full px-2 py-1 h-auto">
+        @foreach($bestposts as $post)
+          <article class="flex-shrink-0 py-4 px-6 rounded-lg shadow-2xl border border-black border-2 mx-6 my-6 w-5/6 sm:w-5/12 md:1/3 lg:1/4">
+            <h3 class="text-2xl font-bold text-center">
+              {{ $post->title }}
+            </h3>
+            <p>
+              @if($post->summary != null)
+                {{ $post->summary }}
+              @else 
+                No summary.
+              @endif
+            </p>
+            <a href="/posts/{{ $post->url_string }}">
+              <button type="button" class="w-full rounded border border-black text-center font-bold bg-green-400 hover:bg-green-500 mt-4 py-2">
+                Read More
+              </button>
+            </a>
+          </article>
+        @endforeach
+      </section>
+    </div>
+  @endif
 
 @endsection
 
