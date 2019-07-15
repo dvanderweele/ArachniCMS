@@ -47,13 +47,13 @@ class Post extends Model implements Feedable
 
   public function bestposts(){
     if($this->count() < 3){
-      return $this->whereNotNull('summary')->orderBy('views', 'desc')->take(2)->get();
+      return $this->where('is_published', true)->whereNotNull('summary')->orderBy('views', 'desc')->take(2)->get();
     } else if ($this->count() < 2) {
-      return $this->whereNotNull('summary')->orderBy('views', 'desc')->take(1)->get();
+      return $this->where('is_published', true)->whereNotNull('summary')->orderBy('views', 'desc')->take(1)->get();
     } else if ($this->count() < 1) {
       return null;
     } else {
-      return $this->whereNotNull('summary')->orderBy('views', 'desc')->take(3)->get();
+      return $this->where('is_published', true)->whereNotNull('summary')->orderBy('views', 'desc')->take(3)->get();
     }
   }
 }
