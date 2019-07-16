@@ -37,6 +37,14 @@
     #landing-nav {
       background-image: linear-gradient(rgba(178,178,178,.35),rgba(0,0,0,0));
     }
+    .sr-hidden {
+      position:absolute;
+      left:-10000px;
+      top:auto;
+      width:1px;
+      height:1px;
+      overflow:hidden;
+    }
   </style>
 @endsection
 
@@ -68,7 +76,7 @@
     </p>
   </div>
 
-  @if($testimonials != null)
+  @if(isset($testimonials) && $testimonials->count())
     <div class="font-bold py-10 {{ $settings->font_pref == 'gsa' ? 'font-sans' : '' }} {{ $settings->font_pref == 'gsa' ? 'font-sans' : '' }} {{ $settings->font_pref == 'gse' ? 'font-serif' : '' }} {{ $settings->font_pref == 'gmo' ? 'font-mono' : '' }} {{ $settings->font_pref == 'asa' ? 'font-alegreya-sans' : '' }} {{ $settings->font_pref == 'ase' ? 'font-alegreya' : '' }} {{ $settings->font_pref == 'fco' ? 'font-fira-code' : '' }} {{ $settings->font_pref == 'hac' ? 'font-hack' : '' }} {{ $settings->font_pref == 'mon' ? 'font-montserrat' : '' }} {{ $settings->font_pref == 'qui' ? 'font-quicksand' : '' }} flex flex-col items-center justify-center h-auto">
       <h2 class="text-4xl {{ $settings->font_pref == 'asa' ? 'font-alegreya-sans-sc' : '' }} {{ $settings->font_pref == 'ase' ? 'font-alegreya-sc' : '' }}">What People Are Saying</h2>
       <article class="flex flex-row items-start w-full overflow-x-auto px-2 py-1 h-auto">
@@ -96,8 +104,8 @@
       </article>
     </div>
   @endif 
-  @if($bestposts != null)
-    <div class="font-bold py-10 {{ $settings->font_pref == 'gsa' ? 'font-sans' : '' }} {{ $settings->font_pref == 'gsa' ? 'font-sans' : '' }} {{ $settings->font_pref == 'gse' ? 'font-serif' : '' }} {{ $settings->font_pref == 'gmo' ? 'font-mono' : '' }} {{ $settings->font_pref == 'asa' ? 'font-alegreya-sans' : '' }} {{ $settings->font_pref == 'ase' ? 'font-alegreya' : '' }} {{ $settings->font_pref == 'fco' ? 'font-fira-code' : '' }} {{ $settings->font_pref == 'hac' ? 'font-hack' : '' }} {{ $settings->font_pref == 'mon' ? 'font-montserrat' : '' }} {{ $settings->font_pref == 'qui' ? 'font-quicksand' : '' }} flex flex-col items-center justify-center h-auto">
+  @if(isset($bestposts) && $bestposts->count())
+    <div class="font-bold pt-10 {{ $settings->font_pref == 'gsa' ? 'font-sans' : '' }} {{ $settings->font_pref == 'gsa' ? 'font-sans' : '' }} {{ $settings->font_pref == 'gse' ? 'font-serif' : '' }} {{ $settings->font_pref == 'gmo' ? 'font-mono' : '' }} {{ $settings->font_pref == 'asa' ? 'font-alegreya-sans' : '' }} {{ $settings->font_pref == 'ase' ? 'font-alegreya' : '' }} {{ $settings->font_pref == 'fco' ? 'font-fira-code' : '' }} {{ $settings->font_pref == 'hac' ? 'font-hack' : '' }} {{ $settings->font_pref == 'mon' ? 'font-montserrat' : '' }} {{ $settings->font_pref == 'qui' ? 'font-quicksand' : '' }} flex flex-col items-center justify-center h-auto">
       <h2 class="text-4xl {{ $settings->font_pref == 'asa' ? 'font-alegreya-sans-sc' : '' }} {{ $settings->font_pref == 'ase' ? 'font-alegreya-sc' : '' }}">Top Posts</h2>
       <section class="flex flex-row flex-wrap items-center justify-around w-full px-2 py-1 h-auto">
         @foreach($bestposts as $post)
@@ -112,6 +120,34 @@
                 No summary.
               @endif
             </p>
+            <dl class="mt-4 cursor-default flex flex-row flex-wrap justify-around">
+              @guest
+              @if($settings->view_count_policy)
+                <dt class="sr-hidden">View Count</dt>
+                <dd class="w-auto bg-gray-700 text-gray-100 hover:text-gray-200 hover:bg-gray-800 font-semibold rounded-full py-2 px-4 text-sm flex flex-row items-center align-center mx-4 my-2 mx-auto">
+                  <svg version="1.1" class="fill-current w-6 h-6" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 20 20" enable-background="new 0 0 20 20" xml:space="preserve">
+                    <path d="M10,4.4C3.439,4.4,0,9.232,0,10c0,0.766,3.439,5.6,10,5.6c6.56,0,10-4.834,10-5.6C20,9.232,16.56,4.4,10,4.4  z M10,14.307c-2.455,0-4.445-1.928-4.445-4.307S7.545,5.691,10,5.691s4.444,1.93,4.444,4.309S12.455,14.307,10,14.307z M10,10  c-0.407-0.447,0.663-2.154,0-2.154c-1.228,0-2.223,0.965-2.223,2.154S8.772,12.154,10,12.154c1.227,0,2.223-0.965,2.223-2.154  C12.223,9.453,10.346,10.379,10,10z"/>
+                  </svg>&nbsp;&nbsp;{{ $post->views }}
+                </dd>
+              @endif
+              @endguest
+              @if(count($post->images))
+                <dt class="sr-hidden">Image Count</dt>
+                <dd class="w-auto bg-gray-700 text-gray-100 hover:text-gray-200 hover:bg-gray-800 font-semibold rounded-full py-2 px-4 text-sm flex flex-row items-center align-center mx-4 my-2 mx-auto">
+                <svg version="1.1" class="fill-current w-8 h-8" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 20 20" enable-background="new 0 0 20 20" xml:space="preserve">
+                  <path d="M17.125,6.17l-2.046-5.635c-0.151-0.416-0.595-0.637-0.989-0.492L0.492,5.006  C0.098,5.15-0.101,5.603,0.051,6.019l2.156,5.941V8.777c0-1.438,1.148-2.607,2.56-2.607H8.36l4.285-3.008l2.479,3.008H17.125z   M19.238,8H4.767c-0.42,0-0.762,0.334-0.762,0.777v9.42C4.006,18.641,4.348,19,4.767,19h14.471C19.658,19,20,18.641,20,18.197v-9.42  C20,8.334,19.658,8,19.238,8z M18,17H6v-2l1.984-4.018l2.768,3.436l2.598-2.662l3.338-1.205L18,14V17z"/>
+                </svg>&nbsp;&times;&nbsp;{{ count($post->images) }}</dd>
+              @endif
+              @if(count($post->youtubevidembeds))
+                <dt class="sr-hidden">Youtube Video Count</dt>
+                <dd class="w-auto bg-gray-700 text-gray-100 hover:text-gray-200 hover:bg-gray-800 font-semibold rounded-full py-2 px-4 text-sm flex flex-row items-center align-center mx-4 my-2 mx-auto">
+                  <svg version="1.1" class="fill-current w-8 h-8" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 20 20" enable-background="new 0 0 20 20" xml:space="preserve">
+                    <path d="M10,2.3C0.172,2.3,0,3.174,0,10s0.172,7.7,10,7.7s10-0.874,10-7.7S19.828,2.3,10,2.3z M13.205,10.334  l-4.49,2.096C8.322,12.612,8,12.408,8,11.974V8.026C8,7.593,8.322,7.388,8.715,7.57l4.49,2.096  C13.598,9.85,13.598,10.15,13.205,10.334z"/>
+                    </svg>&nbsp;&times;&nbsp;{{ count($post->youtubevidembeds) }}</dd>
+              @endif
+                <dt class="sr-hidden">Publication Time</dt>
+                <dd class="flex flex-row items-center align-center w-auto bg-gray-700 text-gray-100 hover:text-gray-200 hover:bg-gray-800 font-semibold rounded-full py-2 px-4 text-sm mx-4 my-2 mx-auto">{{ date('F d, Y', strtotime($post->updated_at)) }}</dd>
+              </dl>
             <a href="/posts/{{ $post->url_string }}" class="inline-block w-full rounded border border-black text-center font-bold bg-green-400 hover:bg-green-500 mt-4 py-2">
               Read More
             </a>
