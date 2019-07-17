@@ -28,7 +28,8 @@ Route::get('/about/edit',                 'AboutController@edit')->middleware('a
 Route::patch('/about',                    'AboutController@update')->middleware('auth');
 Route::delete('/about',                   'AboutController@destroy')->middleware('auth');
 
-Route::get('/contact',                    'ContactController@show')->name('show-contact');
+Route::get('/contact',                    'ContactController@create')->name('create-contact');
+Route::post('/contact',                   'ContactController@store')->name('store-contact')->middleware(ProtectAgainstSpam::class);
 
 Route::get('/posts',                      'PostController@index')->name('list-posts');
 Route::get('/posts/create',               'PostController@create')->middleware('auth')->name('create-post');

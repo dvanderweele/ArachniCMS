@@ -27,7 +27,7 @@
       </a>
     </div>
     <div class="flex flex-row items-center py-2 mr-8 ml-4">
-      <a class="hover:text-copy-secondary font-semibold flex flex-row items-center" href="#">
+      <a class="hover:text-copy-secondary font-semibold flex flex-row items-center" href="/contact">
         <svg version="1.1" class="fill-current w-10 h-10" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 20 20" enable-background="new 0 0 20 20" xml:space="preserve">
           <path d="M18.64,2.634C18.296,2.755,1.319,8.738,0.984,8.856c-0.284,0.1-0.347,0.345-0.01,0.479  c0.401,0.161,3.796,1.521,3.796,1.521l0,0l2.25,0.901c0,0,10.838-7.958,10.984-8.066c0.148-0.108,0.318,0.095,0.211,0.211  c-0.107,0.117-7.871,8.513-7.871,8.513v0.002L9.892,12.92l0.599,0.322l0,0c0,0,4.65,2.504,4.982,2.682  c0.291,0.156,0.668,0.027,0.752-0.334c0.099-0.426,2.845-12.261,2.906-12.525C19.21,2.722,18.983,2.513,18.64,2.634z M7,17.162  c0,0.246,0.139,0.315,0.331,0.141c0.251-0.229,2.85-2.561,2.85-2.561L7,13.098V17.162z"/>
         </svg>&nbsp;Contact
