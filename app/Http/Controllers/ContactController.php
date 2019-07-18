@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Settings;
+use Carbon\Carbon;
+use App\Mail\ContactFormSubmission;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class ContactController extends Controller
 {
@@ -27,11 +30,19 @@ class ContactController extends Controller
      */
     public function store(Request $request)
     {
+      $email = Settings::firstOrFail()->contact_form_email;
       $request->validate([
         'name' => 'required',
         'email' => 'required|email',
-        'contact-body' => 'required'
+        'contact_body' => 'required|max:2000'
       ]);
-      
+      $submission = collect([
+        'name' => $request->name,
+        'email' => $request->email,
+        'contact_body' => $request->contact_body,
+        'time' => Carbon::now()->toDateTimeString()
+      ]);
+      Mail::to($email)->queue(new ContactFormSubmission($submission));
+      return redirect('/posts');
     }
 }

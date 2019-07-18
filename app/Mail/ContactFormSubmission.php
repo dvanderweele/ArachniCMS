@@ -11,14 +11,16 @@ class ContactFormSubmission extends Mailable
 {
     use Queueable, SerializesModels;
 
+
+    public $submission;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($submission)
     {
-        //
+      $this->submission = $submission;
     }
 
     /**
@@ -28,6 +30,7 @@ class ContactFormSubmission extends Mailable
      */
     public function build()
     {
-        return $this->view('view.name');
+      $subject = 'Contact Form Submission: ' . config('app.name');
+      return $this->subject($subject)->view('emails.contact');
     }
 }
