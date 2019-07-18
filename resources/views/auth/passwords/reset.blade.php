@@ -49,7 +49,7 @@
       <label class="block text-copy-secondary text-sm font-bold mb-2" for="password-confirm">
         {{ __('Confirm Password') }}
       </label>
-      <input class="shadow appearance-none border rounded w-full py-2 px-3 text-copy-secondary leading-tight focus:bg-background-ruthieslight focus:outline-none focus:shadow-outline @error('password') border-solid border-red-600 border-2 @enderror" id="password-confirm" name="password-confirmation" type="password" placeholder="*********" required autocomplete="new-password">
+      <input class="shadow appearance-none border rounded w-full py-2 px-3 text-copy-secondary leading-tight focus:bg-background-ruthieslight focus:outline-none focus:shadow-outline @error('password') border-solid border-red-600 border-2 @enderror" id="password-confirm" name="password_confirmation" type="password" placeholder="*********" required>
     </div>
 
     <div class="mb-4 flex items-center justify-between">
