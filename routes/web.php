@@ -1,7 +1,7 @@
 <?php
 
 use Spatie\Honeypot\ProtectAgainstSpam;
-use App\Jobs\TestSitemapGenerator;
+use App\Jobs\SitemapGeneratorJob;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,7 +19,7 @@ Auth::routes(['register' => false]);
 Route::feeds();
 
 Route::get('/test', function(){
-  TestSitemapGenerator::dispatch();
+  SitemapGeneratorJob::dispatch();
   return redirect('/');
 });
 

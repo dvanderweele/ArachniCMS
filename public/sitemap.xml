@@ -2,127 +2,127 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
     <url>
         <loc>http://localhost:8000/</loc>
-        <lastmod>2019-07-18T18:35:40+00:00</lastmod>
+        <lastmod>2019-07-18T19:37:17+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>http://localhost:8000/about</loc>
-        <lastmod>2019-07-18T18:35:42+00:00</lastmod>
+        <lastmod>2019-07-18T19:37:18+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>http://localhost:8000/contact</loc>
-        <lastmod>2019-07-18T18:35:43+00:00</lastmod>
+        <lastmod>2019-07-18T19:37:18+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>http://localhost:8000/login</loc>
-        <lastmod>2019-07-18T18:35:44+00:00</lastmod>
+        <lastmod>2019-07-18T19:37:19+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>http://localhost:8000/password/reset</loc>
-        <lastmod>2019-07-18T18:35:48+00:00</lastmod>
+        <lastmod>2019-07-18T19:37:21+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>http://localhost:8000/posts</loc>
-        <lastmod>2019-07-18T18:35:42+00:00</lastmod>
+        <lastmod>2019-07-18T19:37:18+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>http://localhost:8000/posts-feed</loc>
-        <lastmod>2019-07-18T18:35:45+00:00</lastmod>
+        <lastmod>2019-07-18T19:37:20+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>http://localhost:8000/posts/BMVWgPZk9L</loc>
-        <lastmod>2019-07-18T18:35:45+00:00</lastmod>
+        <lastmod>2019-07-18T19:37:20+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>http://localhost:8000/posts/RaYZqyZkDr</loc>
-        <lastmod>2019-07-18T18:35:46+00:00</lastmod>
+        <lastmod>2019-07-18T19:37:20+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>http://localhost:8000/posts/VGDZwp5lok</loc>
-        <lastmod>2019-07-18T18:35:44+00:00</lastmod>
+        <lastmod>2019-07-18T19:37:19+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>http://localhost:8000/posts/YGLNX4Nx2d</loc>
-        <lastmod>2019-07-18T18:35:46+00:00</lastmod>
+        <lastmod>2019-07-18T19:37:20+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>http://localhost:8000/posts/gRdZDoWpr2</loc>
-        <lastmod>2019-07-18T18:35:43+00:00</lastmod>
+        <lastmod>2019-07-18T19:37:18+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>http://localhost:8000/posts/o4k5PjWVy3</loc>
-        <lastmod>2019-07-18T18:35:46+00:00</lastmod>
+        <lastmod>2019-07-18T19:37:20+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>http://localhost:8000/posts/o4k5PjWVy3?page=1</loc>
-        <lastmod>2019-07-18T18:35:50+00:00</lastmod>
+        <lastmod>2019-07-18T19:37:23+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>http://localhost:8000/posts/o4k5PjWVy3?page=2</loc>
-        <lastmod>2019-07-18T18:35:48+00:00</lastmod>
+        <lastmod>2019-07-18T19:37:22+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>http://localhost:8000/posts/qjrZy65V1n</loc>
-        <lastmod>2019-07-18T18:35:48+00:00</lastmod>
+        <lastmod>2019-07-18T19:37:22+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>http://localhost:8000/posts/yLBZr1WGp8</loc>
-        <lastmod>2019-07-18T18:35:44+00:00</lastmod>
+        <lastmod>2019-07-18T19:37:19+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>http://localhost:8000/posts/yLBZr1WGp8?page=1</loc>
-        <lastmod>2019-07-18T18:35:49+00:00</lastmod>
+        <lastmod>2019-07-18T19:37:22+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>http://localhost:8000/posts/yLBZr1WGp8?page=2</loc>
-        <lastmod>2019-07-18T18:35:47+00:00</lastmod>
+        <lastmod>2019-07-18T19:37:21+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>http://localhost:8000/posts?page=1</loc>
-        <lastmod>2019-07-18T18:35:49+00:00</lastmod>
+        <lastmod>2019-07-18T19:37:22+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>http://localhost:8000/posts?page=2</loc>
-        <lastmod>2019-07-18T18:35:47+00:00</lastmod>
+        <lastmod>2019-07-18T19:37:21+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.8</priority>
     </url>
