@@ -1,6 +1,7 @@
 <?php
 
 use Spatie\Honeypot\ProtectAgainstSpam;
+use App\Jobs\TestSitemapGenerator;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,6 +17,11 @@ use Spatie\Honeypot\ProtectAgainstSpam;
 Auth::routes(['register' => false]);
 
 Route::feeds();
+
+Route::get('/test', function(){
+  TestSitemapGenerator::dispatch();
+  return redirect('/');
+});
 
 Route::get('/', 'IndexController@show');
 

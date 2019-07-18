@@ -85,7 +85,7 @@ class PostController extends Controller
      * @param  \App\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function show(Post $post)
+    public function show(Post $post, Request $request)
     {
       $approved = Comment::where('post_id', $post->id)->where('approved', true)->latest()->paginate(5);
       $settings = Settings::firstOrFail();
@@ -102,7 +102,9 @@ class PostController extends Controller
           ]);
         } else 
         {
-          $post->increment('views', 1);
+          if($request->ip() != $request->server('SERVER_NAME')){
+            $post->increment('views', 1);
+          }
           return view('posts.show', [
             'post' => $post, 
             'approved' => $approved, 

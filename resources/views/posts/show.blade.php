@@ -429,7 +429,7 @@
         <input type="hidden" name="post_url_string" value="{{ $post->url_string }}" required>
         <div class="flex flex-col items-start">
           <label for="name" class="font-semibold mb-2 text-copy-secondary">Name</label>
-          <input type="text" name="name" id="name" required class="text-copy-primary bg-background-form shadow appearance-none border rounded w-full py-2 px-3 text-copy-primary leading-tight focus:outline-none focus:shadow-outline focus:bg-background-ruthieslight @error('name') border-solid border-red-600 border-2 @enderror" value="{{ old('name') }}" autofocus>
+          <input type="text" name="name" id="name" required class="text-copy-primary bg-background-form shadow appearance-none border rounded w-full py-2 px-3 text-copy-primary leading-tight focus:outline-none focus:shadow-outline focus:bg-background-ruthieslight @error('name') border-solid border-red-600 border-2 @enderror" value="{{ old('name') }}">
         </div>
         <div class="flex flex-col items-start mt-4">
           <label for="email" class="font-semibold mb-2 text-copy-secondary">Email Address</label>
