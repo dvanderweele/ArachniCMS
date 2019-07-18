@@ -19,6 +19,7 @@
 </head>
 <body id="body" class="min-h-screen theme-light bg-background-secondary relative flex flex-col">
 
+
   @yield('nav')
 
   <main class="flex-grow">
@@ -26,6 +27,9 @@
   </main>
 
   @yield('footer')
+
+  
+  @include('cookieConsent::index')
 
 </body>
 </html>
