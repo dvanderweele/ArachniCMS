@@ -370,6 +370,19 @@
         </div>
       @endforeach
     </section>
+    <section class="text-copy-primary mx-6 my-4">
+        <h2 class="mb-4 text-xl font-bold">Subscribe</h2>
+        <p class="mb-4">
+          Thank you for reading! If you enjoy these posts, consider subcribing to email list:
+        </p>
+        <form action="/subscriptions" method="post">
+          @csrf 
+          @honeypot 
+          <label for="subscription-email">Email Address</label>
+          <input type="email" name="email" id="subscription-email">
+          <button type="submit" class="border bg-background-secondary text-copy-secondary py-2 px-4 rounded hover:bg-background-primary font-bold mt-4">Subscribe</button>
+        </form>
+    </section>
     <section class="mb-8 mx-6 text-copy-primary">
       <p class="text-xl font-black mb-4 text-center tracking-wide">Share:</p>
       <div class="flex flex-row justify-around">

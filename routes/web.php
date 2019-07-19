@@ -69,7 +69,7 @@ Route::post('/imageables',                   'ImageableController@store')->middl
 Route::delete('/imageables',                 'ImageableController@destroy')->middleware('auth');
 
 Route::get('/settings',                       'SettingsController@show')->middleware('auth')->name('show-settings');
-Route::put('/settings',                     'SettingsController@update')->middleware('auth');
+Route::put('/settings',                       'SettingsController@update')->middleware('auth');
 
 Route::get('/testimonials',                     'TestimonialController@create')->middleware('auth');
 Route::post('/testimonials',                    'TestimonialController@store')->middleware('auth');
@@ -77,3 +77,4 @@ Route::get('/testimonials/{testimonial}/edit',  'TestimonialController@edit')->m
 Route::patch('/testimonials',                   'TestimonialController@update')->middleware('auth');
 Route::delete('/testimonials',                  'TestimonialController@destroy')->middleware('auth');
 
+Route::post('/subscriptions',                   'SubscriptionController@store')->(middlware(ProtectAgainstSpam::class);
