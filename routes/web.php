@@ -77,4 +77,5 @@ Route::get('/testimonials/{testimonial}/edit',  'TestimonialController@edit')->m
 Route::patch('/testimonials',                   'TestimonialController@update')->middleware('auth');
 Route::delete('/testimonials',                  'TestimonialController@destroy')->middleware('auth');
 
-Route::post('/subscriptions',                   'SubscriptionController@store')->(middlware(ProtectAgainstSpam::class);
+Route::post('/subscriptions',                   'SubscriptionController@store')->middleware(ProtectAgainstSpam::class);
+Route::get('/thankyou',                         'SubscriptionController@show');

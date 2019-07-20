@@ -17,6 +17,8 @@ $factory->define(Settings::class, function (Faker $faker) {
       'contact_form_email' => function(){
         return User::firstOrFail()->email;
       },
+      'subscribe_form_title' => null,
+      'subscribe_form_copy' => null,
       'font_pref' => 'gsa',
     ];
 });

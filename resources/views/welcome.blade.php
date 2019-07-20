@@ -109,7 +109,7 @@
       <h2 class="text-4xl {{ $settings->font_pref == 'asa' ? 'font-alegreya-sans-sc' : '' }} {{ $settings->font_pref == 'ase' ? 'font-alegreya-sc' : '' }}">Top Posts</h2>
       <section class="flex flex-row flex-wrap items-center justify-around w-full px-2 py-1 h-auto">
         @foreach($bestposts as $post)
-          <article class="flex-shrink-0 py-4 px-6 rounded-lg shadow-2xl border border-black border-2 mx-6 my-6 w-5/6 sm:w-5/12 md:1/3 lg:1/4">
+          <article class="flex-shrink-0 py-4 px-6 rounded-lg shadow-2xl border border-black border-2 mx-6 my-6 w-5/6 sm:w-5/12 md:w-1/3 lg:w-1/4">
             <h3 class="text-2xl font-bold text-center">
               {{ $post->title }}
             </h3>
@@ -154,6 +154,35 @@
           </article>
         @endforeach
       </section>
+      @if($settings->enable_subscribe_form == true)
+      <section class="rounded-lg shadow-2xl border border-black border-2 px-6 py-6 mx-6 my-4 w-5/6 sm:w-3/4 md:w-1/2 lg:w-1/3">
+        <h2 class="mb-4 text-2xl font-bold text-center">
+          @switch($settings->subscribe_form_title)
+            @case(!null)
+              {{ $settings->subscribe_form_title }}
+              @break
+            @default 
+              Subscribe
+          @endswitch
+        </h2>
+        <p class="mb-4">
+          @switch($settings->subscribe_form_copy)
+            @case(!null)
+              {{ $settings->subscribe_form_copy }}
+              @break
+            @default
+              Thank you for visiting! Please consider subscribing to the email list:
+          @endswitch
+        </p>
+        <form action="/subscriptions" method="post" class="flex flex-col items-start justify-between">
+          @csrf 
+          @honeypot 
+          <label for="subscription-email" class="font-semibold mb-2">Email Address</label>
+          <input type="email" name="email" id="subscription-email" class="text-copy-primary bg-background-form shadow appearance-none border rounded w-full py-2 px-3 text-copy-primary leading-tight focus:outline-none focus:shadow-outline focus:bg-background-ruthieslight text-center @error('email') border-solid border-red-600 border-2 @enderror" value="{{ old('email') }}" required>
+          <button type="submit" class="py-2 px-4 rounded w-full font-bold mt-4 bg-green-400 hover:bg-green-500 border border-black">Subscribe</button>
+        </form>
+      </section>
+      @endif
     </div>
   @endif
 

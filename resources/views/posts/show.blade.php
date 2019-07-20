@@ -370,19 +370,35 @@
         </div>
       @endforeach
     </section>
-    <section class="text-copy-primary mx-6 my-4">
-        <h2 class="mb-4 text-xl font-bold">Subscribe</h2>
+    @if($settings->enable_subscribe_form == true)
+    <section class="text-copy-secondary bg-background-secondary border px-6 py-6 rounded-lg mx-6 my-4">
+        <h2 class="mb-4 text-xl font-bold">
+          @switch($settings->subscribe_form_title)
+            @case(!null)
+              {{ $settings->subscribe_form_title }}
+              @break
+            @default 
+              Subscribe
+          @endswitch
+        </h2>
         <p class="mb-4">
-          Thank you for reading! If you enjoy these posts, consider subcribing to email list:
+          @switch($settings->subscribe_form_copy)
+            @case(!null)
+              {{ $settings->subscribe_form_copy }}
+              @break
+            @default
+              Thank you for visiting! Please consider subscribing to the email list:
+          @endswitch
         </p>
-        <form action="/subscriptions" method="post">
+        <form action="/subscriptions" method="post" class="flex flex-col items-start justify-between">
           @csrf 
           @honeypot 
-          <label for="subscription-email">Email Address</label>
-          <input type="email" name="email" id="subscription-email">
-          <button type="submit" class="border bg-background-secondary text-copy-secondary py-2 px-4 rounded hover:bg-background-primary font-bold mt-4">Subscribe</button>
+          <label for="subscription-email" class="font-semibold mb-2">Email Address</label>
+          <input type="email" name="email" id="subscription-email" class="text-copy-primary bg-background-form shadow appearance-none border rounded w-full py-2 px-3 text-copy-primary leading-tight focus:outline-none focus:shadow-outline focus:bg-background-ruthieslight @error('email') border-solid border-red-600 border-2 @enderror" value="{{ old('email') }}" required>
+          <button type="submit" class="border bg-background-primary text-copy-secondary py-2 px-4 rounded hover:text-copy-primary font-bold mt-4">Subscribe</button>
         </form>
     </section>
+    @endif
     <section class="mb-8 mx-6 text-copy-primary">
       <p class="text-xl font-black mb-4 text-center tracking-wide">Share:</p>
       <div class="flex flex-row justify-around">

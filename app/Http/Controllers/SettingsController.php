@@ -41,7 +41,10 @@ class SettingsController extends Controller
       'landingTagline' => 'nullable',
       'textSelectionPolicy' => 'required',
       'contactFormEmail' => 'required|email',
-      'fontPref' => 'required'
+      'fontPref' => 'required',
+      'enableSubscription' => 'required',
+      'subscribe_form_title' => 'nullable',
+      'subscribe_form_copy' => 'nullable'
     ]);
     $settings->view_count_policy = $request->viewCountPolicy == 'true' ? true : false;
     $settings->comment_lock_policy = $request->commentLockPolicy == 'true' ? true : false;
@@ -128,6 +131,27 @@ class SettingsController extends Controller
         $settings->hero_location = $fileNameToStore;
         $settings->hero_description = $request->logo_description;
       }
+    }
+    switch($request->enableSubscription) {
+      case "true": 
+        $settings->enable_subscribe_form = true;
+        break;
+      default: 
+        $settings->enable_subscribe_form = false;
+    }
+    switch($request->subscribe_form_title) {
+      case null: 
+        $settings->subscribe_form_title = null;
+        break;
+      default: 
+        $settings->subscribe_form_title = $request->subscribe_form_title;
+    }
+    switch($request->subscribe_form_copy) {
+      case null: 
+        $settings->subscribe_form_copy = null;
+        break;
+      default: 
+        $settings->subscribe_form_copy = $request->subscribe_form_copy;
     }
     $settings->save();
     return view('settings.show')->with([

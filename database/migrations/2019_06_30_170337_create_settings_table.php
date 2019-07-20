@@ -26,6 +26,9 @@ class CreateSettingsTable extends Migration
           $table->text('logo_description')->nullable();
           $table->text('hero_location')->nullable();
           $table->text('hero_description')->nullable();
+          $table->boolean('enable_subscribe_form')->default(false);
+          $table->string('subscribe_form_title')->nullable();
+          $table->text('subscribe_form_copy')->nullable();
           $table->string('font_pref');
           $table->timestamps();
       });

@@ -103,7 +103,7 @@
           <small>When this is set to true, your blog posts will allow visitors to utilize their mouse cursor to select and then copy and paste portions of your blog posts. When this is set to false, they won't be able to do this. It is important to note that this is only a soft measure, and it isn't intended to be rock-solid DRM technology. In other words, while setting this to false may help deter low-effort, unskilled attempts at copyright infringement, savvy web browser users will be able to get around this measure.</small>
         </p>
         <div class="inline-block relative w-full">
-          <select name="textSelectionPolicy" class="block appearance-none w-full bg-background-secondary text-copy-secondary border px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline @error('commentApprovalPolicy') border-solid border-red-600 border-2 @enderror" required>
+          <select name="textSelectionPolicy" class="block appearance-none w-full bg-background-secondary text-copy-secondary border px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline @error('textSelectionPolicy') border-solid border-red-600 border-2 @enderror" required>
             <option value="true" {{ $settings->text_selection_policy ? 'selected' : '' }}>True</option>
             <option value="false" {{ $settings->text_selection_policy ? '' : 'selected' }}>False</option>
           </select>
@@ -167,13 +167,48 @@
         <input type="file" name="hero_image" class="text-copy-primary bg-background-form shadow appearance-none border rounded w-full py-2 px-3 text-copy-primary leading-tight focus:outline-none focus:shadow-outline focus:bg-background-ruthieslight @error('hero_image') border-solid border-red-600 border-2 @enderror" id="hero_image_input">
       </div>
       <div class="flex flex-col items-start mb-4">
-        <label for="hero_description_input" class="font-semibold mb-2 text-copy-secondary">
+        <label for="subscribe_form_title_input" class="font-semibold mb-2 text-copy-secondary">
           Hero Description
         </label>
         <p class="mb-2 text-copy-secondary">
           <small>If you are uploading a hero image for your landing page, you are required to provide a written description of it here. This is to make your site more accessible, such as for users with screen readers or in poor network conditions. If you've already uploaded a hero image in the past, you'll find your existing description below. Changes to it will only be saved if you are uploading a new hero image.</small>
         </p>
-        <input id="hero_description_input" type="text" name="hero_description" class="text-copy-primary bg-background-form shadow appearance-none border rounded w-full py-2 px-3 text-copy-primary leading-tight focus:outline-none focus:shadow-outline focus:bg-background-ruthieslight @error('hero_description') border-solid border-red-600 border-2 @enderror" placeholder="This is a pretty nifty logo, eh?" value="{{ $settings->hero_description == null ? '' : $settings->hero_description }}">
+        <input id="subscribe_form_title_input" type="text" name="subscribe_form_title" class="text-copy-primary bg-background-form shadow appearance-none border rounded w-full py-2 px-3 text-copy-primary leading-tight focus:outline-none focus:shadow-outline focus:bg-background-ruthieslight @error('subscribe_form_title') border-solid border-red-600 border-2 @enderror" placeholder="This is a pretty nifty logo, eh?" value="{{ $settings->subscribe_form_title == null ? '' : $settings->subscribe_form_title }}">
+      </div>
+      <div class="flex flex-col items-start mb-4">
+        <label for="enableSubscription" class="font-semibold mb-2 text-copy-secondary">
+          Enable Email List Subscriptions
+        </label>
+        <p class="mb-2 text-copy-secondary">
+          <small>ArachniCMS comes with a simple, no fuss integration with MailChimp, so you can use your website to capture emails and start building your audience! The email capture form will display at the end of each blog post as well as on the bottom of the landing page. Once you've started gathering emails, use the handy tools over at MailChimp to starting marketing. In order to use this feature, the environment file will need to have been filled out with your MailChimp account details during the deployment of ArachniCMS to your web host. That's why this setting defaults to false. You should not enable this setting (and therefore start displaying the email collection form), unless your environment file has the appropriate MailChimp credentials configured. Contact Arachnidev LLC if you need help!</small>
+        </p>
+        <div class="inline-block relative w-full">
+          <select name="enableSubscription" class="block appearance-none w-full bg-background-secondary text-copy-secondary border px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline @error('enableSubscription') border-solid border-red-600 border-2 @enderror" required>
+            <option value="true" {{ $settings->enable_subscribe_form ? 'selected' : '' }}>True</option>
+            <option value="false" {{ $settings->enable_subscribe_form ? '' : 'selected' }}>False</option>
+          </select>
+          <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-copy-primary">
+            <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+          </div>
+        </div>
+      </div>
+      <div class="flex flex-col items-start mb-4">
+        <label for="subscribe_form_title" class="font-semibold mb-2 text-copy-secondary">
+          Subscribe Form Title
+        </label>
+        <p class="mb-2 text-copy-secondary">
+          <small>Leave this blank if you have not enabled the email list subscription form. If you do not provide a custom title here for the email subscription form when it is enabled, the title will default to "Subscribe".</small>
+        </p>
+        <input id="subscribe_form_title" type="text" name="subscribe_form_title" class="text-copy-primary bg-background-form shadow appearance-none border rounded w-full py-2 px-3 text-copy-primary leading-tight focus:outline-none focus:shadow-outline focus:bg-background-ruthieslight @error('subscribe_form_title') border-solid border-red-600 border-2 @enderror" placeholder="Subscribe" value="{{ $settings->subscribe_form_title == null ? '' : $settings->subscribe_form_title }}">
+      </div>
+      <div class="flex flex-col items-start mb-4">
+        <label for="subscribe_form_copy" class="font-semibold mb-2 text-copy-secondary">
+          Subscribe Form Copy
+        </label>
+        <p class="mb-2 text-copy-secondary">
+          <small>Leave this blank if you have not enabled the email list subscription form. If you do not provide custom copy here for the email subscription form when it is enabled, the form will default to saying "Thank you for visiting! Please consider subscribing to the email list:".</small>
+        </p>
+        <input id="subscribe_form_copy" type="text" name="subscribe_form_copy" class="text-copy-primary bg-background-form shadow appearance-none border rounded w-full py-2 px-3 text-copy-primary leading-tight focus:outline-none focus:shadow-outline focus:bg-background-ruthieslight @error('subscribe_form_copy') border-solid border-red-600 border-2 @enderror" placeholder="Thank you for visiting! Please consider subscribing to the email list:" value="{{ $settings->subscribe_form_copy == null ? '' : $settings->subscribe_form_copy }}">
       </div>
       <div class="flex flex-col items-start mb-4 py-4 text-copy-secondary">
         <p class="font-semibold text-xl mb-2">
