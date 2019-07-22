@@ -7,6 +7,7 @@
 @section('js')
   @include('includes.default-js')
   <script>
+    // fwe.s1.js
     document.addEventListener('DOMContentLoaded', function(){
       let burger = document.querySelector("#menu-burger");
       let cancel = document.querySelector("#menu-cancel");
@@ -34,6 +35,7 @@
 @section('css')
   @include('includes.default-css')
   <style>
+    /* fwe-s1.css */
     #landing-nav {
       background-image: linear-gradient(rgba(178,178,178,.35),rgba(0,0,0,0));
     }
