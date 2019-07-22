@@ -210,6 +210,24 @@
         </p>
         <input id="subscribe_form_copy" type="text" name="subscribe_form_copy" class="text-copy-primary bg-background-form shadow appearance-none border rounded w-full py-2 px-3 text-copy-primary leading-tight focus:outline-none focus:shadow-outline focus:bg-background-ruthieslight @error('subscribe_form_copy') border-solid border-red-600 border-2 @enderror" placeholder="Thank you for visiting! Please consider subscribing to the email list:" value="{{ $settings->subscribe_form_copy == null ? '' : $settings->subscribe_form_copy }}">
       </div>
+      <div class="flex flex-col items-start mb-4">
+        <label for="thank_you_title" class="font-semibold mb-2 text-copy-secondary">
+          Thank You Page Title
+        </label>
+        <p class="mb-2 text-copy-secondary">
+          <small>Leave this blank if you have not enabled the email list subscription form. If you do not provide a custom title here for the thank you page that is displayed when people subscribe to your email list, the title will default to "Thank You!".</small>
+        </p>
+        <input id="thank_you_title" type="text" name="thank_you_title" class="text-copy-primary bg-background-form shadow appearance-none border rounded w-full py-2 px-3 text-copy-primary leading-tight focus:outline-none focus:shadow-outline focus:bg-background-ruthieslight @error('thank_you_title') border-solid border-red-600 border-2 @enderror" placeholder="Thank You!" value="{{ $settings->thank_you_title == null ? '' : $settings->thank_you_title }}">
+      </div>
+      <div class="flex flex-col items-start mb-4">
+        <label for="thank_you_copy" class="font-semibold mb-2 text-copy-secondary">
+          Thank You Page Copy
+        </label>
+        <p class="mb-2 text-copy-secondary">
+          <small>Leave this blank if you have not enabled the email list subscription form. If you do not provide custom copy here for the thank you page that is displayed when people subscribe to your email list, the page will default to saying "Your subscription means a lot!".</small>
+        </p>
+        <input id="thank_you_copy" type="text" name="thank_you_copy" class="text-copy-primary bg-background-form shadow appearance-none border rounded w-full py-2 px-3 text-copy-primary leading-tight focus:outline-none focus:shadow-outline focus:bg-background-ruthieslight @error('thank_you_copy') border-solid border-red-600 border-2 @enderror" placeholder="Your subscription means a lot!" value="{{ $settings->thank_you_copy == null ? '' : $settings->thank_you_copy }}">
+      </div>
       <div class="flex flex-col items-start mb-4 py-4 text-copy-secondary">
         <p class="font-semibold text-xl mb-2">
           Font Preference

@@ -44,7 +44,9 @@ class SettingsController extends Controller
       'fontPref' => 'required',
       'enableSubscription' => 'required',
       'subscribe_form_title' => 'nullable',
-      'subscribe_form_copy' => 'nullable'
+      'subscribe_form_copy' => 'nullable',
+      'thank_you_title' => 'nullable',
+      'thank_you_copy' => 'nullable'
     ]);
     $settings->view_count_policy = $request->viewCountPolicy == 'true' ? true : false;
     $settings->comment_lock_policy = $request->commentLockPolicy == 'true' ? true : false;
@@ -152,6 +154,20 @@ class SettingsController extends Controller
         break;
       default: 
         $settings->subscribe_form_copy = $request->subscribe_form_copy;
+    }
+    switch($request->thank_you_title) {
+      case null: 
+        $settings->thank_you_title = null;
+        break;
+      default: 
+        $settings->thank_you_title = $request->thank_you_title;
+    }
+    switch($request->thank_you_copy) {
+      case null: 
+        $settings->thank_you_copy = null;
+        break;
+      default: 
+        $settings->thank_you_copy = $request->thank_you_copy;
     }
     $settings->save();
     return view('settings.show')->with([

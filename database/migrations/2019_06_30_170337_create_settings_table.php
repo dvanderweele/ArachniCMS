@@ -29,6 +29,8 @@ class CreateSettingsTable extends Migration
           $table->boolean('enable_subscribe_form')->default(false);
           $table->string('subscribe_form_title')->nullable();
           $table->text('subscribe_form_copy')->nullable();
+          $table->string('thank_you_title')->nullable();
+          $table->text('thank_you_copy')->nullable();
           $table->string('font_pref');
           $table->timestamps();
       });
