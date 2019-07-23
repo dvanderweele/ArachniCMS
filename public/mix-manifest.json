@@ -1,4 +1,16 @@
 {
     "/js/app.js": "/js/app.js",
-    "/css/main.css": "/css/main.css"
+    "/css/main.css": "/css/main.css",
+    "/js/dab-fcr-s1.js": "/js/dab-fcr-s1.js",
+    "/js/dab-fed-s1.js": "/js/dab-fed-s1.js",
+    "/js/dab-fsh-s1.js": "/js/dab-fsh-s1.js",
+    "/js/dim-fin-s1.js": "/js/dim-fin-s1.js",
+    "/js/dpo-fcr-s1.js": "/js/dpo-fcr-s1.js",
+    "/js/dpo-fed-s1.js": "/js/dpo-fed-s1.js",
+    "/js/dpo-fed-s2.js": "/js/dpo-fed-s2.js",
+    "/js/dpo-fsh-s1.js": "/js/dpo-fsh-s1.js",
+    "/js/dpo-fsh-s2.js": "/js/dpo-fsh-s2.js",
+    "/js/dpo-fsh-s3.js": "/js/dpo-fsh-s3.js",
+    "/js/dyc-fin-s1.js": "/js/dyc-fin-s1.js",
+    "/js/fwe-s1.js": "/js/fwe-s1.js"
 }

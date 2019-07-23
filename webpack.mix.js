@@ -14,6 +14,31 @@ const tailwindcss = require('tailwindcss');
 
 mix
   .js('resources/js/app.js', 'public/js')
+mix
+  .js('resources/js/fwe-s1.js', 'public/js')
+mix
+  .js('resources/js/dab-fcr-s1.js', 'public/js')
+mix
+  .js('resources/js/dab-fed-s1.js', 'public/js')
+mix
+  .js('resources/js/dab-fsh-s1.js', 'public/js')
+mix
+  .js('resources/js/dim-fin-s1.js', 'public/js')
+mix
+  .js('resources/js/dpo-fcr-s1.js', 'public/js')
+mix
+  .js('resources/js/dpo-fed-s1.js', 'public/js')
+mix
+  .js('resources/js/dpo-fed-s2.js', 'public/js')
+mix
+  .js('resources/js/dpo-fsh-s1.js', 'public/js')
+mix
+  .js('resources/js/dpo-fsh-s2.js', 'public/js')
+mix
+  .js('resources/js/dpo-fsh-s3.js', 'public/js')
+mix
+  .js('resources/js/dyc-fin-s1.js', 'public/js')
+mix
   .postCss('resources/css/main.css', 'public/css', [
         require('tailwindcss'),
   ])

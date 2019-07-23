@@ -19,8 +19,14 @@ Auth::routes(['register' => false]);
 Route::feeds();
 
 Route::get('/test', function(){
-  SitemapGeneratorJob::dispatch();
-  return redirect('/');
+  // SitemapGeneratorJob::dispatch();
+  // return redirect('/');
+  $freeGb = disk_free_space('/') / 1024 / 1024 / 1024;
+  $totalGb = disk_total_space('/') / 1024 / 1024 / 1024;
+  // return disk_total_space('/');
+  // return round($freeGb, 2) . 'GB / ' . round($totalGb, 2) . 'GB';
+  $progress = '<progress value="'.round($freeGb).'" max="'.round($totalGb).'"></progress>';
+  return $progress;
 });
 
 Route::get('/', 'IndexController@show');

@@ -96,7 +96,7 @@
       </svg></button>
     </div>
     <p class="font-bold text-2xl">
-      Are you sure you want to permanently delete this Image? The image will also be removed from all blog posts and albums that feature it.
+      Are you sure you want to permanently delete this Image? The image will also be removed from all blog posts that feature it.
       <form action="/images" method="post">
         @csrf 
         @method('DELETE')
@@ -113,7 +113,18 @@
       Welcome to the Image Storage interface for PocoCMS. This interface allows you to store each photo that you want to use on your website <span class="font-bold">one time</span> rather than multiple times &mdash; no matter how many times you want to use that image. This helps you save valuable storage space.
     </p>
     <p class="mb-4">
-      So go ahead and upload and manage your image collection here. Whenever you want to use an image in a blog post or as an album cover, go ahead and go to the editing page for that blog post or album, and you will be directed to a page which will allow you to select which image(s) in your image store you want to be featured by that blog post or album.
+      Speaking of storage space, below is a bar measuring the approximate amount of storage space available on your web server. Please note that it is an estimate and can vary based on your web server. Additionally, remember that other types of content besides photos, such as blog posts and system files, also constribute to this storage space.
+    </p>
+    @php 
+      $freeGb = disk_free_space('/') / 1024 / 1024 / 1024;
+      $totalGb = disk_total_space('/') / 1024 / 1024 / 1024;
+    @endphp
+    <progress value="{{ round($freeGb,2) }}" max="{{ round($totalGb,2) }}" class="w-full mb-2 h-6"></progress>
+    <p class="mb-4 text-center font-bold">
+      {{ round($freeGb,2) }}&nbsp;GB <span class="font-hairline">out of</span> {{ round($totalGb,2) }}&nbsp;GB
+    </p>
+    <p class="mb-4">
+      So go ahead and upload and manage your image collection here. Whenever you want to use an image in a blog post, go ahead and go to the editing page for that blog post, and you will be directed to a page which will allow you to select which image(s) in your image store you want to be featured by that blog post.
     </p>
     <p class="mb-4">
       Do note that when you upload an image, it is mandatory to also provide a written description for that image. This ensures that your website is as accessible as possible, such as for users of screen readers or in poor network conditions.
@@ -122,7 +133,7 @@
       Also note that the max upload size for an image is 2MB, so if your image is larger than that, you will need to resize it by way of image manipulation software, such as GIMP.
     </p>
     <p class="mb-8">
-      Finally, please note that, while it is not possible for strangers to visit your site and delete or deface these images, or even upload new ones, it is possible for everyone to see the images you upload here, even before you use them in a blog post or album. <b>This is a publically viewable storage space.</b> Therefore, don't upload anything that you want kept private.
+      Finally, please note that, while it is not possible for strangers to visit your site and delete or deface these images, or even upload new ones, it is possible for everyone to see the images you upload here, even before you use them in a blog post. <b>This is a publically viewable storage space.</b> Therefore, don't upload anything that you want kept private.
     </p>
     <p class="mb-8">
       Have fun!
@@ -177,18 +188,6 @@
                 <ul>
                 @foreach($image->posts as $post)
                   <li>{{ $post->title }}</li>
-                @endforeach
-                </ul>
-              </blockquote>  
-            @endif
-            @if(count($image->albums) > 0)
-              <p class="font-bold mb-2">
-                Albums Featuring This Image
-              </p>
-              <blockquote>
-                <ul>
-                @foreach($image->albums as $album)
-                  <li>{{ $album->title }}</li>
                 @endforeach
                 </ul>
               </blockquote>  
