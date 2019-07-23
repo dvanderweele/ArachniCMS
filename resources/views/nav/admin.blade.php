@@ -1,24 +1,29 @@
-<div class="bg-background-tertiary text-xl text-copy-primary lg:min-h-full lg:w-1/5 lg:rounded-br lg:shadow-2xl lg:mr-12 shadow-lg text-left pt-2">
-  <p class="hover:text-copy-secondary hover:bg-background-secondary text-copy-primary lg:w-full py-3 px-4 text-center lg:text-left lg:border-none border-black border-b">
-    <a href="/images" class="font-semibold pr-6">
+<div class="bg-background-tertiary text-xl text-copy-primary lg:min-h-full lg:w-1/5 lg:rounded-br lg:shadow-2xl shadow-lg text-left pt-2">
+  <a href="/images" class="font-semibold inline-block w-full">
+    <p class="hover:text-copy-secondary hover:bg-background-secondary text-copy-primary lg:w-full py-3 px-4 text-center lg:text-left lg:border-none border-black border-b">
       Images
-    </a>
-  </p>
-  <p class="hover:text-copy-secondary hover:bg-background-secondary text-copy-primary lg:w-full py-3 px-4 text-center lg:text-left lg:border-none border-black border-b">
-    <a href="/youtubevidcodes" class="font-semibold pr-6">
+    </p>
+  </a>
+  <a href="/youtubevidcodes" class="font-semibold inline-block w-full">
+    <p class="hover:text-copy-secondary hover:bg-background-secondary text-copy-primary lg:w-full py-3 px-4 text-center lg:text-left lg:border-none border-black border-b">
       YouTube Videos
-    </a>
-  </p>
-  <p class="hover:text-copy-secondary hover:bg-background-secondary text-copy-primary lg:w-full py-3 px-4 text-center lg:text-left lg:border-none border-black border-b">
-    <a href="/testimonials" class="font-semibold pr-6">
+    </p>
+  </a>
+  <a href="/testimonials" class="font-semibold inline-block w-full">
+    <p class="hover:text-copy-secondary hover:bg-background-secondary text-copy-primary lg:w-full py-3 px-4 text-center lg:text-left lg:border-none border-black border-b">
       Testimonials
-    </a>
-  </p>
-  <p class="hover:text-copy-secondary hover:bg-background-secondary text-copy-primary lg:w-full py-3 px-4 text-center lg:text-left lg:border-none border-black border-b">
-    <a href="/settings" class="font-semibold pr-6">
+    </p>
+  </a>
+  <a href="/settings" class="font-semibold inline-block w-full">
+    <p class="hover:text-copy-secondary hover:bg-background-secondary text-copy-primary lg:w-full py-3 px-4 text-center lg:text-left lg:border-none border-black border-b">
       Settings
-    </a>
-  </p>
+    </p>
+  </a>
+  <a href="/backup" class="font-semibold inline-block w-full">
+    <p class="hover:text-copy-secondary hover:bg-background-secondary text-copy-primary lg:w-full py-3 px-4 text-center lg:text-left lg:border-none border-black border-b">
+      Backup
+    </p>
+  </a>
   <p class="hover:text-copy-secondary">
     <form action="/logout" method="post">
       @csrf 

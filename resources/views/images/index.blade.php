@@ -110,7 +110,7 @@
       Add Images
     </h1>
     <p class="mb-4">
-      Welcome to the Image Storage interface for PocoCMS. This interface allows you to store each photo that you want to use on your website <span class="font-bold">one time</span> rather than multiple times &mdash; no matter how many times you want to use that image. This helps you save valuable storage space.
+      Welcome to the Image Storage interface for ArachniCMS. This interface allows you to store each photo that you want to use on your website <span class="font-bold">one time</span> rather than multiple times &mdash; no matter how many times you want to use that image. This helps you save valuable storage space.
     </p>
     <p class="mb-4">
       Speaking of storage space, below is a bar measuring the approximate amount of storage space available on your web server. Please note that it is an estimate and can vary based on your web server. Additionally, remember that other types of content besides photos, such as blog posts and system files, also constribute to this storage space.
