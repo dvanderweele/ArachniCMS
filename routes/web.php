@@ -1,7 +1,7 @@
 <?php
 
 use Spatie\Honeypot\ProtectAgainstSpam;
-use App\Jobs\SitemapGeneratorJob;
+use App\Jobs\GenerateBackup;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,6 +27,8 @@ Route::get('/test', function(){
   // // return round($freeGb, 2) . 'GB / ' . round($totalGb, 2) . 'GB';
   // $progress = '<progress value="'.round($freeGb).'" max="'.round($totalGb).'"></progress>';
   // return $progress;
+  GenerateBackup::dispatch();
+  return redirect('/');
 });
 
 Route::get('/', 'IndexController@show');

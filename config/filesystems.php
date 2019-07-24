@@ -68,6 +68,11 @@ return [
             'driver' => 'local',
             'root' => database_path('snapshots'),
         ],
+        
+        'backup' => [
+            'driver' => 'local',
+            'root' => app_path('backup'),
+        ],
 
     ],
 
