@@ -32,6 +32,7 @@ class CreateSettingsTable extends Migration
           $table->string('thank_you_title')->nullable();
           $table->text('thank_you_copy')->nullable();
           $table->string('font_pref');
+          $table->tinyInteger('enable_backups')->default(true);
           $table->timestamps();
       });
     }

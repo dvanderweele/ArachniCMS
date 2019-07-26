@@ -2,8 +2,9 @@
 
 namespace App\Console;
 
-use App\Jobs\SitemapGeneratorJob;
+Use App\Settings;
 use App\Jobs\GenerateBackup;
+use App\Jobs\SitemapGeneratorJob;
 
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
@@ -30,7 +31,10 @@ class Kernel extends ConsoleKernel
         // $schedule->command('inspire')
         //          ->hourly();
         $schedule->job(new SitemapGeneratorJob)->daily();
-        $schedule->job(new GenerateBackup)->dailyAt('01:00');
+        // $settings = Settings::firstOrFail();
+        // if($settings->enable_backups){
+            $schedule->job(new GenerateBackup)->dailyAt('01:00');
+        // }
     }
 
     /**
