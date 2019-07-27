@@ -10,14 +10,18 @@ class BackupController extends Controller
 {
   public function index(){
     $settings = Settings::firstOrFail();
-    $files = Storage::disk('backup')->files('bucket');
+    $files = Storage::disk('backup')->files('backup');
     return view('backups.index')->with([
       'settings' => $settings,
       'files' => $files
     ]);
   }
 
-  public function show(){
-    
+  public function show(Request $request){
+    if(Storage::disk('backup')->exists($request->backup)){
+      return Storage::disk('backup')->download($request->backup);
+    } else {
+      return redirect()->back();
+    }
   }
 }

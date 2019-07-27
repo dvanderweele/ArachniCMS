@@ -46,8 +46,10 @@ class SettingsController extends Controller
       'subscribe_form_title' => 'nullable',
       'subscribe_form_copy' => 'nullable',
       'thank_you_title' => 'nullable',
-      'thank_you_copy' => 'nullable'
+      'thank_you_copy' => 'nullable',
+      'enableBackups' => 'required',
     ]);
+    $settings->enable_backups = $request->enableBackups == 'true' ? true : false;
     $settings->view_count_policy = $request->viewCountPolicy == 'true' ? true : false;
     $settings->comment_lock_policy = $request->commentLockPolicy == 'true' ? true : false;
     $settings->landing_header = $request->landingHeader;

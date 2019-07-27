@@ -81,4 +81,4 @@ Route::post('/subscriptions',                   'SubscriptionController@store')-
 Route::get('/thankyou',                         'SubscriptionController@show');
 
 Route::get('/backup',                           'BackupController@index')->middleware('auth');
-Route::get('/backup/download',                  'BackupController@show')->middleware('auth');
+Route::post('/backup/download',                  'BackupController@show')->middleware('auth');

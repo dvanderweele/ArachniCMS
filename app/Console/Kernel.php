@@ -31,10 +31,11 @@ class Kernel extends ConsoleKernel
         // $schedule->command('inspire')
         //          ->hourly();
         $schedule->job(new SitemapGeneratorJob)->daily();
-        // $settings = Settings::firstOrFail();
-        // if($settings->enable_backups){
-            $schedule->job(new GenerateBackup)->dailyAt('01:00');
-        // }
+        $settings = Settings::firstOrFail();
+        $schedule->command('backup:clean')->dailyAt('00:30');
+        if($settings->enable_backups){
+            $schedule->command('backup:run')->dailyAt('01:00');
+        }
     }
 
     /**

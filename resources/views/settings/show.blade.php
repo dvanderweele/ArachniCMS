@@ -31,12 +31,12 @@
           Publicize Blog Post View Count
         </label>
         <p class="mb-2 text-copy-secondary">
-          <small>While this is set to true, visitors to your site will be able to see the view count for each of your blog posts, just like you can. When it is set to false, this information will be private and only you can view it.</small>
+          <small>While this is on, visitors to your site will be able to see the view count for each of your blog posts, just like you can. When it is set to false, this information will be private and only you can view it.</small>
         </p>
         <div class="inline-block relative w-full">
           <select name="viewCountPolicy" class="block appearance-none w-full bg-background-secondary text-copy-secondary border px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline @error('viewCountPolicy') border-solid border-red-600 border-2 @enderror" required>
-            <option value="true" {{ $settings->view_count_policy ? 'selected' : '' }}>True</option>
-            <option value="false" {{ !$settings->view_count_policy ? 'selected' : '' }}>False</option>
+            <option value="true" {{ $settings->view_count_policy ? 'selected' : '' }}>Yes</option>
+            <option value="false" {{ !$settings->view_count_policy ? 'selected' : '' }}>No</option>
           </select>
           <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-copy-primary">
             <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
@@ -48,12 +48,12 @@
           Automatically Lock Comments on Future Blog Posts
         </label>
         <p class="mb-2 text-copy-secondary">
-          <small>While this is set to true, all blog posts created will not permit visitors to create comments. While it is set to false, all blog posts created will permit visitors to create comments. Note that changing this setting does not affect whether or not comments are locked on previously created blog posts. You can always lock or unlock comments on the individual edit pages of existing blog posts.</small>
+          <small>While this is on, all blog posts created will not permit visitors to create comments. While it is set to false, all blog posts created will permit visitors to create comments. Note that changing this setting does not affect whether or not comments are locked on previously created blog posts. You can always lock or unlock comments on the individual edit pages of existing blog posts.</small>
         </p>
         <div class="inline-block relative w-full">
           <select name="commentLockPolicy" class="block appearance-none w-full bg-background-secondary text-copy-secondary border px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline @error('commentLockPolicy') border-solid border-red-600 border-2 @enderror" required>
-            <option value="true" {{ $settings->comment_lock_policy ? 'selected' : '' }}>True</option>
-            <option value="false" {{ !$settings->comment_lock_policy ? 'selected' : '' }}>False</option>
+            <option value="true" {{ $settings->comment_lock_policy ? 'selected' : '' }}>Yes</option>
+            <option value="false" {{ !$settings->comment_lock_policy ? 'selected' : '' }}>No</option>
           </select>
           <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-copy-primary">
             <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
@@ -65,12 +65,12 @@
           Automatically Approve Comments
         </label>
         <p class="mb-2 text-copy-secondary">
-          <small>While this is set to true, all comments successfully created anywhere on your blog will be automatically approved without any intervention from you. While it is set to false, all comments successfully created anywhere on your blog will by default be unapproved, requiring your manual approval for them to appear publically below your blog posts. Note that changing this setting does not affect previously approved or unapproved comments.</small>
+          <small>While this is on, all comments successfully created anywhere on your blog will be automatically approved without any intervention from you. While it is set to false, all comments successfully created anywhere on your blog will by default be unapproved, requiring your manual approval for them to appear publically below your blog posts. Note that changing this setting does not affect previously approved or unapproved comments.</small>
         </p>
         <div class="inline-block relative w-full">
           <select name="commentApprovalPolicy" class="block appearance-none w-full bg-background-secondary text-copy-secondary border px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline @error('commentApprovalPolicy') border-solid border-red-600 border-2 @enderror" required>
-            <option value="true" {{ $settings->comment_approval_policy ? 'selected' : '' }}>True</option>
-            <option value="false" {{ !$settings->comment_approval_policy ? 'selected' : '' }}>False</option>
+            <option value="true" {{ $settings->comment_approval_policy ? 'selected' : '' }}>Yes</option>
+            <option value="false" {{ !$settings->comment_approval_policy ? 'selected' : '' }}>No</option>
           </select>
           <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-copy-primary">
             <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
@@ -100,12 +100,29 @@
           Allow Blog Post Text Selection
         </label>
         <p class="mb-2 text-copy-secondary">
-          <small>When this is set to true, your blog posts will allow visitors to utilize their mouse cursor to select and then copy and paste portions of your blog posts. When this is set to false, they won't be able to do this. It is important to note that this is only a soft measure, and it isn't intended to be rock-solid DRM technology. In other words, while setting this to false may help deter low-effort, unskilled attempts at copyright infringement, savvy web browser users will be able to get around this measure.</small>
+          <small>When this is on, your blog posts will allow visitors to utilize their mouse cursor to select and then copy and paste portions of your blog posts. When this is set to false, they won't be able to do this. It is important to note that this is only a soft measure, and it isn't intended to be rock-solid DRM technology. In other words, while setting this to false may help deter low-effort, unskilled attempts at copyright infringement, savvy web browser users will be able to get around this measure.</small>
         </p>
         <div class="inline-block relative w-full">
           <select name="textSelectionPolicy" class="block appearance-none w-full bg-background-secondary text-copy-secondary border px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline @error('textSelectionPolicy') border-solid border-red-600 border-2 @enderror" required>
-            <option value="true" {{ $settings->text_selection_policy ? 'selected' : '' }}>True</option>
-            <option value="false" {{ $settings->text_selection_policy ? '' : 'selected' }}>False</option>
+            <option value="true" {{ $settings->text_selection_policy ? 'selected' : '' }}>Yes</option>
+            <option value="false" {{ $settings->text_selection_policy ? '' : 'selected' }}>No</option>
+          </select>
+          <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-copy-primary">
+            <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+          </div>
+        </div>
+      </div>
+      <div class="flex flex-col items-start mb-4">
+        <label for="name" class="font-semibold mb-2 text-copy-secondary">
+          Enable Backups
+        </label>
+        <p class="mb-2 text-copy-secondary">
+          <small>When this is on, your website will generate a backup automatically every night, including a dump of your database and your image uploads. You can download the zip files of your backups in the backup section. Although the backup system will automatically delete older backups, they can still start to fail if you run out of space for them on your web server. To save storage space, you can always disable this. When you turn this off, make sure you download the latest backup because the system will still gradually delete old backups as time goes on.</small>
+        </p>
+        <div class="inline-block relative w-full">
+          <select name="enableBackups" class="block appearance-none w-full bg-background-secondary text-copy-secondary border px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline @error('enableBackups') border-solid border-red-600 border-2 @enderror" required>
+            <option value="true" {{ $settings->enable_backups ? 'selected' : '' }}>Yes</option>
+            <option value="false" {{ $settings->enable_backups ? '' : 'selected' }}>No</option>
           </select>
           <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-copy-primary">
             <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
@@ -184,8 +201,8 @@
         </p>
         <div class="inline-block relative w-full">
           <select name="enableSubscription" class="block appearance-none w-full bg-background-secondary text-copy-secondary border px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline @error('enableSubscription') border-solid border-red-600 border-2 @enderror" required>
-            <option value="true" {{ $settings->enable_subscribe_form ? 'selected' : '' }}>True</option>
-            <option value="false" {{ $settings->enable_subscribe_form ? '' : 'selected' }}>False</option>
+            <option value="true" {{ $settings->enable_subscribe_form ? 'selected' : '' }}>Yes</option>
+            <option value="false" {{ $settings->enable_subscribe_form ? '' : 'selected' }}>No</option>
           </select>
           <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-copy-primary">
             <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
