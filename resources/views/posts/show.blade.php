@@ -299,8 +299,8 @@
     </p>
   </div>
   <div class="fixed inset-0 bg-black z-20 hidden max-h-screen" id="image-gallery">
-    <div class="flex flex-row justify-end py-4 px-4">
-      <button type="button" id="big-img-cancel"><svg version="1.1" class="fill-current text-copy-primary h-8 w-8 cursor-pointer" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 20 20" enable-background="new 0 0 20 20" xml:space="preserve">
+    <div class="flex flex-row justify-end py-2 px-4">
+      <button type="button" id="big-img-cancel"><svg version="1.1" class="fill-current text-copy-primary h-5 w-5 cursor-pointer" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 20 20" enable-background="new 0 0 20 20" xml:space="preserve">
         <path d="M16,2H4C2.9,2,2,2.9,2,4v12c0,1.1,0.9,2,2,2h12c1.1,0,2-0.9,2-2V4C18,2.9,17.1,2,16,2z M13.061,14.789  L10,11.729l-3.061,3.06L5.21,13.061L8.271,10l-3.06-3.061L6.94,5.21L10,8.271l3.059-3.061l1.729,1.729L11.729,10l3.06,3.061  L13.061,14.789z"/>
       </svg></button>
     </div>
@@ -330,7 +330,7 @@
       </a>
     @endauth
   </div>
-  <article class="max-w-2xl w-10/12 bg-background-primary shadow-lg rounded mx-auto px-8 pt-6 pb-8 mt-8 relative {{ $settings->font_pref == 'gsa' ? 'font-sans' : '' }} {{ $settings->font_pref == 'gsa' ? 'font-sans' : '' }} {{ $settings->font_pref == 'gse' ? 'font-serif' : '' }} {{ $settings->font_pref == 'gmo' ? 'font-mono' : '' }} {{ $settings->font_pref == 'asa' ? 'font-alegreya-sans' : '' }} {{ $settings->font_pref == 'ase' ? 'font-alegreya' : '' }} {{ $settings->font_pref == 'fco' ? 'font-fira-code' : '' }} {{ $settings->font_pref == 'hac' ? 'font-hack' : '' }} {{ $settings->font_pref == 'mon' ? 'font-montserrat' : '' }} {{ $settings->font_pref == 'qui' ? 'font-quicksand' : '' }}">
+  <article class="w-full sm:max-w-2xl sm:w-10/12 bg-background-primary shadow-lg rounded mx-auto px-3 md:px-8 pt-6 pb-8 mt-8 relative {{ $settings->font_pref == 'gsa' ? 'font-sans' : '' }} {{ $settings->font_pref == 'gsa' ? 'font-sans' : '' }} {{ $settings->font_pref == 'gse' ? 'font-serif' : '' }} {{ $settings->font_pref == 'gmo' ? 'font-mono' : '' }} {{ $settings->font_pref == 'asa' ? 'font-alegreya-sans' : '' }} {{ $settings->font_pref == 'ase' ? 'font-alegreya' : '' }} {{ $settings->font_pref == 'fco' ? 'font-fira-code' : '' }} {{ $settings->font_pref == 'hac' ? 'font-hack' : '' }} {{ $settings->font_pref == 'mon' ? 'font-montserrat' : '' }} {{ $settings->font_pref == 'qui' ? 'font-quicksand' : '' }}">
     <div class="flex flex-row">
       <h1 class="font-semibold text-2xl text-copy-primary mb-4 {{ $settings->font_pref == 'asa' ? 'font-alegreya-sans-sc' : '' }} {{ $settings->font_pref == 'ase' ? 'font-alegreya-sc' : '' }}">
         {{ $post->title }}
@@ -367,7 +367,7 @@
       <dt class="sr-hidden">Publication Time</dt>
       <dd class="border w-auto bg-background-secondary text-copy-primary hover:text-copy-secondary font-semibold rounded-full py-2 px-4 text-sm mx-4 my-2 mx-auto">{{ date('F d, Y', strtotime($post->updated_at)) }}</dd>
     </dl>
-    <section id="post-body" class="text-copy-primary mx-6 my-4 {{ $settings->text_selection_policy ? '' : 'select-none' }}">
+    <section id="post-body" class="text-copy-primary mx-2 md:mx-6 my-4 {{ $settings->text_selection_policy ? '' : 'select-none' }}">
       {!! $post->body !!}
     </section>
     <section class="mb-8 mx-6">
