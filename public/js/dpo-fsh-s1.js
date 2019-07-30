@@ -93,7 +93,53 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
+document.addEventListener('DOMContentLoaded', function (event) {
+  var thumbnails = document.querySelectorAll(".thumbnail");
+  var gallery = document.querySelector("#image-gallery");
+  var bigImg = document.querySelector("#big-img");
+  var bigImgCancel = document.querySelector("#big-img-cancel");
+  var caption = document.querySelector("#caption");
+  gallery.src = thumbnails.item(0).src;
+  gallery.alt = thumbnails.item(0).alt;
+  caption.innerText = thumbnails.item(0).alt;
+  var _iteratorNormalCompletion = true;
+  var _didIteratorError = false;
+  var _iteratorError = undefined;
 
+  try {
+    var _loop = function _loop() {
+      var thumbnail = _step.value;
+      thumbnail.addEventListener("click", function (e) {
+        bigImg.src = thumbnail.src;
+        bigImg.alt = thumbnail.alt;
+        caption.innerText = thumbnail.alt;
+        gallery.classList.replace("hidden", "block");
+        bigImgCancel.focus();
+      });
+    };
+
+    for (var _iterator = thumbnails[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+      _loop();
+    }
+  } catch (err) {
+    _didIteratorError = true;
+    _iteratorError = err;
+  } finally {
+    try {
+      if (!_iteratorNormalCompletion && _iterator["return"] != null) {
+        _iterator["return"]();
+      }
+    } finally {
+      if (_didIteratorError) {
+        throw _iteratorError;
+      }
+    }
+  }
+
+  bigImgCancel.addEventListener("click", function () {
+    gallery.classList.replace("block", "hidden");
+  });
+});
 
 /***/ }),
 

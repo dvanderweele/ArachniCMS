@@ -93,7 +93,214 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
+// modal management section
+document.addEventListener("DOMContentLoaded", function (event) {
+  var KEYCODE_TAB = 9; // grab relevant dom elements
 
+  var modalOverlay = document.querySelector("#modalOverlay");
+  var commentBody = document.querySelector("#body");
+  var deleteCommentModal = document.querySelector("#deleteCommentModal");
+  var approveCommentModal = document.querySelector("#approveCommentModal");
+  var unapproveCommentModal = document.querySelector("#unapproveCommentModal");
+  var dcmCancel = document.querySelector("#dcmCancel");
+  var acmCancel = document.querySelector("#acmCancel");
+  var ucmCancel = document.querySelector("#ucmCancel");
+  var deleteButtons = document.querySelectorAll(".deleteBtn");
+  var approveButtons = document.querySelectorAll(".approvalBtn");
+  var unapproveButtons = document.querySelectorAll(".unapprovalBtn");
+  var deleteTarget = document.querySelector("#deleteTarget");
+  var approveTarget = document.querySelector("#approveTarget");
+  var unapproveTarget = document.querySelector("#unapproveTarget");
+  var submitDelete = document.querySelector("#submitDelete");
+  var submitApproval = document.querySelector("#submitApproval");
+  var submitUnapproval = document.querySelector("#submitUnapproval");
+  var _iteratorNormalCompletion = true;
+  var _didIteratorError = false;
+  var _iteratorError = undefined;
+
+  try {
+    for (var _iterator = deleteButtons[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+      var deleteBtn = _step.value;
+      deleteBtn.addEventListener("click", function (e) {
+        var id = e.target.dataset.id;
+        deleteTarget.value = id;
+        openModal(deleteCommentModal);
+        dcmCancel.focus();
+      });
+    }
+  } catch (err) {
+    _didIteratorError = true;
+    _iteratorError = err;
+  } finally {
+    try {
+      if (!_iteratorNormalCompletion && _iterator["return"] != null) {
+        _iterator["return"]();
+      }
+    } finally {
+      if (_didIteratorError) {
+        throw _iteratorError;
+      }
+    }
+  }
+
+  var _iteratorNormalCompletion2 = true;
+  var _didIteratorError2 = false;
+  var _iteratorError2 = undefined;
+
+  try {
+    for (var _iterator2 = approveButtons[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+      var approveBtn = _step2.value;
+      approveBtn.addEventListener("click", function (e) {
+        var id = e.target.dataset.id;
+        approveTarget.value = id;
+        openModal(approveCommentModal);
+        acmCancel.focus();
+      });
+    }
+  } catch (err) {
+    _didIteratorError2 = true;
+    _iteratorError2 = err;
+  } finally {
+    try {
+      if (!_iteratorNormalCompletion2 && _iterator2["return"] != null) {
+        _iterator2["return"]();
+      }
+    } finally {
+      if (_didIteratorError2) {
+        throw _iteratorError2;
+      }
+    }
+  }
+
+  var _iteratorNormalCompletion3 = true;
+  var _didIteratorError3 = false;
+  var _iteratorError3 = undefined;
+
+  try {
+    for (var _iterator3 = unapproveButtons[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
+      var unapproveBtn = _step3.value;
+      unapproveBtn.addEventListener("click", function (e) {
+        var id = e.target.dataset.id;
+        unapproveTarget.value = id;
+        openModal(unapproveCommentModal);
+        ucmCancel.focus();
+      });
+    }
+  } catch (err) {
+    _didIteratorError3 = true;
+    _iteratorError3 = err;
+  } finally {
+    try {
+      if (!_iteratorNormalCompletion3 && _iterator3["return"] != null) {
+        _iterator3["return"]();
+      }
+    } finally {
+      if (_didIteratorError3) {
+        throw _iteratorError3;
+      }
+    }
+  }
+
+  modalOverlay.addEventListener("click", function (e) {
+    closeModal(deleteCommentModal);
+    closeModal(approveCommentModal);
+    closeModal(unapproveCommentModal);
+  });
+  dcmCancel.addEventListener("click", function (e) {
+    closeModal(deleteCommentModal);
+  });
+  acmCancel.addEventListener("click", function (e) {
+    closeModal(approveCommentModal);
+  });
+  ucmCancel.addEventListener("click", function (e) {
+    closeModal(unapproveCommentModal);
+  });
+  deleteCommentModal.addEventListener("keydown", function (e) {
+    if (e.key === 'Tab' || e.keyCode === KEYCODE_TAB) {
+      if (e.shiftKey)
+        /* shift + tab */
+        {
+          if (document.activeElement === dcmCancel) {
+            submitDelete.focus();
+            e.preventDefault();
+          }
+        } else
+        /* tab */
+        {
+          if (document.activeElement === submitDelete) {
+            dcmCancel.focus();
+            e.preventDefault();
+          }
+        }
+    }
+
+    if (e.key === "Escape") {
+      closeModal(deleteCommentModal);
+      modalOverlay.classList.replace("block", "hidden");
+      commentBody.focus();
+    }
+  });
+  approveCommentModal.addEventListener("keydown", function (e) {
+    if (e.key === 'Tab' || e.keyCode === KEYCODE_TAB) {
+      if (e.shiftKey)
+        /* shift + tab */
+        {
+          if (document.activeElement === acmCancel) {
+            submitApproval.focus();
+            e.preventDefault();
+          }
+        } else
+        /* tab */
+        {
+          if (document.activeElement === submitApproval) {
+            acmCancel.focus();
+            e.preventDefault();
+          }
+        }
+    }
+
+    if (e.key === "Escape") {
+      closeModal(approveCommentModal);
+      modalOverlay.classList.replace("block", "hidden");
+      commentBody.focus();
+    }
+  });
+  unapproveCommentModal.addEventListener("keydown", function (e) {
+    if (e.key === 'Tab' || e.keyCode === KEYCODE_TAB) {
+      if (e.shiftKey)
+        /* shift + tab */
+        {
+          if (document.activeElement === ucmCancel) {
+            submitUnapproval.focus();
+            e.preventDefault();
+          }
+        } else
+        /* tab */
+        {
+          if (document.activeElement === submitUnapproval) {
+            ucmCancel.focus();
+            e.preventDefault();
+          }
+        }
+    }
+
+    if (e.key === "Escape") {
+      closeModal(unapproveCommentModal);
+      modalOverlay.classList.replace("block", "hidden");
+      commentBody.focus();
+    }
+  });
+});
+
+function openModal(modal) {
+  modalOverlay.classList.replace("hidden", "block");
+  modal.classList.replace("hidden", "block");
+}
+
+function closeModal(modal) {
+  modalOverlay.classList.replace("block", "hidden");
+  modal.classList.replace("block", "hidden");
+}
 
 /***/ }),
 

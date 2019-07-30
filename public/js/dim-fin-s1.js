@@ -93,7 +93,91 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
+document.addEventListener("DOMContentLoaded", function (event) {
+  var KEYCODE_TAB = 9; // grab relevant dom elements
 
+  var modalOverlay = document.querySelector("#modalOverlay");
+  var modal = document.querySelector("#deleteImageModal");
+  var trashes = document.querySelectorAll(".trash");
+  var deleteTarget = document.querySelector("#deleteTarget");
+  var submitDelete = document.querySelector("#submitDelete");
+  var dimCancel = document.querySelector("#dimCancel");
+  var uploadbtn = document.querySelector("#uploadbtn");
+  var _iteratorNormalCompletion = true;
+  var _didIteratorError = false;
+  var _iteratorError = undefined;
+
+  try {
+    var _loop = function _loop() {
+      var trash = _step.value;
+      trash.addEventListener("click", function (e) {
+        var id = trash.getAttribute("data-id");
+        deleteTarget.value = id;
+        openModal(modal);
+        dimCancel.focus();
+      });
+    };
+
+    for (var _iterator = trashes[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+      _loop();
+    }
+  } catch (err) {
+    _didIteratorError = true;
+    _iteratorError = err;
+  } finally {
+    try {
+      if (!_iteratorNormalCompletion && _iterator["return"] != null) {
+        _iterator["return"]();
+      }
+    } finally {
+      if (_didIteratorError) {
+        throw _iteratorError;
+      }
+    }
+  }
+
+  modalOverlay.addEventListener("click", function (e) {
+    closeModal(modal);
+  });
+  dimCancel.addEventListener("click", function (e) {
+    closeModal(modal);
+  });
+  modal.addEventListener("keydown", function (e) {
+    if (e.key === 'Tab' || e.keyCode === KEYCODE_TAB) {
+      if (e.shiftKey)
+        /* shift + tab */
+        {
+          if (document.activeElement === dimCancel) {
+            submitDelete.focus();
+            e.preventDefault();
+          }
+        } else
+        /* tab */
+        {
+          if (document.activeElement === submitDelete) {
+            dimCancel.focus();
+            e.preventDefault();
+          }
+        }
+    }
+
+    if (e.key === "Escape") {
+      closeModal(modal);
+      modalOverlay.classList.replace("block", "hidden");
+      uploadbtn.focus();
+    }
+  });
+});
+
+function openModal(modal) {
+  modalOverlay.classList.replace("hidden", "block");
+  modal.classList.replace("hidden", "block");
+}
+
+function closeModal(modal) {
+  modalOverlay.classList.replace("block", "hidden");
+  modal.classList.replace("block", "hidden");
+}
 
 /***/ }),
 

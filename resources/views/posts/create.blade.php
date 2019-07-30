@@ -7,14 +7,7 @@
 @section('js')
   @include('includes.default-js')
   <script src="{{ asset('/vendor/unisharp/laravel-ckeditor/ckeditor.js') }}"></script>
-  <script>
-    document.addEventListener('DOMContentLoaded', (event) => {
-      CKEDITOR.config.toolbar = [
-        ['Format','Bold','Italic','-','NumberedList','BulletedList','-','Undo','Redo','-','Cut','Copy','Paste','Find','Replace','Link', 'Unlink']
-      ];
-      CKEDITOR.replace( 'post-body');
-    });
-  </script>
+  <script src="{{ asset('js/dpo-fcr-s1.js') }}"></script>
 @endsection
 
 @section('css')

@@ -6,16 +6,8 @@
 
 @section('js')
   @include('includes.default-js')
-  <script defer src="{{asset('/vendor/unisharp/laravel-ckeditor/ckeditor.js') }}"></script>
-  <script defer>
-    // dab-fed-s1.js
-    document.addEventListener('DOMContentLoaded', (event) => {
-      CKEDITOR.config.toolbar = [
-        ['Format','Bold','Italic','-','NumberedList','BulletedList','-','Undo','Redo','-','Cut','Copy','Paste','Find','Replace','Link', 'Unlink']
-      ];
-      CKEDITOR.replace( 'about-body');
-    });
-  </script>
+  <script src="{{asset('/vendor/unisharp/laravel-ckeditor/ckeditor.js') }}"></script>
+  <script src="{{ asset('js/dab-fed-s1.js') }}"></script>
 @endsection
 
 @section('css')

@@ -93,7 +93,10 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-
+document.addEventListener('DOMContentLoaded', function (event) {
+  CKEDITOR.config.toolbar = [['Format', 'Bold', 'Italic', '-', 'NumberedList', 'BulletedList', '-', 'Undo', 'Redo', '-', 'Cut', 'Copy', 'Paste', 'Find', 'Replace', 'Link', 'Unlink']];
+  CKEDITOR.replace('about-body');
+});
 
 /***/ }),
 
