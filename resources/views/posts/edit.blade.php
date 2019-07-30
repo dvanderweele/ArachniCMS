@@ -15,21 +15,7 @@
 
 @section('css')
   @include('includes.default-css')
-  <style>
-    .videoWrapper {
-      position: relative;
-      padding-bottom: 56.25%; /* 16:9 */
-      padding-top: 25px;
-      height: 0;
-    }
-    .videoWrapper iframe {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-    }
-  </style>
+  <link rel="stylesheet" href="{{ asset('css/dpo-fed-s1.css') }}">
 @endsection
 
 @section('nav')

@@ -1,0 +1,11 @@
+#landing-nav {
+    background-image: linear-gradient(rgba(178,178,178,.35),rgba(0,0,0,0));
+}
+.sr-hidden {
+    position:absolute;
+    left:-10000px;
+    top:auto;
+    width:1px;
+    height:1px;
+    overflow:hidden;
+}

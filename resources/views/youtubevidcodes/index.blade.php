@@ -11,18 +11,7 @@
 
 @section('css')
   @include('includes.default-css')
-  <style>
-    blockquote {
-      padding-left: .75rem;
-      padding-right: .75rem;
-      padding-top: .5rem;
-      padding-bottom: .5rem;
-      background: var(--bg-background-secondary);
-      color: var(--text-copy-secondary);
-      font-family: Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-      cursor: pointer;
-    }
-  </style>
+  <link rel="stylesheet" href="{{ asset('dyc-fin-s1.css') }}">
 @endsection
 
 @section('nav')

@@ -11,20 +11,7 @@
 
 @section('css')
   @include('includes.default-css')
-  <style>
-    /* fwe-s1.css */
-    #landing-nav {
-      background-image: linear-gradient(rgba(178,178,178,.35),rgba(0,0,0,0));
-    }
-    .sr-hidden {
-      position:absolute;
-      left:-10000px;
-      top:auto;
-      width:1px;
-      height:1px;
-      overflow:hidden;
-    }
-  </style>
+  <link rel="stylesheet" href="{{ asset('css/fwe-s1.css') }}">
 @endsection
 
 @section('nav')
