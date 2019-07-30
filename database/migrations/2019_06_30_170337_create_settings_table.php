@@ -33,6 +33,14 @@ class CreateSettingsTable extends Migration
           $table->text('thank_you_copy')->nullable();
           $table->string('font_pref');
           $table->tinyInteger('enable_backups')->default(true);
+          $table->boolean('has_social_media')->default(false);
+          $table->string('facebook')->nullable();
+          $table->string('instagram')->nullable();
+          $table->string('twitter')->nullable();
+          $table->string('pinterest')->nullable();
+          $table->string('youtube')->nullable();
+          $table->string('linkedin')->nullable();
+          $table->string('github')->nullable();
           $table->timestamps();
       });
     }

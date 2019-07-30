@@ -48,6 +48,13 @@ class SettingsController extends Controller
       'thank_you_title' => 'nullable',
       'thank_you_copy' => 'nullable',
       'enableBackups' => 'required',
+      'facebook' => 'nullable',
+      'instagram' => 'nullable',
+      'twitter' => 'nullable',
+      'pinterest' => 'nullable',
+      'youtube' => 'nullable',
+      'linkedin' => 'nullable',
+      'github' => 'nullable'
     ]);
     $settings->enable_backups = $request->enableBackups == 'true' ? true : false;
     $settings->view_count_policy = $request->viewCountPolicy == 'true' ? true : false;
@@ -170,6 +177,18 @@ class SettingsController extends Controller
         break;
       default: 
         $settings->thank_you_copy = $request->thank_you_copy;
+    }
+    if($request->facebook == null && $request->instagram == null && $request->twitter == null && $request->pinterest == null && $request->youtube == null && $request->linkedin == null && $request->github == null){
+      $settings->has_social_media = false;
+    } else {
+      $settings->has_social_media = true;
+      $settings->facebook = $request->facebook == null ? null : $request->facebook;
+      $settings->instagram = $request->instagram == null ? null : $request->instagram;
+      $settings->twitter = $request->twitter == null ? null : $request->twitter;
+      $settings->pinterest = $request->pinterest == null ? null : $request->pinterest;
+      $settings->youtube = $request->youtube == null ? null : $request->youtube;
+      $settings->linkedin = $request->linkedin == null ? null : $request->linkedin;
+      $settings->github = $request->github == null ? null : $request->github;
     }
     $settings->save();
     return view('settings.show')->with([

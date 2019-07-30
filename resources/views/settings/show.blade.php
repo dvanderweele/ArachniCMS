@@ -245,10 +245,46 @@
         </p>
         <input id="thank_you_copy" type="text" name="thank_you_copy" class="text-copy-primary bg-background-form shadow appearance-none border rounded w-full py-2 px-3 text-copy-primary leading-tight focus:outline-none focus:shadow-outline focus:bg-background-ruthieslight @error('thank_you_copy') border-solid border-red-600 border-2 @enderror" placeholder="Your subscription means a lot!" value="{{ $settings->thank_you_copy == null ? '' : $settings->thank_you_copy }}">
       </div>
-      <div class="flex flex-col items-start mb-4 py-4 text-copy-secondary">
-        <p class="font-semibold text-xl mb-2">
-          Font Preference
+      <div class="flex flex-col items-start mb-4 text-copy-primary">
+        <h2 class="font-semibold text-xl mb-2">
+          Social Media Links
+        </h2>
+        <p class="mb-2 text-copy-secondary">
+          <small>You can link to your social media profiles in the footer of every page by putting your links in the following section. Each link will be in the form of an simple icon. Providing Social Media links is totally optional, so if you don't provide any the links won't appear in the footer. Make sure to provide full, valid URLs that include the 'https://' part.</small>
         </p>
+        <label for="facebook" class="font-semibold mb-2 text-copy-secondary">
+          Facebook
+        </label>
+        <input id="facebook" type="text" name="facebook" class="text-copy-primary bg-background-form shadow appearance-none border rounded w-full py-2 px-3 mb-3 text-copy-primary leading-tight focus:outline-none focus:shadow-outline focus:bg-background-ruthieslight @error('facebook') border-solid border-red-600 border-2 @enderror" placeholder="Your Facebook Here" value="{{ $settings->facebook == null ? '' : $settings->facebook }}">
+        <label for="twitter" class="font-semibold mb-2 text-copy-secondary">
+          Twitter
+        </label>
+        <input id="twitter" type="text" name="twitter" class="text-copy-primary bg-background-form shadow appearance-none border rounded w-full py-2 px-3 mb-3 text-copy-primary leading-tight focus:outline-none focus:shadow-outline focus:bg-background-ruthieslight @error('twitter') border-solid border-red-600 border-2 @enderror" placeholder="Your Twitter Here" value="{{ $settings->twitter == null ? '' : $settings->twitter }}">
+        <label for="instagram" class="font-semibold mb-2 text-copy-secondary">
+          Instagram
+        </label>
+        <input id="instagram" type="text" name="instagram" class="text-copy-primary bg-background-form shadow appearance-none border rounded w-full py-2 px-3 mb-3 text-copy-primary leading-tight focus:outline-none focus:shadow-outline focus:bg-background-ruthieslight @error('instagram') border-solid border-red-600 border-2 @enderror" placeholder="Your Instagram Here" value="{{ $settings->instagram == null ? '' : $settings->instagram }}">
+        <label for="pinterest" class="font-semibold mb-2 text-copy-secondary">
+          Pinterest
+        </label>
+        <input id="pinterest" type="text" name="pinterest" class="text-copy-primary bg-background-form shadow appearance-none border rounded w-full py-2 px-3 mb-3 text-copy-primary leading-tight focus:outline-none focus:shadow-outline focus:bg-background-ruthieslight @error('pinterest') border-solid border-red-600 border-2 @enderror" placeholder="Your Pinterest Here" value="{{ $settings->pinterest == null ? '' : $settings->pinterest }}">
+        <label for="youtube" class="font-semibold mb-2 text-copy-secondary">
+          Youtube
+        </label>
+        <input id="youtube" type="text" name="youtube" class="text-copy-primary bg-background-form shadow appearance-none border rounded w-full py-2 px-3 mb-3 text-copy-primary leading-tight focus:outline-none focus:shadow-outline focus:bg-background-ruthieslight @error('youtube') border-solid border-red-600 border-2 @enderror" placeholder="Your Youtube Here" value="{{ $settings->youtube == null ? '' : $settings->youtube }}">
+        <label for="linkedin" class="font-semibold mb-2 text-copy-secondary">
+          Linkedin
+        </label>
+        <input id="linkedin" type="text" name="linkedin" class="text-copy-primary bg-background-form shadow appearance-none border rounded w-full py-2 px-3 mb-3 text-copy-primary leading-tight focus:outline-none focus:shadow-outline focus:bg-background-ruthieslight @error('linkedin') border-solid border-red-600 border-2 @enderror" placeholder="Your Linkedin Here" value="{{ $settings->linkedin == null ? '' : $settings->linkedin }}">
+        <label for="github" class="font-semibold mb-2 text-copy-secondary">
+          GitHub
+        </label>
+        <input id="github" type="text" name="github" class="text-copy-primary bg-background-form shadow appearance-none border rounded w-full py-2 px-3 mb-3 text-copy-primary leading-tight focus:outline-none focus:shadow-outline focus:bg-background-ruthieslight @error('github') border-solid border-red-600 border-2 @enderror" placeholder="Your GitHub Here" value="{{ $settings->github == null ? '' : $settings->github }}">
+      </div>
+      <div class="flex flex-col items-start mb-4 py-4 text-copy-secondary">
+        <h2 class="font-semibold text-xl mb-2">
+          Font Preference
+        </h2>
         <p class="mb-2">
           <small>Your selection here determines which font will be preferred for key areas of your website like blog posts and your landing page.</small>
         </p>
