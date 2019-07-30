@@ -414,5 +414,4 @@
 
 @section('footer')
   @include('includes.default-footer')
-@endsectionComment:
-Quisquam exercitationem quisquam totam. Sit vel quisquam sint eius. Ullam qui suscipit cumque. Qui debitis quisquam a assumenda. Labore ad aut aut et alias sint consequatur iusto. Sit molestias quaerat assumenda sunt architecto quia similique. Vitae provident sit alias explicabo. At sint nesciunt est ut fuga. In consequatur nam voluptatem nam soluta alias vero. Velit facere nihil commodi quas dolorem aliquam earum. Voluptas molestiae suscipit illum nostrum repudiandae deleniti ut. Tempore temporibus doloremque possimus quos voluptatibus molestiae. 
+@endsection
