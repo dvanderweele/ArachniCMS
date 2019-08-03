@@ -1,6 +1,7 @@
 <?php
 
 use Spatie\Honeypot\ProtectAgainstSpam;
+use Spatie\Csp\AddCspHeaders;
 use App\Jobs\GenerateBackup;
 
 /*
@@ -23,29 +24,28 @@ Route::get('/test', function(){
   return redirect('/');
 });
 
-Route::get('/', 'IndexController@show');
+Route::get('/', 'IndexController@show')->middleware('csp');
 
-Route::get('/home', 'HomeController@index');
+Route::get('/home', 'HomeController@index')->middleware('csp');
 
-Route::get('/about',                      'AboutController@show')->name('show-about');
+Route::get('/about',                      'AboutController@show')->name('show-about')->middleware('csp');
 Route::get('/about/create',               'AboutController@create')->name('create-about')->middleware('auth');
 Route::post('/about',                     'AboutController@store')->middleware('auth');
 Route::get('/about/edit',                 'AboutController@edit')->middleware('auth');
 Route::patch('/about',                    'AboutController@update')->middleware('auth');
 Route::delete('/about',                   'AboutController@destroy')->middleware('auth');
 
-Route::get('/contact',                    'ContactController@create')->name('create-contact');
-Route::post('/contact',                   'ContactController@store')->name('store-contact')->middleware(ProtectAgainstSpam::class);
+Route::get('/contact',                    'ContactController@create')->name('create-contact')->middleware('csp');
+Route::post('/contact',                   'ContactController@store')->name('store-contact')->middleware(ProtectAgainstSpam::class, 'csp');
 
-Route::get('/posts',                      'PostController@index')->name('list-posts');
+Route::get('/posts',                      'PostController@index')->name('list-posts')->middleware('csp');
 Route::get('/posts/create',               'PostController@create')->middleware('auth')->name('create-post');
 Route::post('/posts',                     'PostController@store')->middleware('auth');
-Route::get('/posts/{post}',                 'PostController@show')->name('show-post');
+Route::get('/posts/{post}',                 'PostController@show')->name('show-post')->middleware('csp');
 Route::get('/posts/{post}/edit',            'PostController@edit')->middleware('auth')->name('edit-post');
 Route::patch('/posts',                    'PostController@update')->middleware('auth');
 Route::delete('/posts',                   'PostController@destroy')->middleware('auth');
 
-Route::get('/comments',                   'CommentController@index')->middleware('auth');
 Route::post('/comments',                  'CommentController@store')->middleware(ProtectAgainstSpam::class);
 Route::patch('/comments',                 'CommentController@update')->middleware('auth');
 Route::delete('/comments',                'CommentController@destroy')->middleware('auth');
@@ -78,7 +78,7 @@ Route::patch('/testimonials',                   'TestimonialController@update')-
 Route::delete('/testimonials',                  'TestimonialController@destroy')->middleware('auth');
 
 Route::post('/subscriptions',                   'SubscriptionController@store')->middleware(ProtectAgainstSpam::class);
-Route::get('/thankyou',                         'SubscriptionController@show');
+Route::get('/thankyou',                         'SubscriptionController@show')->middleware('csp');
 
 Route::get('/backup',                           'BackupController@index')->middleware('auth');
 Route::post('/backup/download',                  'BackupController@show')->middleware('auth');

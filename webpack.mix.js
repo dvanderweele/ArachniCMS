@@ -15,6 +15,8 @@ const tailwindcss = require('tailwindcss');
 mix
   .js('resources/js/app.js', 'public/js')
 mix
+.js('resources/js/theme-switch.js', 'public/js')
+mix
   .js('resources/js/fwe-s1.js', 'public/js')
 mix
   .js('resources/js/dab-fcr-s1.js', 'public/js')

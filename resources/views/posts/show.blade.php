@@ -152,7 +152,7 @@
     <section class="mb-8 mx-6">
       @foreach($post->youtubevidembeds as $embed)
         <div class="mb-8 videoWrapper absolute w-full h-0">
-          <iframe width="560" height="349" src="https://www.youtube.com/embed/{{ $embed->youtubevidcode->vidcode }}" frameborder="0" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          <iframe nonce="{{ csp_nonce() }}" width="560" height="349" src="https://www.youtube.com/embed/{{ $embed->youtubevidcode->vidcode }}" frameborder="0" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
       @endforeach
     </section>

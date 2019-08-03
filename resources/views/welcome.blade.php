@@ -5,7 +5,7 @@
 @endsection
 
 @section('js')
-  @include('includes.default-js')
+<script src="{{ asset('js/app.js') }}" defer></script>
   <script src="{{ asset('js/fwe-s1.js') }}"></script>
 @endsection
 

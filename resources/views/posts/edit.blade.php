@@ -9,7 +9,7 @@
   <script src="{{asset('/vendor/unisharp/laravel-ckeditor/ckeditor.js') }}"></script>
   <script src="{{ asset('js/dpo-fed-s1.js') }}"></script>
   @if(count($post->images))
-    <script src="{{ asset('dpo-fed-s2.js') }}"></script>
+    <script src="{{ asset('js/dpo-fed-s2.js') }}"></script>
   @endif
 @endsection
 

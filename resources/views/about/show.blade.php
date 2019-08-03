@@ -8,7 +8,7 @@
 
 @section('js')
   @include('includes.default-js')
-  <script src="{{ asset('js/dab-sh-s1.js') }}"></script>
+  <script src="{{ asset('js/dab-fsh-s1.js') }}"></script>
 @endsection
 
 @section('css')

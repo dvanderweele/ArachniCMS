@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
           CommentsTableSeeder::class,
           ImagesTableSeeder::class,
           ImageablesTableSeeder::class,
+          YoutubeVidCodesTableSeeder::class,
           YoutubeVidEmbedsTableSeeder::class,
         ]);
     }

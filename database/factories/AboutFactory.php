@@ -2,10 +2,10 @@
 
 /* @var $factory \Illuminate\Database\Eloquent\Factory */
 
-use App\Model;
+use App\About;
 use Faker\Generator as Faker;
 
-$factory->define(Model::class, function (Faker $faker) {
+$factory->define(About::class, function (Faker $faker) {
     return [
         'title' => 'About Us',
         'body' => '<p>'.implode('</p><p>',$faker->paragraphs(7, false)).'</p>',
