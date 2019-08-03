@@ -2,7 +2,7 @@
 
     @include('cookieConsent::dialogContents')
 
-    <script>
+    <script nonce="{{ csp_nonce() }}">
 
         window.laravelCookieConsent = (function () {
 

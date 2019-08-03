@@ -12,6 +12,18 @@
 @section('css')
   @include('includes.default-css')
   <link rel="stylesheet" href="{{ asset('css/fwe-s1.css') }}">
+  @if($settings->hero_location != null)
+  <style nonce="{{ csp_nonce() }}">
+      #relative-hero{
+        background: url('{{ asset('storage/'.$settings->hero_location) }}') no-repeat center center / cover;
+      }
+  </style>
+  @endif
+  <style nonce="{{ csp_nonce() }}">
+    #bg-fuzz {
+      background: rgba(178,178,178,.65);
+    }
+  </style>
 @endsection
 
 @section('nav')
@@ -22,10 +34,10 @@
   
   <div class="relative hero h-screen flex flex-col justify-center items-center text-copy-secondary {{ $settings->font_pref == 'gsa' ? 'font-sans' : '' }} {{ $settings->font_pref == 'gsa' ? 'font-sans' : '' }} {{ $settings->font_pref == 'gse' ? 'font-serif' : '' }} {{ $settings->font_pref == 'gmo' ? 'font-mono' : '' }} {{ $settings->font_pref == 'asa' ? 'font-alegreya-sans' : '' }} {{ $settings->font_pref == 'ase' ? 'font-alegreya' : '' }} {{ $settings->font_pref == 'fco' ? 'font-fira-code' : '' }} {{ $settings->font_pref == 'hac' ? 'font-hack' : '' }} {{ $settings->font_pref == 'mon' ? 'font-montserrat' : '' }} {{ $settings->font_pref == 'qui' ? 'font-quicksand' : '' }}" 
   @if($settings->hero_location != null)
-    style="background: url('{{ asset('storage/'.$settings->hero_location) }}') no-repeat center center / cover;"
+    id="relative-hero"
   @endif
   >
-    <div class="w-full h-full z-10 absolute" style="background: rgba(178,178,178,.65);"></div>
+    <div class="w-full h-full z-10 absolute" id="bg-fuzz"></div>
     <h1 class="z-20 px-6  text-6xl text-copy-primary font-black {{ $settings->font_pref == 'asa' ? 'font-alegreya-sans-sc' : '' }} {{ $settings->font_pref == 'ase' ? 'font-alegreya-sc' : '' }}">
       @if($settings->landing_header == null)
         Arachni<span class="text-copy-primary">CMS</span>

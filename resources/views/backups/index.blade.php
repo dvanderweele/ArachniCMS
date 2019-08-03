@@ -10,16 +10,7 @@
 
 @section('css')
   @include('includes.default-css')
-  <style>
-    .sr-hidden {
-      position:absolute;
-      left:-10000px;
-      top:auto;
-      width:1px;
-      height:1px;
-      overflow:hidden;
-    }
-  </style>
+  <link rel="stylesheet" href="{{ asset('css/dbo-fin-s1.css') }}">
 @endsection
 
 @section('nav')
