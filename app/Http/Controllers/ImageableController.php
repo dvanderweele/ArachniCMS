@@ -99,22 +99,14 @@ class ImageableController extends Controller
       ]);
       $image = Image::findOrFail($request->image_id);
       if($request->imageable_type == 'App\Post'){
-        $post = Post::findOrFail($request->imageable_id);
+        $post = Post::where('url_string', $request->imageable_id)->firstOrFail();
         $imageable = Imageable::where([
           ['imageable_type', '=', 'App\Post'],
           ['imageable_id', '=', $post->id],
           ['image_id', '=', $image->id],
-        ])->first();
-        if($imageable->count()){
-          // this imageable does exist, delete it
-          $imageable->delete();
-          return redirect()->route('edit-post', ['post' => $post->url_string]);
-        } else {
-          // this imageable doesn't exist, let's redirect
-          return redirect()->route('edit-post', ['post' => $post->url_string]);
-        }
-      } elseif ($request->imageable_type == 'App\Album'){
-        return;
+        ])->firstOrFail();
+        $imageable->delete();
+        return redirect()->route('edit-post', ['post' => $post->url_string]);
       }
     }
 }
