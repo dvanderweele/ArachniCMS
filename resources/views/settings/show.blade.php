@@ -184,13 +184,13 @@
         <input type="file" name="hero_image" class="text-copy-primary bg-background-form shadow appearance-none border rounded w-full py-2 px-3 text-copy-primary leading-tight focus:outline-none focus:shadow-outline focus:bg-background-ruthieslight @error('hero_image') border-solid border-red-600 border-2 @enderror" id="hero_image_input">
       </div>
       <div class="flex flex-col items-start mb-4">
-        <label for="subscribe_form_title_input" class="font-semibold mb-2 text-copy-secondary">
+        <label for="hero_description" class="font-semibold mb-2 text-copy-secondary">
           Hero Description
         </label>
         <p class="mb-2 text-copy-secondary">
           <small>If you are uploading a hero image for your landing page, you are required to provide a written description of it here. This is to make your site more accessible, such as for users with screen readers or in poor network conditions. If you've already uploaded a hero image in the past, you'll find your existing description below. Changes to it will only be saved if you are uploading a new hero image.</small>
         </p>
-        <input id="subscribe_form_title_input" type="text" name="subscribe_form_title" class="text-copy-primary bg-background-form shadow appearance-none border rounded w-full py-2 px-3 text-copy-primary leading-tight focus:outline-none focus:shadow-outline focus:bg-background-ruthieslight @error('subscribe_form_title') border-solid border-red-600 border-2 @enderror" placeholder="This is a pretty nifty logo, eh?" value="{{ $settings->subscribe_form_title == null ? '' : $settings->subscribe_form_title }}">
+        <input id="hero_description" type="text" name="hero_description" class="text-copy-primary bg-background-form shadow appearance-none border rounded w-full py-2 px-3 text-copy-primary leading-tight focus:outline-none focus:shadow-outline focus:bg-background-ruthieslight @error('hero_description') border-solid border-red-600 border-2 @enderror" placeholder="This is a pretty nifty image, eh?" value="{{ $settings->hero_description == null ? '' : $settings->hero_description }}">
       </div>
       <div class="flex flex-col items-start mb-4">
         <label for="enableSubscription" class="font-semibold mb-2 text-copy-secondary">

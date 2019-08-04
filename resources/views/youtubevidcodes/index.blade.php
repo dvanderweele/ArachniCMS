@@ -11,7 +11,7 @@
 
 @section('css')
   @include('includes.default-css')
-  <link rel="stylesheet" href="{{ asset('dyc-fin-s1.css') }}">
+  <link rel="stylesheet" href="{{ asset('css/dyc-fin-s1.css') }}">
 @endsection
 
 @section('nav')

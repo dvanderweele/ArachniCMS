@@ -131,7 +131,7 @@ class SettingsController extends Controller
         // let's validate and store that logo
         $request->validate([
           'hero_image' => 'image|required|max:1999',
-          'logo_description' => 'required|min:2'
+          'hero_description' => 'required|min:2'
         ]);
         $filenameWithExt = $request->file('hero_image')->getClientOriginalName();
         $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
@@ -140,7 +140,7 @@ class SettingsController extends Controller
         $path = $request->file('hero_image')->storeAs('public', $fileNameToStore);
 
         $settings->hero_location = $fileNameToStore;
-        $settings->hero_description = $request->logo_description;
+        $settings->hero_description = $request->hero_description;
       }
     }
     switch($request->enableSubscription) {
