@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Image;
 use App\Settings;
+use App\Imageable;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
@@ -94,7 +95,7 @@ class ImageController extends Controller
     public function destroy(Request $request)
     {
       $image = Image::findOrFail($request->id);
-      $imageables = DB::table('imageables')->where('image_id', $request->id)->get();
+      $imageables = Imageable::where('image_id', $request->id)->get();
       foreach($imageables as $imageable){
         $imageable->delete();
       }
