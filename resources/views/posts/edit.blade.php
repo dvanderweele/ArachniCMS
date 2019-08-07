@@ -150,13 +150,6 @@
           </button>
         </form>
       @endforeach
-      <button type="button" class="border bg-background-secondary text-copy-secondary rounded hover:bg-background-primary py-2 px-4 mb-2"><a href="/youtubevidembeds/{{ $post->url_string }}" class="font-bold text-center">Embed More Videos</a></button>
-      <p class="mb-2 font-bold text-copy-primary">WARNING: if you decide to click that button to start embedding videos, you will navigate to a different page, and any unsaved progress on your post above will be lost.</p>
-    @else 
-      <p class="text-copy-primary mb-8 text-copy-primary">
-        Looks like you haven't embedded any YouTube videos in this post yet. Click the button below to get started. <span class="font-bold">WARNING: if you decide to click that button to start adding videos, you will navigate to a different page, and any unsaved progress on your post above will be lost.</span>
-      </p>
-      <a href="/youtubevidembeds/{{ $post->url_string }}" class="border bg-background-secondary text-copy-secondary py-2 px-4 rounded hover:bg-background-primary font-bold text-center">Embed Videos</a>
     @endif
   </div>
   <div class="max-w-2xl w-10/12 bg-background-primary shadow-lg rounded mx-auto px-8 pt-6 pb-8 mt-8 font-sans">
@@ -182,13 +175,6 @@
         </div>
       </div>
       @endforeach
-      <button class=""><a href="/imageables/post/{{ $post->url_string }}/create" class="border bg-background-secondary text-copy-secondary py-2 px-4 rounded hover:bg-background-primary font-bold text-center">Embed More Photos</a></button>
-      <p class="mb-2 font-bold my-4 text-copy-primary">WARNING: if you decide to click that button to start embedding photos, you will navigate to a different page, and any unsaved progress on your post above will be lost.</p>
-    @else 
-      <p class="text-copy-primary mb-8 text-copy-primary">
-        Looks like you haven't embedded any photos in this post yet. Click the button below to get started. <span class="font-bold">WARNING: if you decide to click that button to start adding photos, you will navigate to a different page, and any unsaved progress on your post above will be lost.</span>
-      </p>
-      <a href="/imageables/post/{{ $post->url_string }}/create" class="border bg-background-secondary text-copy-secondary py-2 px-4 rounded hover:bg-background-primary font-bold text-center">Embed Photos</a>
     @endif
   </div>
 @endsection
