@@ -41,6 +41,7 @@ class CreateSettingsTable extends Migration
           $table->string('youtube')->nullable();
           $table->string('linkedin')->nullable();
           $table->string('github')->nullable();
+          $table->string('theme_pref');
           $table->timestamps();
       });
     }

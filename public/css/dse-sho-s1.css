@@ -1,0 +1,58 @@
+.sr-hidden {
+    position:absolute;
+    left:-10000px;
+    top:auto;
+    width:1px;
+    height:1px;
+    overflow:hidden;
+}
+
+#graybox {
+    background-color: #1a202c;    
+    background-image: linear-gradient(15deg, #1a202c, white);
+}
+
+#redbox {
+    background-color: #742a2a;
+    background-image: linear-gradient(15deg, #742a2a, white);
+}
+
+#orangebox {
+    background-color: #7b341e;
+    background-image: linear-gradient(15deg, #7b341e, white);
+}
+
+#yellowbox {
+    background-color: #744210;
+    background-image: linear-gradient(15deg, #744210, white);
+}
+
+#greenbox {
+    background-color: #22543d;
+    background-image: linear-gradient(15deg, #22543d, white);
+}
+
+#tealbox {
+    background-color: #234e52;
+    background-image: linear-gradient(15deg, #234e52, white);
+}
+
+#bluebox {
+    background-color: #2a4365;
+    background-image: linear-gradient(15deg, #2a4365, white);
+}
+
+#indigobox {
+    background-color: #3c366b;
+    background-image: linear-gradient(15deg, #3c366b, white);
+}
+
+#violetbox {
+    background-color: #44337a;
+    background-image: linear-gradient(15deg, #44337a, white);
+}
+
+#pinkbox {
+    background-color: #702459;
+    background-image: linear-gradient(15deg, #702459, white);
+}

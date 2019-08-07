@@ -1,1 +1,162 @@
-!function(e){var t={};function n(l){if(t[l])return t[l].exports;var o=t[l]={i:l,l:!1,exports:{}};return e[l].call(o.exports,o,o.exports,n),o.l=!0,o.exports}n.m=e,n.c=t,n.d=function(e,t,l){n.o(e,t)||Object.defineProperty(e,t,{enumerable:!0,get:l})},n.r=function(e){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},n.t=function(e,t){if(1&t&&(e=n(e)),8&t)return e;if(4&t&&"object"==typeof e&&e&&e.__esModule)return e;var l=Object.create(null);if(n.r(l),Object.defineProperty(l,"default",{enumerable:!0,value:e}),2&t&&"string"!=typeof e)for(var o in e)n.d(l,o,function(t){return e[t]}.bind(null,o));return l},n.n=function(e){var t=e&&e.__esModule?function(){return e.default}:function(){return e};return n.d(t,"a",t),t},n.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},n.p="/",n(n.s=47)}({47:function(e,t,n){e.exports=n(48)},48:function(e,t){document.addEventListener("DOMContentLoaded",function(e){CKEDITOR.config.toolbar=[["Format","Bold","Italic","-","NumberedList","BulletedList","-","Undo","Redo","-","Cut","Copy","Paste","Find","Replace","Link","Unlink"]],CKEDITOR.replace("post-body"),deleteButton=document.getElementById("delete"),deletionOverlay=document.getElementById("deletionOverlay"),deletionModal=document.getElementById("deletionModal"),cancelDelete=document.getElementById("cancelDelete"),titleField=document.getElementById("post-title"),submitDelete=document.getElementById("submitDelete"),deleteButton.addEventListener("click",function(){deletionModal.classList.replace("hidden","block"),deletionOverlay.classList.replace("hidden","block"),cancelDelete.focus();deletionModal.addEventListener("keydown",function(e){"Tab"!==e.key&&9!==e.keyCode||(e.shiftKey?document.activeElement===cancelDelete&&(submitDelete.focus(),e.preventDefault()):document.activeElement===submitDelete&&(cancelDelete.focus(),e.preventDefault())),"Escape"===e.key&&(deletionModal.classList.replace("block","hidden"),deletionOverlay.classList.replace("block","hidden"),titleField.focus())})}),cancelDelete.addEventListener("click",function(){deletionModal.classList.replace("block","hidden"),deletionOverlay.classList.replace("block","hidden"),titleField.focus()}),deletionOverlay.addEventListener("click",function(){deletionModal.classList.replace("block","hidden"),deletionOverlay.classList.replace("block","hidden"),titleField.focus()})})}});
+/******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+/******/
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId]) {
+/******/ 			return installedModules[moduleId].exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.l = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/
+/******/
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+/******/
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+/******/
+/******/ 	// define getter function for harmony exports
+/******/ 	__webpack_require__.d = function(exports, name, getter) {
+/******/ 		if(!__webpack_require__.o(exports, name)) {
+/******/ 			Object.defineProperty(exports, name, { enumerable: true, get: getter });
+/******/ 		}
+/******/ 	};
+/******/
+/******/ 	// define __esModule on exports
+/******/ 	__webpack_require__.r = function(exports) {
+/******/ 		if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 			Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 		}
+/******/ 		Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 	};
+/******/
+/******/ 	// create a fake namespace object
+/******/ 	// mode & 1: value is a module id, require it
+/******/ 	// mode & 2: merge all properties of value into the ns
+/******/ 	// mode & 4: return value when already ns object
+/******/ 	// mode & 8|1: behave like require
+/******/ 	__webpack_require__.t = function(value, mode) {
+/******/ 		if(mode & 1) value = __webpack_require__(value);
+/******/ 		if(mode & 8) return value;
+/******/ 		if((mode & 4) && typeof value === 'object' && value && value.__esModule) return value;
+/******/ 		var ns = Object.create(null);
+/******/ 		__webpack_require__.r(ns);
+/******/ 		Object.defineProperty(ns, 'default', { enumerable: true, value: value });
+/******/ 		if(mode & 2 && typeof value != 'string') for(var key in value) __webpack_require__.d(ns, key, function(key) { return value[key]; }.bind(null, key));
+/******/ 		return ns;
+/******/ 	};
+/******/
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = function(module) {
+/******/ 		var getter = module && module.__esModule ?
+/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getModuleExports() { return module; };
+/******/ 		__webpack_require__.d(getter, 'a', getter);
+/******/ 		return getter;
+/******/ 	};
+/******/
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "/";
+/******/
+/******/
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(__webpack_require__.s = 8);
+/******/ })
+/************************************************************************/
+/******/ ({
+
+/***/ "./resources/js/dpo-fed-s1.js":
+/*!************************************!*\
+  !*** ./resources/js/dpo-fed-s1.js ***!
+  \************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+document.addEventListener('DOMContentLoaded', function (event) {
+  CKEDITOR.config.toolbar = [['Format', 'Bold', 'Italic', '-', 'NumberedList', 'BulletedList', '-', 'Undo', 'Redo', '-', 'Cut', 'Copy', 'Paste', 'Find', 'Replace', 'Link', 'Unlink']];
+  CKEDITOR.replace('post-body');
+  deleteButton = document.getElementById("delete");
+  deletionOverlay = document.getElementById("deletionOverlay");
+  deletionModal = document.getElementById("deletionModal");
+  cancelDelete = document.getElementById("cancelDelete");
+  titleField = document.getElementById("post-title");
+  submitDelete = document.getElementById("submitDelete");
+  deleteButton.addEventListener("click", function () {
+    deletionModal.classList.replace("hidden", "block");
+    deletionOverlay.classList.replace("hidden", "block");
+    cancelDelete.focus();
+    var KEYCODE_TAB = 9;
+    deletionModal.addEventListener("keydown", function (e) {
+      if (e.key === 'Tab' || e.keyCode === KEYCODE_TAB) {
+        if (e.shiftKey)
+          /* shift + tab */
+          {
+            if (document.activeElement === cancelDelete) {
+              submitDelete.focus();
+              e.preventDefault();
+            }
+          } else
+          /* tab */
+          {
+            if (document.activeElement === submitDelete) {
+              cancelDelete.focus();
+              e.preventDefault();
+            }
+          }
+      }
+
+      if (e.key === "Escape") {
+        deletionModal.classList.replace("block", "hidden");
+        deletionOverlay.classList.replace("block", "hidden");
+        titleField.focus();
+      }
+    });
+  });
+  cancelDelete.addEventListener("click", function () {
+    deletionModal.classList.replace("block", "hidden");
+    deletionOverlay.classList.replace("block", "hidden");
+    titleField.focus();
+  });
+  deletionOverlay.addEventListener("click", function () {
+    deletionModal.classList.replace("block", "hidden");
+    deletionOverlay.classList.replace("block", "hidden");
+    titleField.focus();
+  });
+});
+
+/***/ }),
+
+/***/ 8:
+/*!******************************************!*\
+  !*** multi ./resources/js/dpo-fed-s1.js ***!
+  \******************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(/*! /home/dvanderweele/Code/ArachniCMS/resources/js/dpo-fed-s1.js */"./resources/js/dpo-fed-s1.js");
+
+
+/***/ })
+
+/******/ });

@@ -54,7 +54,8 @@ class SettingsController extends Controller
       'pinterest' => 'nullable',
       'youtube' => 'nullable',
       'linkedin' => 'nullable',
-      'github' => 'nullable'
+      'github' => 'nullable',
+      'themePref' => 'required'
     ]);
     $settings->enable_backups = $request->enableBackups == 'true' ? true : false;
     $settings->view_count_policy = $request->viewCountPolicy == 'true' ? true : false;
@@ -94,6 +95,41 @@ class SettingsController extends Controller
         break;
       default: 
         $settings->font_pref = 'gsa';        
+    }
+    // determine theme pref
+    switch($request->themePref) {
+      case 'gray': 
+        $settings->theme_pref = 'gray';
+        break;
+      case 'red': 
+        $settings->theme_pref = 'red';
+        break;
+      case 'orange': 
+        $settings->theme_pref = 'orange';
+        break;
+      case 'yellow': 
+        $settings->theme_pref = 'yellow';
+        break;
+      case 'green': 
+        $settings->theme_pref = 'green';
+        break;
+      case 'teal': 
+        $settings->theme_pref = 'teal';
+        break;
+      case 'blue': 
+        $settings->theme_pref = 'blue';
+        break;
+      case 'indigo': 
+        $settings->theme_pref = 'indigo';
+        break;
+      case 'violet': 
+        $settings->theme_pref = 'violet';
+        break;
+      case 'pink': 
+        $settings->theme_pref = 'pink'; 
+        break;
+      default: 
+        $settings->theme_pref = 'gray';        
     }
     if($request->hasFile('logo'))
     {

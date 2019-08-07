@@ -20,5 +20,6 @@ $factory->define(Settings::class, function (Faker $faker) {
       'subscribe_form_title' => null,
       'subscribe_form_copy' => null,
       'font_pref' => 'gsa',
+      'theme_pref' => 'gray'
     ];
 });

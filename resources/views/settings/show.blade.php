@@ -10,6 +10,7 @@
 
 @section('css')
   @include('includes.default-css')
+ <link rel="stylesheet" href="{{ asset('css/dse-sho-s1.css') }}">
 @endsection
 
 @section('nav')
@@ -26,6 +27,84 @@
     <form action="/settings" method="post" enctype="multipart/form-data">
       @csrf 
       @method('PUT')
+      <div class="flex flex-col items-start mb-4 py-4 text-copy-secondary">
+        <h2 class="font-semibold text-xl mb-2">
+          Theme Preference
+        </h2>
+        <p class="mb-2">
+          <small>Each color theme below has both a light and a dark version that works with the light/dark theme switcher button in the navigation area at the top. The theme switcher in the site header allows your users to choose between a light and dark theme preference, and it will save those preferences in their browsers in between visits so they don't have to keep clicking the button. In fact, if you switch to a different color theme on this page in between your users' visits, their light or dark preferences will still be remembered and applied in their browsers, just in accordance with the color scheme you have chosen.</small>
+        </p>
+        <div class="py-4 pl-2 my-2 flex flex-row justify-between items-center focus:text-copy-primary bg-background-secondary rounded-lg font-sans pr-6 w-full sm:w-2/3">
+          <input type="radio" name="themePref" id="gray" value="gray" class="mr-6" {{ $settings->theme_pref == 'gray' ? 'checked' : '' }}>
+          <label for="gray" class="flex flex-row items-center justify-between w-full">
+            <p class="font-semibold text-lg w-20">Gray</p>
+            <div class="border-4 border-solid border-black h-10 w-full ml-4 rounded-tr-sm rounded-bl-sm rounded-tl-lg rounded-br-lg" id="graybox"></div>
+          </label>
+        </div>
+        <div class="py-4 pl-2 my-2 flex flex-row justify-between items-center focus:text-copy-primary bg-background-secondary rounded-lg font-sans pr-6 w-full sm:w-2/3">
+          <input type="radio" name="themePref" id="red" value="red" class="mr-6" {{ $settings->theme_pref == 'red' ? 'checked' : '' }}>
+          <label for="red" class="flex flex-row items-center justify-between w-full">
+            <p class="font-semibold text-lg w-20">Red</p>
+            <div class="border-4 border-solid border-black h-10 w-full ml-4 rounded-tr-sm rounded-bl-sm rounded-tl-lg rounded-br-lg" id="redbox"></div>
+          </label>
+        </div>
+        <div class="py-4 pl-2 my-2 flex flex-row justify-between items-center focus:text-copy-primary bg-background-secondary rounded-lg font-sans pr-6 w-full sm:w-2/3">
+          <input type="radio" name="themePref" id="orange" value="orange" class="mr-6" {{ $settings->theme_pref == 'orange' ? 'checked' : '' }}>
+          <label for="orange" class="flex flex-row items-center justify-between w-full">
+            <p class="font-semibold text-lg w-20">Orange</p>
+            <div class="border-4 border-solid border-black h-10 w-full ml-4 rounded-tr-sm rounded-bl-sm rounded-tl-lg rounded-br-lg" id="orangebox"></div>
+          </label>
+        </div>
+        <div class="py-4 pl-2 my-2 flex flex-row justify-between items-center focus:text-copy-primary bg-background-secondary rounded-lg font-sans pr-6 w-full sm:w-2/3">
+          <input type="radio" name="themePref" id="yellow" value="yellow" class="mr-6" {{ $settings->theme_pref == 'yellow' ? 'checked' : '' }}>
+          <label for="yellow" class="flex flex-row items-center justify-between w-full">
+            <p class="font-semibold text-lg w-20">Yellow</p>
+            <div class="border-4 border-solid border-black h-10 w-full ml-4 rounded-tr-sm rounded-bl-sm rounded-tl-lg rounded-br-lg" id="yellowbox"></div>
+          </label>
+        </div>
+        <div class="py-4 pl-2 my-2 flex flex-row justify-between items-center focus:text-copy-primary bg-background-secondary rounded-lg font-sans pr-6 w-full sm:w-2/3">
+          <input type="radio" name="themePref" id="green" value="green" class="mr-6" {{ $settings->theme_pref == 'green' ? 'checked' : '' }}>
+          <label for="green" class="flex flex-row items-center justify-between w-full">
+            <p class="font-semibold text-lg w-20">Green</p>
+            <div class="border-4 border-solid border-black h-10 w-full ml-4 rounded-tr-sm rounded-bl-sm rounded-tl-lg rounded-br-lg" id="greenbox"></div>
+          </label>
+        </div>
+        <div class="py-4 pl-2 my-2 flex flex-row justify-between items-center focus:text-copy-primary bg-background-secondary rounded-lg font-sans pr-6 w-full sm:w-2/3">
+          <input type="radio" name="themePref" id="teal" value="teal" class="mr-6" {{ $settings->theme_pref == 'teal' ? 'checked' : '' }}>
+          <label for="teal" class="flex flex-row items-center justify-between w-full">
+            <p class="font-semibold text-lg w-20">Teal</p>
+            <div class="border-4 border-solid border-black h-10 w-full ml-4 rounded-tr-sm rounded-bl-sm rounded-tl-lg rounded-br-lg" id="tealbox"></div>
+          </label>
+        </div>
+        <div class="py-4 pl-2 my-2 flex flex-row justify-between items-center focus:text-copy-primary bg-background-secondary rounded-lg font-sans pr-6 w-full sm:w-2/3">
+          <input type="radio" name="themePref" id="blue" value="blue" class="mr-6" {{ $settings->theme_pref == 'blue' ? 'checked' : '' }}>
+          <label for="blue" class="flex flex-row items-center justify-between w-full">
+            <p class="font-semibold text-lg w-20">Blue</p>
+            <div class="border-4 border-solid border-black h-10 w-full ml-4 rounded-tr-sm rounded-bl-sm rounded-tl-lg rounded-br-lg" id="bluebox"></div>
+          </label>
+        </div>
+        <div class="py-4 pl-2 my-2 flex flex-row justify-between items-center focus:text-copy-primary bg-background-secondary rounded-lg font-sans pr-6 w-full sm:w-2/3">
+          <input type="radio" name="themePref" id="indigo" value="indigo" class="mr-6" {{ $settings->theme_pref == 'indigo' ? 'checked' : '' }}>
+          <label for="indigo" class="flex flex-row items-center justify-between w-full">
+            <p class="font-semibold text-lg w-20">Indigo</p>
+            <div class="border-4 border-solid border-black h-10 w-full ml-4 rounded-tr-sm rounded-bl-sm rounded-tl-lg rounded-br-lg" id="indigobox"></div>
+          </label>
+        </div>
+        <div class="py-4 pl-2 my-2 flex flex-row justify-between items-center focus:text-copy-primary bg-background-secondary rounded-lg font-sans pr-6 w-full sm:w-2/3">
+          <input type="radio" name="themePref" id="violet" value="violet" class="mr-6" {{ $settings->theme_pref == 'violet' ? 'checked' : '' }}>
+          <label for="violet" class="flex flex-row items-center justify-between w-full">
+            <p class="font-semibold text-lg w-20">Violet</p>
+            <div class="border-4 border-solid border-black h-10 w-full ml-4 rounded-tr-sm rounded-bl-sm rounded-tl-lg rounded-br-lg" id="violetbox"></div>
+          </label>
+        </div>
+        <div class="py-4 pl-2 my-2 flex flex-row justify-between items-center focus:text-copy-primary bg-background-secondary rounded-lg font-sans pr-6 w-full sm:w-2/3">
+          <input type="radio" name="themePref" id="pink" value="pink" class="mr-6" {{ $settings->theme_pref == 'pink' ? 'checked' : '' }}>
+          <label for="pink" class="flex flex-row items-center justify-between w-full">
+            <p class="font-semibold text-lg w-20">Pink</p>
+            <div class="border-4 border-solid border-black h-10 w-full ml-4 rounded-tr-sm rounded-bl-sm rounded-tl-lg rounded-br-lg" id="pinkbox"></div>
+          </label>
+        </div>
+      </div>
       <div class="flex flex-col items-start mb-4">
         <label for="name" class="font-semibold mb-2 text-copy-secondary">
           Publicize Blog Post View Count

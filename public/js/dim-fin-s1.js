@@ -1,1 +1,196 @@
-!function(e){var t={};function n(r){if(t[r])return t[r].exports;var o=t[r]={i:r,l:!1,exports:{}};return e[r].call(o.exports,o,o.exports,n),o.l=!0,o.exports}n.m=e,n.c=t,n.d=function(e,t,r){n.o(e,t)||Object.defineProperty(e,t,{enumerable:!0,get:r})},n.r=function(e){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},n.t=function(e,t){if(1&t&&(e=n(e)),8&t)return e;if(4&t&&"object"==typeof e&&e&&e.__esModule)return e;var r=Object.create(null);if(n.r(r),Object.defineProperty(r,"default",{enumerable:!0,value:e}),2&t&&"string"!=typeof e)for(var o in e)n.d(r,o,function(t){return e[t]}.bind(null,o));return r},n.n=function(e){var t=e&&e.__esModule?function(){return e.default}:function(){return e};return n.d(t,"a",t),t},n.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},n.p="/",n(n.s=43)}({43:function(e,t,n){e.exports=n(44)},44:function(e,t){function n(e){modalOverlay.classList.replace("hidden","block"),e.classList.replace("hidden","block")}function r(e){modalOverlay.classList.replace("block","hidden"),e.classList.replace("block","hidden")}document.addEventListener("DOMContentLoaded",function(e){var t=document.querySelector("#modalOverlay"),o=document.querySelector("#deleteImageModal"),c=document.querySelectorAll(".trash"),l=document.querySelector("#deleteTarget"),u=document.querySelector("#submitDelete"),a=document.querySelector("#dimCancel"),i=document.querySelector("#uploadbtn"),d=!0,f=!1,s=void 0;try{for(var y,v=function(){var e=y.value;e.addEventListener("click",function(t){var r=e.getAttribute("data-id");l.value=r,n(o),a.focus()})},p=c[Symbol.iterator]();!(d=(y=p.next()).done);d=!0)v()}catch(e){f=!0,s=e}finally{try{d||null==p.return||p.return()}finally{if(f)throw s}}t.addEventListener("click",function(e){r(o)}),a.addEventListener("click",function(e){r(o)}),o.addEventListener("keydown",function(e){"Tab"!==e.key&&9!==e.keyCode||(e.shiftKey?document.activeElement===a&&(u.focus(),e.preventDefault()):document.activeElement===u&&(a.focus(),e.preventDefault())),"Escape"===e.key&&(r(o),t.classList.replace("block","hidden"),i.focus())})})}});
+/******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+/******/
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId]) {
+/******/ 			return installedModules[moduleId].exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.l = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/
+/******/
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+/******/
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+/******/
+/******/ 	// define getter function for harmony exports
+/******/ 	__webpack_require__.d = function(exports, name, getter) {
+/******/ 		if(!__webpack_require__.o(exports, name)) {
+/******/ 			Object.defineProperty(exports, name, { enumerable: true, get: getter });
+/******/ 		}
+/******/ 	};
+/******/
+/******/ 	// define __esModule on exports
+/******/ 	__webpack_require__.r = function(exports) {
+/******/ 		if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 			Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 		}
+/******/ 		Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 	};
+/******/
+/******/ 	// create a fake namespace object
+/******/ 	// mode & 1: value is a module id, require it
+/******/ 	// mode & 2: merge all properties of value into the ns
+/******/ 	// mode & 4: return value when already ns object
+/******/ 	// mode & 8|1: behave like require
+/******/ 	__webpack_require__.t = function(value, mode) {
+/******/ 		if(mode & 1) value = __webpack_require__(value);
+/******/ 		if(mode & 8) return value;
+/******/ 		if((mode & 4) && typeof value === 'object' && value && value.__esModule) return value;
+/******/ 		var ns = Object.create(null);
+/******/ 		__webpack_require__.r(ns);
+/******/ 		Object.defineProperty(ns, 'default', { enumerable: true, value: value });
+/******/ 		if(mode & 2 && typeof value != 'string') for(var key in value) __webpack_require__.d(ns, key, function(key) { return value[key]; }.bind(null, key));
+/******/ 		return ns;
+/******/ 	};
+/******/
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = function(module) {
+/******/ 		var getter = module && module.__esModule ?
+/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getModuleExports() { return module; };
+/******/ 		__webpack_require__.d(getter, 'a', getter);
+/******/ 		return getter;
+/******/ 	};
+/******/
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "/";
+/******/
+/******/
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(__webpack_require__.s = 6);
+/******/ })
+/************************************************************************/
+/******/ ({
+
+/***/ "./resources/js/dim-fin-s1.js":
+/*!************************************!*\
+  !*** ./resources/js/dim-fin-s1.js ***!
+  \************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+document.addEventListener("DOMContentLoaded", function (event) {
+  var KEYCODE_TAB = 9; // grab relevant dom elements
+
+  var modalOverlay = document.querySelector("#modalOverlay");
+  var modal = document.querySelector("#deleteImageModal");
+  var trashes = document.querySelectorAll(".trash");
+  var deleteTarget = document.querySelector("#deleteTarget");
+  var submitDelete = document.querySelector("#submitDelete");
+  var dimCancel = document.querySelector("#dimCancel");
+  var uploadbtn = document.querySelector("#uploadbtn");
+  var _iteratorNormalCompletion = true;
+  var _didIteratorError = false;
+  var _iteratorError = undefined;
+
+  try {
+    var _loop = function _loop() {
+      var trash = _step.value;
+      trash.addEventListener("click", function (e) {
+        var id = trash.getAttribute("data-id");
+        deleteTarget.value = id;
+        openModal(modal);
+        dimCancel.focus();
+      });
+    };
+
+    for (var _iterator = trashes[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+      _loop();
+    }
+  } catch (err) {
+    _didIteratorError = true;
+    _iteratorError = err;
+  } finally {
+    try {
+      if (!_iteratorNormalCompletion && _iterator["return"] != null) {
+        _iterator["return"]();
+      }
+    } finally {
+      if (_didIteratorError) {
+        throw _iteratorError;
+      }
+    }
+  }
+
+  modalOverlay.addEventListener("click", function (e) {
+    closeModal(modal);
+  });
+  dimCancel.addEventListener("click", function (e) {
+    closeModal(modal);
+  });
+  modal.addEventListener("keydown", function (e) {
+    if (e.key === 'Tab' || e.keyCode === KEYCODE_TAB) {
+      if (e.shiftKey)
+        /* shift + tab */
+        {
+          if (document.activeElement === dimCancel) {
+            submitDelete.focus();
+            e.preventDefault();
+          }
+        } else
+        /* tab */
+        {
+          if (document.activeElement === submitDelete) {
+            dimCancel.focus();
+            e.preventDefault();
+          }
+        }
+    }
+
+    if (e.key === "Escape") {
+      closeModal(modal);
+      modalOverlay.classList.replace("block", "hidden");
+      uploadbtn.focus();
+    }
+  });
+});
+
+function openModal(modal) {
+  modalOverlay.classList.replace("hidden", "block");
+  modal.classList.replace("hidden", "block");
+}
+
+function closeModal(modal) {
+  modalOverlay.classList.replace("block", "hidden");
+  modal.classList.replace("block", "hidden");
+}
+
+/***/ }),
+
+/***/ 6:
+/*!******************************************!*\
+  !*** multi ./resources/js/dim-fin-s1.js ***!
+  \******************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(/*! /home/dvanderweele/Code/ArachniCMS/resources/js/dim-fin-s1.js */"./resources/js/dim-fin-s1.js");
+
+
+/***/ })
+
+/******/ });
