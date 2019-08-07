@@ -49,7 +49,25 @@ mix
 mix
   .js('resources/js/dpo-fsh-s3.js', 'public/js')
 mix
-  .js('resources/js/dyc-fin-s1.js', 'public/js')
+  .js('resources/js/gray.js', 'public/js')
+mix
+  .js('resources/js/red.js', 'public/js')
+mix
+  .js('resources/js/orange.js', 'public/js')
+mix
+  .js('resources/js/yellow.js', 'public/js')
+mix
+  .js('resources/js/green.js', 'public/js')
+mix
+  .js('resources/js/teal.js', 'public/js')
+mix
+  .js('resources/js/blue.js', 'public/js')
+mix
+  .js('resources/js/indigo.js', 'public/js')
+mix
+  .js('resources/js/violet.js', 'public/js')
+mix
+  .js('resources/js/pink.js', 'public/js')
 mix
   .postCss('resources/css/main.css', 'public/css', [
         require('tailwindcss'),

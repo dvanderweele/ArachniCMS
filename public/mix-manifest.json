@@ -1,6 +1,7 @@
 {
     "/js/app.js": "/js/app.js",
     "/css/main.css": "/css/main.css",
+    "/js/blue.js": "/js/blue.js",
     "/js/dab-fcr-s1.js": "/js/dab-fcr-s1.js",
     "/js/dab-fed-s1.js": "/js/dab-fed-s1.js",
     "/js/dab-fsh-s1.js": "/js/dab-fsh-s1.js",
@@ -11,7 +12,15 @@
     "/js/dpo-fsh-s1.js": "/js/dpo-fsh-s1.js",
     "/js/dpo-fsh-s2.js": "/js/dpo-fsh-s2.js",
     "/js/dpo-fsh-s3.js": "/js/dpo-fsh-s3.js",
-    "/js/dyc-fin-s1.js": "/js/dyc-fin-s1.js",
     "/js/fwe-s1.js": "/js/fwe-s1.js",
-    "/js/theme-switch.js": "/js/theme-switch.js"
+    "/js/gray.js": "/js/gray.js",
+    "/js/green.js": "/js/green.js",
+    "/js/indigo.js": "/js/indigo.js",
+    "/js/orange.js": "/js/orange.js",
+    "/js/pink.js": "/js/pink.js",
+    "/js/red.js": "/js/red.js",
+    "/js/teal.js": "/js/teal.js",
+    "/js/theme-switch.js": "/js/theme-switch.js",
+    "/js/violet.js": "/js/violet.js",
+    "/js/yellow.js": "/js/yellow.js"
 }
