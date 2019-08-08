@@ -1,5 +1,6 @@
 <script src="{{ asset('js/app.js') }}" defer></script>
 <script src="{{ asset('js/theme-switch.js') }}" defer></script>
+<script src="{{ asset('js/menu-switch.js') }}"></script>
 @php
   if(!isset($settings)){
     $settings = \App\Settings::firstOrFail();

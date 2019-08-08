@@ -69,6 +69,8 @@ mix
 mix
   .js('resources/js/pink.js', 'public/js')
 mix
+  .js('resources/js/menu-switch.js', 'public/js')
+mix
   .postCss('resources/css/main.css', 'public/css', [
         require('tailwindcss'),
   ])
