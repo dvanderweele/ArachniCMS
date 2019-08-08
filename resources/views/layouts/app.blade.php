@@ -19,10 +19,11 @@
 </head>
 <body id="body" class="min-h-screen theme-light bg-background-secondary relative flex flex-col gray">
 
+  <a id="skiptocontent" href="#maincontent" class="inline-block">Skip to main content.</a>
 
   @yield('nav')
 
-  <main class="flex-grow">
+  <main class="flex-grow" id="maincontent">
     @yield('content')
   </main>
 

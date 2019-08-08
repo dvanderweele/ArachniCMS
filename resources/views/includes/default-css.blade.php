@@ -3,4 +3,11 @@
     .slhp{
         display: none;
     }
+    #skiptocontent {
+        height: 1px;
+        width: 1px;
+        position: absolute;
+        overflow: hidden;
+        top: -10px;
+    }
 </style>
