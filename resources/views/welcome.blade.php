@@ -38,14 +38,14 @@
   @endif
   >
     <div class="w-full h-full z-10 absolute" id="bg-fuzz"></div>
-    <h1 class="z-20 px-6  text-6xl text-copy-primary font-black {{ $settings->font_pref == 'asa' ? 'font-alegreya-sans-sc' : '' }} {{ $settings->font_pref == 'ase' ? 'font-alegreya-sc' : '' }}">
+    <h1 class="z-20 px-6 text-center mx-4 text-2xl sm:text-3xl md:text-5xl lg:text-6xl text-copy-primary font-black {{ $settings->font_pref == 'asa' ? 'font-alegreya-sans-sc' : '' }} {{ $settings->font_pref == 'ase' ? 'font-alegreya-sc' : '' }}">
       @if($settings->landing_header == null)
         Arachni<span class="text-copy-primary">CMS</span>
       @else 
         {{ $settings->landing_header }}
       @endif
     </h1>
-    <p class="z-20 px-6   text-3xl text-copy-primary font-bold">
+    <p class="z-20 px-6 text-center mx-4 text-lg sm:text-xl md:text-2xl lg:text-4xl text-copy-primary font-bold">
       @if($settings->landing_tagline == null)
         Blogging software that just rocks.
       @else 

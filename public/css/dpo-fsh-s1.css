@@ -21,4 +21,9 @@
 }
 #big-img {
     max-height: 85%;
+    max-width: 85%;
+}
+#image-gallery {
+    max-height: 100%;
+    max-width: 100%
 }

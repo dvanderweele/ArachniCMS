@@ -83,7 +83,7 @@
         <path d="M16,2H4C2.9,2,2,2.9,2,4v12c0,1.1,0.9,2,2,2h12c1.1,0,2-0.9,2-2V4C18,2.9,17.1,2,16,2z M13.061,14.789  L10,11.729l-3.061,3.06L5.21,13.061L8.271,10l-3.06-3.061L6.94,5.21L10,8.271l3.059-3.061l1.729,1.729L11.729,10l3.06,3.061  L13.061,14.789z"/>
       </svg></button>
     </div>
-    <img src="" alt="" class="max-w-full w-2/3 mx-auto mb-4" id="big-img">
+    <img src="" alt="" class="w-auto h-auto mx-auto mb-4" id="big-img">
     <p class="w-full bg-background-secondary rounded px-4 py-2 text-copy-primary hover:text-copy-secondary cursor-default">
       <span class="font-bold">Caption:&nbsp;</span><span id="caption"></span>
     </p>
