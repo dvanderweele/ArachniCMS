@@ -22,7 +22,7 @@
     <article class="lg:w-4/5">
       <section class="py-10 px-10 select-none font-serif">
         <p class="text-3xl text-copy-secondary">Hello, {{ auth()->user()->name }}.</p>
-        <h1 class="text-6xl text-copy-secondary lg:ml-4">Welcome to <span class="font-bold font-sans text-copy-primary">ArachniCMS 1.0.0</span>.</h1>
+        <h1 class="text-6xl text-copy-secondary lg:ml-4">Welcome to <span class="font-bold font-sans text-copy-primary">ArachniCMS v1.0.2</span>.</h1>
         <p class="text-xl text-copy-secondary mt-4 md:px-12 md:mr-4 leading-relaxed">
           ArachniCMS is a versatile blogging platform designed to enhance your experience of publishing and operating a website. Naturally, the standard blogging tools are available to you. You should go to the Settings page and familiarize yourself with the available options.
         </p>

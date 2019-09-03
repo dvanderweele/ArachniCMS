@@ -21,7 +21,7 @@
 
 @section('content')
   @if($about != null)
-    <div class="max-w-2xl w-10/12 bg-background-primary text-copy-primary shadow-lg rounded mx-auto px-8 pt-6 pb-8 mt-8 relative {{ $settings->font_pref == 'gsa' ? 'font-sans' : '' }} {{ $settings->font_pref == 'gsa' ? 'font-sans' : '' }} {{ $settings->font_pref == 'gse' ? 'font-serif' : '' }} {{ $settings->font_pref == 'gmo' ? 'font-mono' : '' }} {{ $settings->font_pref == 'asa' ? 'font-alegreya-sans' : '' }} {{ $settings->font_pref == 'ase' ? 'font-alegreya' : '' }} {{ $settings->font_pref == 'fco' ? 'font-fira-code' : '' }} {{ $settings->font_pref == 'hac' ? 'font-hack' : '' }} {{ $settings->font_pref == 'mon' ? 'font-montserrat' : '' }} {{ $settings->font_pref == 'qui' ? 'font-quicksand' : '' }}" id="vidcodeinfo">
+    <div class="w-full sm:max-w-2xl sm:w-10/12 bg-background-primary text-copy-primary shadow-lg rounded mx-auto px-3 sm:px-4 md:px-8 pt-6 pb-8 mt-8 relative {{ $settings->font_pref == 'gsa' ? 'font-sans' : '' }} {{ $settings->font_pref == 'gsa' ? 'font-sans' : '' }} {{ $settings->font_pref == 'gse' ? 'font-serif' : '' }} {{ $settings->font_pref == 'gmo' ? 'font-mono' : '' }} {{ $settings->font_pref == 'asa' ? 'font-alegreya-sans' : '' }} {{ $settings->font_pref == 'ase' ? 'font-alegreya' : '' }} {{ $settings->font_pref == 'fco' ? 'font-fira-code' : '' }} {{ $settings->font_pref == 'hac' ? 'font-hack' : '' }} {{ $settings->font_pref == 'mon' ? 'font-montserrat' : '' }} {{ $settings->font_pref == 'qui' ? 'font-quicksand' : '' }}" id="vidcodeinfo">
       @auth 
         <a href="/about/edit" class="text-copy-primary py-2 px-4 rounded hover:text-copy-secondary font-bold h-auto mr-4 absolute top-0 right-0 mt-4">
           <svg version="1.1" class="fill-current h-8 w-8" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 20 20" enable-background="new 0 0 20 20" xml:space="preserve">
@@ -35,7 +35,7 @@
       @if($about->image_location != null && $about->image_description != null)
         <img src="/storage/{{ $about->image_location }}" alt="{{ $about->image_description }}" class="w-5/6 sm:w-2/3 md:w-1/3 lg:w-1/4 xl:w-1/ h-auto mb-6 rounded-lg mx-auto">
       @endif
-      <div class="text-copy-primary select-none px-8" id="about-body-display">
+      <div class="text-copy-primary select-none" id="about-body-display">
         {!! $about->body !!}
       </div>
   @else 
