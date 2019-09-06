@@ -20,7 +20,7 @@
   <div class="flex flex-col lg:flex-row justify-between min-h-full">
     @include('nav.admin')
     <article class="lg:w-4/5">
-      <section class="py-10 px-5 md:px-10 select-none font-serif">
+      <section class="py-10 px-5 ml-4 md:ml-10 md:px-10 select-none font-serif">
         <p class="text-3xl text-copy-secondary">Hello, {{ auth()->user()->name }}.</p>
         <h1 class="text-2xl sm:text-3xl md:text-5xl lg:text-6xl  text-copy-secondary lg:ml-4">Welcome to <span class="font-bold font-sans text-copy-primary">ArachniCMS v1.0.4</span>.</h1>
         <p class="text-xl text-copy-secondary mt-4 md:px-12 md:mr-4 leading-relaxed">
