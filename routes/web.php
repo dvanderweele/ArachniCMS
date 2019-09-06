@@ -20,10 +20,6 @@ Auth::routes(['register' => false]);
 
 Route::feeds();
 
-Route::get('/test', function(){
-  return redirect('/');
-});
-
 Route::get('/', 'IndexController@show')->middleware('csp');
 
 Route::get('/home', 'HomeController@index')->middleware('csp');
