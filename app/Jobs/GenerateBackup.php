@@ -35,7 +35,6 @@ class GenerateBackup implements ShouldQueue
         Artisan::call('backup:clean');
         if($settings->enable_backups){
             Artisan::call('backup:run');
-            dd($settings);
         }
     }
 }
