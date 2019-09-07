@@ -12,13 +12,12 @@ class TestController extends Controller
     public function test($type){
         if ($type == 'backup'){
             GenerateBackup::dispatch();
-            dd($type);
-            return route('/posts');
+            return redirect()->route('/posts');
         }
         if ($type == 'sitemap'){
             SitemapGeneratorJob::dispatch();
-            return route('/about');
+            return redirect()->route('/about');
         }  
-        return route('/');
+        return redirect()->route('/');
     }
 }
