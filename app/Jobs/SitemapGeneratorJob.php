@@ -35,7 +35,6 @@ class SitemapGeneratorJob implements ShouldQueue
       $sitemapurl = config('app.url') . '/sitemap.xml';
       $content = "Sitemap: " . $sitemapurl . "\nUser-agent: *" . "\nDisallow: ";
       file_put_contents($robots, $content);
-      dd($content);
       SitemapGenerator::create(config('app.url'))
       ->writeToFile(public_path('sitemap.xml'));
     }
