@@ -12,6 +12,7 @@ class TestController extends Controller
     public function test($type){
         if ($type == 'backup'){
             GenerateBackup::dispatch();
+            dd($type);
             return route('/posts');
         }
         if ($type == 'sitemap'){
