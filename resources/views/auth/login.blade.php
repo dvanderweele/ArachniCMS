@@ -57,7 +57,7 @@
         <button class="border bg-background-secondary text-copy-secondary py-2 px-4 rounded hover:bg-background-primary font-bold" type="submit">
           {{ __('Login') }}
         </button>
-        @if (Route::has('password.request'))
+        @if(Route::has('password.request'))
           <a class="inline-block align-baseline font-bold text-sm text-copy-primary hover:text-copy-secondary hover:underline" href="{{ route('password.request') }}">
             Forgot Password?
           </a>
