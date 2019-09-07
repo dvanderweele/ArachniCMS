@@ -9,12 +9,13 @@ use App\Jobs\SitemapGeneratorJob;
 
 class TestController extends Controller
 {
-    public function test($test){
-        if ($test == 'backup'){
+    public function test($type){
+        dd($type);
+        if ($type == 'backup'){
             GenerateBackup::dispatch();
             return route('/posts');
         }
-        if ($test == 'sitemap'){
+        if ($type == 'sitemap'){
             SitemapGeneratorJob::dispatch();
             return route('/about');
         }  
