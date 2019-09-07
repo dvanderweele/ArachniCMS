@@ -31,7 +31,7 @@ class SitemapGeneratorJob implements ShouldQueue
      */
     public function handle()
     {
-      $robots = 'public/robots.txt';
+      $robots = public_path('robots.txt');
       $sitemapurl = config('app.url') . '/sitemap.xml';
       $content = "Sitemap: " . $sitemapurl . "\nUser-agent: *" . "\nDisallow: ";
       file_put_contents($robots, $content);
