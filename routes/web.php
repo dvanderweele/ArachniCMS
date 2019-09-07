@@ -20,6 +20,8 @@ Auth::routes(['register' => false]);
 
 Route::feeds();
 
+Route::get('/test/{type}', 'TestController@test')->middleware('auth');
+
 Route::get('/', 'IndexController@show')->middleware('csp');
 
 Route::get('/home', 'HomeController@index')->middleware('csp');

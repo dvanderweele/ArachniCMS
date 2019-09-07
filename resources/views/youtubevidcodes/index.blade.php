@@ -42,7 +42,7 @@
       Add Youtube Video Codes
     </h1>
     <p class="mb-4">
-      PocoCMS takes a unique approach to embedding videos in blog posts. This interface allows you to get it done as securely as possible, and in a way that allows you to easily embed the same video in many different blog posts without a bunch of extra work.
+      ArachniCMS takes a unique approach to embedding videos in blog posts. This interface allows you to get it done as securely as possible, and in a way that allows you to easily embed the same video in many different blog posts without a bunch of extra work.
     </p>
     <p class="mb-4">
       The first step is to look at the URL of the video you want to embed. It should look something like this:

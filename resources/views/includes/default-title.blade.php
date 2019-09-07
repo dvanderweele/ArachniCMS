@@ -1,1 +1,1 @@
-{{ config('app.name', 'PocoCMS') }}
+{{ config('app.name', 'ArachniCMS') }}

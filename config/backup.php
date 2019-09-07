@@ -8,7 +8,7 @@ return [
          * The name of this application. You can use this name to monitor
          * the backups.
          */
-        'name' => 'backup',
+        'name' => 'arachnicms-user-content',
 
         'source' => [
 
@@ -30,6 +30,8 @@ return [
                     base_path('vendor'),
                     base_path('node_modules'),
                     storage_path('app/public/.gitignore'),
+                    app_path('backup'),
+                    app_path('backup/backup'),
                 ],
 
                 /*
@@ -132,7 +134,7 @@ return [
         'notifiable' => \Spatie\Backup\Notifications\Notifiable::class,
 
         'mail' => [
-            'to' => 'your@example.com',
+            'to' => null,
         ],
 
         'slack' => [
