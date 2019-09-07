@@ -10,7 +10,7 @@ class BackupController extends Controller
 {
   public function index(){
     $settings = Settings::firstOrFail();
-    $files = Storage::disk('backup')->files('backup');
+    $files = Storage::disk('backup')->files('arachnicms-user-content');
     return view('backups.index')->with([
       'settings' => $settings,
       'files' => $files
