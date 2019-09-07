@@ -33,6 +33,7 @@
     </p>
     @if(count($files) > 0)
       @foreach($files as $file)
+      @if($file != 'arachnicms-user-content/.gitignore')
       <div class="bg-background-secondary text-copy-primary font-bold font-mono my-3 py-2 px-4 rounded flex flex-row justify-between items-center">
         {{ $file }}
         <form action="/backup/download" method="POST">
@@ -46,6 +47,7 @@
           </button>
         </form>
       </div>
+      @endif
       @endforeach
     @else 
       <p class="mb-4 text-copy-secondary">
