@@ -21,7 +21,7 @@
     <div class="mb-4">
       <h4 class="font-semibold text-2xl">{{ __('Reset Password') }}</h4>
     </div>
-    <form method="POST" action="{{ route('password.email') }}">
+    <form method="POST" action="{{ secure_url('/password/email') }}">
       @csrf
       <div class="mb-4">
         <label class="block text-copy-secondary text-sm font-bold mb-2" for="email">
