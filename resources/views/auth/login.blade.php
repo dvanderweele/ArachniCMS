@@ -21,7 +21,7 @@
     <div class="mb-4">
       <h4 class="font-semibold text-2xl text-copy-primary">{{ __('Login') }}</h4>
     </div>
-    <form method="POST" action="{{ route('login') }}">
+    <form method="POST" action="{{ secure_url('/login') }}">
       @csrf
 
       <div class="mb-4">
