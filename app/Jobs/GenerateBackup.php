@@ -33,6 +33,7 @@ class GenerateBackup implements ShouldQueue
     {
         $settings = Settings::firstOrFail();
         Artisan::call('backup:clean');
+        dd($settings);
         if($settings->enable_backups){
             Artisan::call('backup:run');
         }
