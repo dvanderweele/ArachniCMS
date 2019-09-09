@@ -11,6 +11,9 @@ class BackupController extends Controller
   public function index(){
     $settings = Settings::firstOrFail();
     $files = Storage::disk('backup')->files('arachnicms-user-content');
+    if (($key = array_search('arachnicms-user-content/.gitignore', $files)) !== false) {
+      unset($files[$key]);
+    }
     return view('backups.index')->with([
       'settings' => $settings,
       'files' => $files
