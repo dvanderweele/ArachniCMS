@@ -33,7 +33,7 @@
     </p>
     @if(count($files) > 0)
       @foreach($files as $file)
-      <div class="bg-background-secondary text-copy-primary text-sm md:text-lg font-bold font-mono my-3 py-2 px-4 rounded flex flex-row flex-wrap justify-between items-center">
+      <div class="bg-background-secondary text-copy-primary text-sm md:text-lg font-bold font-mono my-3 py-2 px-4 rounded flex flex-row justify-between items-center overflow-x-auto">
         {{ $file }}
         <form action="/backup/download" method="POST">
           @csrf 
