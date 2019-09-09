@@ -10,6 +10,7 @@
 
 @section('css')
   @include('includes.default-css')
+  <link rel="stylesheet" href="{{ asset('css/dpo-fsh-s1.css') }}">
 @endsection
 
 @section('nav')
@@ -32,6 +33,9 @@
         <p class="text-xl text-copy-secondary mt-4 md:px-12 md:mr-4 leading-relaxed">
           ArachniCMS is a product of <a class="underline text-bold text-copy-primary" href="https://www.arachni.dev">Arachnidev LLC</a>, and it may not be modified, resold, or redistributed without explicit prior written permission.
         </p>
+        <div class="mb-8 videoWrapper absolute w-full h-0">
+          <iframe nonce="{{ csp_nonce() }}" width="560" height="349" src="https://www.youtube.com/embed/WqHyhYC3_5g" frameborder="0" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
       </section>
     </article>
   </div>
