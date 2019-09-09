@@ -32,7 +32,6 @@ class Kernel extends ConsoleKernel
         //          ->hourly();
         $schedule->job(new SitemapGeneratorJob)->daily();
         $schedule->job(new GenerateBackup)->dailyAt('00:30');
-        $schedule->job(new SitemapGeneratorJob)->dailyAt('18:34');
     }
 
     /**
