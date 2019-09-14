@@ -27,4 +27,13 @@ class BackupController extends Controller
       return redirect()->back();
     }
   }
+
+  public function delete(Request $request) {
+    if(Storage::disk('backup')->exists($request->backup)){
+      Storage::disk('backup')->delete($request->backup);
+      return redirect()->route('backup-index');
+    } else {
+      return redirect()->back();
+    }
+  }
 }

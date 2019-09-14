@@ -78,5 +78,6 @@ Route::delete('/testimonials',                  'TestimonialController@destroy')
 Route::post('/subscriptions',                   'SubscriptionController@store')->middleware(ProtectAgainstSpam::class);
 Route::get('/thankyou',                         'SubscriptionController@show')->middleware('csp');
 
-Route::get('/backup',                           'BackupController@index')->middleware('auth');
+Route::get('/backup',                           'BackupController@index')->middleware('auth')->name('backup-index');
 Route::post('/backup/download',                  'BackupController@show')->middleware('auth');
+Route::delete('/backup/delete',                 'BackupController@delete')->middleware('auth');
