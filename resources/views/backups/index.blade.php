@@ -39,7 +39,7 @@
       $totalGb = disk_total_space('/') / 1024 / 1024 / 1024;
     @endphp
     <progress value="{{ round($freeGb,2) }}" max="{{ round($totalGb,2) }}" class="w-full mb-2 h-6"></progress>
-    <p class="mb-4 text-center font-bold">
+    <p class="mb-4 text-center font-bold text-copy-primary">
       {{ round($freeGb,2) }}&nbsp;GB <span class="font-hairline">out of</span> {{ round($totalGb,2) }}&nbsp;GB
     </p>
     @if(count($files) > 0)
