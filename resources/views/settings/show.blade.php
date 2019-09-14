@@ -360,6 +360,22 @@
         </label>
         <input id="github" type="text" name="github" class="text-copy-primary bg-background-form shadow appearance-none border rounded w-full py-2 px-3 mb-3 text-copy-primary leading-tight focus:outline-none focus:shadow-outline focus:bg-background-ruthieslight @error('github') border-solid border-red-600 border-2 @enderror" placeholder="Your GitHub Here" value="{{ $settings->github == null ? '' : $settings->github }}">
       </div>
+      <div class="flex flex-col items-start mb-4 text-copy-primary">
+        <h2 class="font-semibold text-xl mb-2">
+          Membership Crowdfunding URLs
+        </h2>
+        <p class="mb-2 text-copy-secondary">
+          <small>If you use Patreon and/or Liberapay, make sure to include links to your page(s) below. One link per service is currently supported. After adding your links, relevant button(s) for the service(s) will be added to the landing page of your site and on each blog post. Make sure to provide full, valid URLs that include the 'https://' part.</small>
+        </p>
+        <label for="patreon" class="font-semibold mb-2 text-copy-secondary">
+          Patreon
+        </label>
+        <input id="patreon" type="text" name="patreon" class="text-copy-primary bg-background-form shadow appearance-none border rounded w-full py-2 px-3 mb-3 text-copy-primary leading-tight focus:outline-none focus:shadow-outline focus:bg-background-ruthieslight @error('patreon') border-solid border-red-600 border-2 @enderror" placeholder="Your Patreon URL Here" value="{{ $settings->patreon_url == null ? '' : $settings->patreon_url }}">
+        <label for="liberapay" class="font-semibold mb-2 text-copy-secondary">
+          Liberapay
+        </label>
+        <input id="liberapay" type="text" name="liberapay" class="text-copy-primary bg-background-form shadow appearance-none border rounded w-full py-2 px-3 mb-3 text-copy-primary leading-tight focus:outline-none focus:shadow-outline focus:bg-background-ruthieslight @error('liberapay') border-solid border-red-600 border-2 @enderror" placeholder="Your Liberpay URL Here" value="{{ $settings->liberapay_url == null ? '' : $settings->liberapay_url }}">
+      </div>
       <div class="flex flex-col items-start mb-4 py-4 text-copy-secondary">
         <h2 class="font-semibold text-xl mb-2">
           Font Preference

@@ -55,7 +55,9 @@ class SettingsController extends Controller
       'youtube' => 'nullable',
       'linkedin' => 'nullable',
       'github' => 'nullable',
-      'themePref' => 'required'
+      'themePref' => 'required',
+      'patreon' => 'nullable',
+      'liberapay' => 'nullable'
     ]);
     $settings->enable_backups = $request->enableBackups == 'true' ? true : false;
     $settings->view_count_policy = $request->viewCountPolicy == 'true' ? true : false;
@@ -226,6 +228,8 @@ class SettingsController extends Controller
       $settings->linkedin = $request->linkedin == null ? null : $request->linkedin;
       $settings->github = $request->github == null ? null : $request->github;
     }
+    $settings->patreon_url = $request->patreon == null ? null : $request->patreon;
+    $settings->liberapay_url = $request->liberapay == null ? null : $request->liberapay;
     $settings->save();
     return view('settings.show')->with([
       'settings' => $settings

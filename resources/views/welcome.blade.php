@@ -164,6 +164,30 @@
     </div>
   @endif
 
+  @if($settings->patreon_url != null && $settings->liberapay_url != null)
+    <section class="rounded-lg shadow-2xl border border-black border-2 px-6 py-6 mx-6 my-4 w-5/6 sm:w-3/4 flex flex-row justify-between flex-wrap">
+    <h2 class="mb-4 text-2xl font-bold text-center">
+      Show Your Support Through Membership
+    </h2>
+    @if($settings->patreon_url == null)
+    <a href="{{ $settings->patreon_url }}">
+      <img src="{{ secure_url('liberapay.png') }}" alt="The Liberapay Logo" class="h-auto w-full">
+    </a>
+    @elseif($settings->liberapay_url == null)
+    <a href="{{ $settings->liberapay_url }}">
+      <img src="{{ secure_url('patreon.jpg') }}" alt="The Patreon Logo" class="h-auto w-full">
+    </a>
+    @else 
+    <a href="{{ $settings->patreon_url }}">
+      <img src="{{ secure_url('patreon.jpg') }}" alt="The Patreon Logo" class="h-auto w-1/3 my-2 mx-2">
+    </a>
+    <a href="{{ $settings->liberapay_url }}">
+      <img src="{{ secure_url('liberapay.png') }}" alt="The Liberapay Logo" class="h-auto w-1/3 my-2 mx-2">
+    </a>
+    @endif
+    </section>
+  @endif
+
 @endsection
 
 @section('footer')
