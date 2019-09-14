@@ -31,6 +31,17 @@
     <p class="mb-4 text-copy-secondary">
       To grab the latest backup, the timestamp in the name of the backup can be interpreted as follows: Year-Month-Day-Hour-Minute-Second.
     </p>
+    <p class="mb-4">
+      For your convenience, below is a bar measuring the approximate amount of storage space available on your web server. Please note that it is an estimate and can vary based on your web server. Additionally, remember that other types of content besides backups, such as blog posts, system files, and images also constribute to this storage space.
+    </p>
+    @php 
+      $freeGb = disk_free_space('/') / 1024 / 1024 / 1024;
+      $totalGb = disk_total_space('/') / 1024 / 1024 / 1024;
+    @endphp
+    <progress value="{{ round($freeGb,2) }}" max="{{ round($totalGb,2) }}" class="w-full mb-2 h-6"></progress>
+    <p class="mb-4 text-center font-bold">
+      {{ round($freeGb,2) }}&nbsp;GB <span class="font-hairline">out of</span> {{ round($totalGb,2) }}&nbsp;GB
+    </p>
     @if(count($files) > 0)
       @foreach($files as $file)
       <div class="bg-background-secondary text-copy-primary text-sm md:text-lg font-bold font-mono my-3 py-2 px-4 rounded flex flex-row justify-between items-center overflow-x-auto">
