@@ -31,7 +31,7 @@
     <p class="mb-4 text-copy-secondary">
       To grab the latest backup, the timestamp in the name of the backup can be interpreted as follows: Year-Month-Day-Hour-Minute-Second.
     </p>
-    <p class="mb-4">
+    <p class="mb-4 text-copy-secondary">
       For your convenience, below is a bar measuring the approximate amount of storage space available on your web server. Please note that it is an estimate and can vary based on your web server. Additionally, remember that other types of content besides backups, such as blog posts, system files, and images also constribute to this storage space.
     </p>
     @php 
