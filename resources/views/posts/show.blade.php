@@ -242,7 +242,7 @@
         </a>
       </div>
     </section>
-    @if($settings->patreon_url = null && $settings->liberapay_url = null)
+    @if($settings->patreon_url != null && $settings->liberapay_url != null)
     <section class="px-6 py-6 mx-6 my-4 w-5/6">
       <h2 class="mb-4 text-2xl font-bold text-center text-copy-primary">
         Show Your Support Through Membership
