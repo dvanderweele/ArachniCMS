@@ -242,6 +242,31 @@
         </a>
       </div>
     </section>
+    @if($settings->patreon_url = null && $settings->liberapay_url = null)
+    <section class="px-6 py-6 mx-6 my-4 w-5/6">
+      <h2 class="mb-4 text-2xl font-bold text-center text-copy-primary">
+        Show Your Support Through Membership
+      </h2>
+      @if($settings->patreon_url == null)
+      <a href="{{ $settings->patreon_url }}">
+        <img src="{{ secure_url('liberapay.png') }}" alt="The Liberapay Logo" class="h-auto w-full">
+      </a>
+      @elseif($settings->liberapay_url == null)
+      <a href="{{ $settings->liberapay_url }}">
+        <img src="{{ secure_url('patreon.jpg') }}" alt="The Patreon Logo" class="h-auto w-full">
+      </a>
+      @else 
+      <div class="block md:flex md:flex-row">
+        <a href="{{ $settings->patreon_url }}">
+          <img src="{{ secure_url('patreon.jpg') }}" alt="The Patreon Logo" class="h-auto w-full md:w-1/3 my-4 mx-auto">
+        </a>
+        <a href="{{ $settings->liberapay_url }}">
+          <img src="{{ secure_url('liberapay.png') }}" alt="The Liberapay Logo" class="h-auto w-full md:w-1/3 my-4 mx-auto">
+        </a>
+      </div>
+      @endif
+    </section>
+    @endif
   </article>
   <article class="max-w-2xl w-10/12 bg-background-primary shadow-lg rounded mx-auto pt-6 pb-8 mt-8 font-sans relative {{ $settings->font_pref == 'gsa' ? 'font-sans' : '' }} {{ $settings->font_pref == 'gsa' ? 'font-sans' : '' }} {{ $settings->font_pref == 'gse' ? 'font-serif' : '' }} {{ $settings->font_pref == 'gmo' ? 'font-mono' : '' }} {{ $settings->font_pref == 'asa' ? 'font-alegreya-sans' : '' }} {{ $settings->font_pref == 'ase' ? 'font-alegreya' : '' }} {{ $settings->font_pref == 'fco' ? 'font-fira-code' : '' }} {{ $settings->font_pref == 'hac' ? 'font-hack' : '' }} {{ $settings->font_pref == 'mon' ? 'font-montserrat' : '' }} {{ $settings->font_pref == 'qui' ? 'font-quicksand' : '' }}">
     <section class="flex flex-col items-start px-8">
