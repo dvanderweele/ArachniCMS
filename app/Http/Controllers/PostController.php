@@ -102,7 +102,7 @@ class PostController extends Controller
           ]);
         } else 
         {
-          if($request->ip() != $request->server('SERVER_NAME')){
+          if($request->ip() != $request->server('SERVER_ADDR')){
             $post->increment('views', 1);
           }
           return view('posts.show', [
