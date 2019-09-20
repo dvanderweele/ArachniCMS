@@ -27,7 +27,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-      SitemapGeneratorJob::dispatch();
       $settings = Settings::firstOrFail();
       return view('home')->with('settings', $settings);
     }
