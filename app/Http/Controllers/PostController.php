@@ -87,7 +87,6 @@ class PostController extends Controller
      */
     public function show(Post $post, Request $request)
     {
-      dd($request->ip());
       $approved = Comment::where('post_id', $post->id)->where('approved', true)->latest()->paginate(5);
       $settings = Settings::firstOrFail();
       if($post->is_published)
