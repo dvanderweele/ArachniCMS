@@ -3,7 +3,7 @@
 namespace App\Jobs;
 
 use Spatie\Sitemap\SitemapGenerator;
-
+use App\Post;
 use Illuminate\Bus\Queueable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
@@ -37,5 +37,10 @@ class SitemapGeneratorJob implements ShouldQueue
       file_put_contents($robots, $content);
       SitemapGenerator::create(config('app.url'))
       ->writeToFile(public_path('sitemap.xml'));
+      $posts = Post::where('is_published', true)->get();
+      foreach($posts as $post){
+        $post->views = $post->views - 1;
+        $post->save();
+      }
     }
 }

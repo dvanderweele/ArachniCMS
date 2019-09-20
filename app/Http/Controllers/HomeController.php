@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobs\SitemapGeneratorJob;
+
 use App\Comment;
 use App\Settings;
 use Illuminate\Http\Request;
@@ -25,6 +27,7 @@ class HomeController extends Controller
      */
     public function index()
     {
+      SitemapGeneratorJob::dispatch();
       $settings = Settings::firstOrFail();
       return view('home')->with('settings', $settings);
     }
