@@ -21,7 +21,7 @@
   <div class="mb-4">
     <h4 class="font-semibold text-2xl">{{ __('Reset Password') }}</h4>
   </div>
-  <form method="POST" action="{{ secure_url('password_update') }}">
+  <form method="POST" action="{{ url('password_update') }}">
     @csrf
     <input type="hidden" name="token" value="{{ $token }}">
 

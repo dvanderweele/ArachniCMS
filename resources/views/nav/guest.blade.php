@@ -6,7 +6,7 @@
 <nav class="min-w-full py-4 m-0 flex flex-col md:flex-row items-center flex-wrap justify-around font-serif px-6 bg-background-primary text-xl text-copy-primary">
   <div class="flex flex-row items-center">
     @if($settings->logo_location != null && $settings->logo_description != null)
-      <a href="/"><img class="h-16" src="{{ secure_asset('storage/'.$settings->logo_location) }}" alt="{{ $settings->logo_description }}"></a>
+      <a href="/"><img class="h-16" src="{{ asset('storage/'.$settings->logo_location) }}" alt="{{ $settings->logo_description }}"></a>
     @else 
       <a href="/" class="font-bold text-3xl text-copy-secondary">Arachni<span class="text-copy-primary">CMS</span></a>
     @endif
