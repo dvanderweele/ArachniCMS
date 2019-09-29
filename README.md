@@ -14,7 +14,7 @@ If videos are more your thing, here's a recent video tour of the software:
 " target="_blank"><img src="http://img.youtube.com/vi/pIgI5VkQEy8/0.jpg" 
 alt="YouTube Thumbnail of Video Tour of ArachniCMS" width="240" height="180" border="10" /></a>
 
-+ Smart Light & Dark Theme Switcher in site header that, when clicked by user, will save preference of that user in web browser so user's prefernece is remembered on every page for every visit.
++ Smart Light & Dark Theme Switcher in site header that, when clicked by user, will save preference of that user in web browser so user's preference is remembered on every page for every visit.
 + Dynamic Sitewide Color Scheme Options, covering practically every color of the rainbow, with each one being compatible with the Smart Light & Dark Theme Switcher.
 + Full Blogging experience with WYSIWYG Editor and even a font picker.
 + Blog Comment System with full comment-moderation system (note that IP Address tracking for comments may not function properly if this software is deployed behind a reverse-proxy or load balancer).
