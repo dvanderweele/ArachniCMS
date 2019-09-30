@@ -1,4 +1,4 @@
-# About ArachniCMS v1.3.3
+# About ArachniCMS v1.3.4
 
 ArachniCMS is a Content Management System, designed for small businesses, organizations, or individuals who want simple yet effective blogging and website features. This version of ArachniCMS was built with Laravel 5.8, Tailwind CSS, and a number of the Spatie Laravel packages, being a traditional, server-side rendered web application. ArachniCMS supports one user account, so it may be inappropriate for large organizations with multiple people in different roles involved in the publishing process (e.g. multiple writers, an editor, a proofreader, etc).
 
