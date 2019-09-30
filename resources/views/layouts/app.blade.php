@@ -23,7 +23,7 @@
 
   @yield('nav')
 
-  <main class="flex-grow" id="maincontent">
+  <main class="flex-grow" id="maincontent" role="main">
     @yield('content')
   </main>
 

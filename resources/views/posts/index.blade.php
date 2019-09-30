@@ -106,7 +106,7 @@
                 @endauth
               </dd>
             </dl>
-            <a href="/posts/{{ $post->url_string }}"><button class="border bg-background-secondary text-copy-secondary py-2 px-4 ml-4 rounded hover:bg-background-primary font-bold h-auto">Read more...</button></a>
+            <a href="/posts/{{ $post->url_string }}"><button class="border bg-background-secondary text-copy-secondary py-2 px-4 ml-4 rounded hover:bg-background-primary font-bold h-auto" aria-label="Read Full Article with Title: {{ $post->title }}">Read more...</button></a>
           </section>
         </section>
       </article>

@@ -170,19 +170,19 @@
       Show Your Support Through Membership
     </h2>
     @if($settings->patreon_url == null)
-    <a href="{{ $settings->patreon_url }}">
+    <a href="{{ $settings->liberapay_url }}" aria-label="Show Your Support via Liberapay">
       <img src="{{ url('liberapay.png') }}" alt="The Liberapay Logo" class="h-auto w-full">
     </a>
     @elseif($settings->liberapay_url == null)
-    <a href="{{ $settings->liberapay_url }}">
+    <a href="{{ $settings->patreon_url }}" aria-label="Show Your Support via Patreon">
       <img src="{{ url('patreon.jpg') }}" alt="The Patreon Logo" class="h-auto w-full">
     </a>
     @else 
     <div class="block md:flex md:flex-row">
-      <a href="{{ $settings->patreon_url }}">
+      <a href="{{ $settings->patreon_url }}" aria-label="Show Your Support via Patreon">
         <img src="{{ url('patreon.jpg') }}" alt="The Patreon Logo" class="h-auto w-full md:w-1/3 my-4 mx-auto">
       </a>
-      <a href="{{ $settings->liberapay_url }}">
+      <a href="{{ $settings->liberapay_url }}" aria-label="Show Your Support via Liberapay">
         <img src="{{ url('liberapay.png') }}" alt="The Liberapay Logo" class="h-auto w-full md:w-1/3 my-4 mx-auto">
       </a>
     </div>
