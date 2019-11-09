@@ -34,7 +34,7 @@ class ImageController extends Controller
     public function store(Request $request)
     {
       $request->validate([
-        'image_file' => 'required|max:1999',
+        'image_file' => 'required|image|max:1999',
         'image_description' => 'required|min:2'
       ]);
 
