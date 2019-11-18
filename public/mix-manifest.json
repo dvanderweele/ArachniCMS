@@ -23,5 +23,9 @@
     "/js/teal.js": "/js/teal.js",
     "/js/theme-switch.js": "/js/theme-switch.js",
     "/js/violet.js": "/js/violet.js",
-    "/js/yellow.js": "/js/yellow.js"
+    "/js/yellow.js": "/js/yellow.js",
+    "/node_modules/tinymce/jquery.tinymce.js": "/node_modules/tinymce/jquery.tinymce.js",
+    "/node_modules/tinymce/jquery.tinymce.min.js": "/node_modules/tinymce/jquery.tinymce.min.js",
+    "/node_modules/tinymce/tinymce.js": "/node_modules/tinymce/tinymce.js",
+    "/node_modules/tinymce/tinymce.min.js": "/node_modules/tinymce/tinymce.min.js"
 }

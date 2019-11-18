@@ -29,6 +29,7 @@
   },
   "dependencies": {
     "glob-all": "^3.1.0",
-    "purgecss-webpack-plugin": "^1.5.0"
+    "purgecss-webpack-plugin": "^1.5.0",
+    "tinymce": "^5.1.1"
   }
 }

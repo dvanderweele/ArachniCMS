@@ -1,6 +1,13 @@
-document.addEventListener('DOMContentLoaded', (event) => {
-    CKEDITOR.config.toolbar = [
-      ['Format','Bold','Italic','-','NumberedList','BulletedList','-','Undo','Redo','-','Cut','Copy','Paste','Find','Replace','Link', 'Unlink']
-    ];
-    CKEDITOR.replace( 'post-body');
+document.addEventListener("DOMContentLoaded", event => {
+    tinymce.init({
+        selector: "#post-body",
+        plugins: "link lists",
+        menubar: false,
+        toolbar:
+            "formatselect bold italic | numlist bullist | undo redo | cut copy paste | link",
+        content_security_policy: "default-src 'self'",
+        block_formats:
+            "Paragraph=p; Heading 2=h2; Heading 3=h3; Heading 4=h4; Heading 5=h5; Heading 6=h6",
+        browser_spellcheck: true
+    });
 });
