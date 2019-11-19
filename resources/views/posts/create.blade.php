@@ -32,7 +32,7 @@
 </div>
 <div class="max-w-2xl w-10/12 bg-background-primary shadow-lg rounded mx-auto px-8 pt-6 pb-8 mt-8 font-sans">
   <h1 class="font-semibold text-2xl text-copy-primary mb-4">Create New Post</h1>
-  <form action="/posts" method="post">
+  <form action="{{ url('posts') }}" method="post">
     @csrf
     <div class="mb-4">
       <label for="post-title" class="block text-copy-primary text-sm font-bold mb-2">

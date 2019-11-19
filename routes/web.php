@@ -22,25 +22,25 @@ Route::feeds();
 
 Route::get('/test/{type}', 'TestController@test')->middleware('auth');
 
-Route::get('/', 'IndexController@show')->middleware('csp');
+Route::get('/', 'IndexController@show');
 
-Route::get('/home', 'HomeController@index')->middleware('csp');
+Route::get('/home', 'HomeController@index');
 
-Route::get('/about',                      'AboutController@show')->name('show-about')->middleware('csp');
-Route::get('/about/create',               'AboutController@create')->name('create-about')->middleware('auth');
+Route::get('/about',                      'AboutController@show')->name('show-about');
+Route::get('/about/create',               'AboutController@create')->name('create-about')->middleware('auth', 'csp' . ':' . \App\Services\Csp\Policies\WysiwygCspPolicy::class);
 Route::post('/about',                     'AboutController@store')->middleware('auth');
-Route::get('/about/edit',                 'AboutController@edit')->middleware('auth');
+Route::get('/about/edit',                 'AboutController@edit')->middleware('auth', 'csp' . ':' . \App\Services\Csp\Policies\WysiwygCspPolicy::class);
 Route::patch('/about',                    'AboutController@update')->middleware('auth');
 Route::delete('/about',                   'AboutController@destroy')->middleware('auth');
 
-Route::get('/contact',                    'ContactController@create')->name('create-contact')->middleware('csp');
-Route::post('/contact',                   'ContactController@store')->name('store-contact')->middleware(ProtectAgainstSpam::class, 'csp');
+Route::get('/contact',                    'ContactController@create')->name('create-contact');
+Route::post('/contact',                   'ContactController@store')->name('store-contact')->middleware(ProtectAgainstSpam::class);
 
-Route::get('/posts',                      'PostController@index')->name('list-posts')->middleware('csp');
-Route::get('/posts/create',               'PostController@create')->middleware('auth')->name('create-post');
+Route::get('/posts',                      'PostController@index')->name('list-posts');
+Route::get('/posts/create',               'PostController@create')->middleware('auth', 'csp' . ':' . \App\Services\Csp\Policies\WysiwygCspPolicy::class)->name('create-post');
 Route::post('/posts',                     'PostController@store')->middleware('auth');
-Route::get('/posts/{post}',                 'PostController@show')->name('show-post')->middleware('csp');
-Route::get('/posts/{post}/edit',            'PostController@edit')->middleware('auth')->name('edit-post');
+Route::get('/posts/{post}',                 'PostController@show')->name('show-post');
+Route::get('/posts/{post}/edit',            'PostController@edit')->middleware('auth', 'csp' . ':' . \App\Services\Csp\Policies\WysiwygCspPolicy::class)->name('edit-post');
 Route::patch('/posts',                    'PostController@update')->middleware('auth');
 Route::delete('/posts',                   'PostController@destroy')->middleware('auth');
 

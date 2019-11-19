@@ -21,7 +21,7 @@
 @section('content')
 <div class="max-w-2xl w-10/12 bg-background-primary shadow-lg rounded mx-auto px-8 pt-6 pb-8 mt-8 font-sans">
   <h1 class="font-semibold text-2xl text-copy-primary mb-4">Create About Page</h1>
-  <form action="/about" method="post" enctype="multipart/form-data">
+  <form action="{{ url('about') }}" method="post" enctype="multipart/form-data">
     @csrf
     <div class="mb-4">
       <label for="post-title" class="block text-copy-primary text-sm font-bold mb-2">

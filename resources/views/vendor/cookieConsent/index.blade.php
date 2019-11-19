@@ -1,10 +1,9 @@
 @if($cookieConsentConfig['enabled'] && ! $alreadyConsentedWithCookies)
 
-    @include('cookieConsent::dialogContents')
+@include('cookieConsent::dialogContents')
 
-    <script nonce="{{ csp_nonce() }}">
-
-        window.laravelCookieConsent = (function () {
+<script nonce="{{ csp_nonce() }}">
+    window.laravelCookieConsent = (function () {
 
             const COOKIE_VALUE = 1;
             const COOKIE_DOMAIN = '{{ config('session.domain') ?? request()->getHost() }}';
@@ -50,6 +49,6 @@
                 hideCookieDialog: hideCookieDialog
             };
         })();
-    </script>
+</script>
 
 @endif

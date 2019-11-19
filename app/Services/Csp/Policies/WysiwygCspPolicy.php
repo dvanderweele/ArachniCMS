@@ -3,13 +3,12 @@ namespace App\Services\Csp\Policies;
 
 use Spatie\Csp\Directive;
 use Spatie\Csp\Keyword;
-use Spatie\Csp\Policies\Basic;
+use Spatie\Csp\Policies\Policy;
 
-class CustomCspPolicy extends Basic
+class WysiwygCspPolicy extends Policy
 {
     public function configure()
     {
-        parent::configure();
 
         $this->addDirective(Directive::SCRIPT, [
             Keyword::SELF,
@@ -19,9 +18,9 @@ class CustomCspPolicy extends Basic
             Keyword::SELF, 
             Keyword::UNSAFE_INLINE
         ]);
-        $this->addDirective(Directive::IMG, Keyword::SELF);
+        $this->addDirective(Directive::IMG, 'self data: blob:');
         $this->addDirective(Directive::FONT, Keyword::SELF);
-        $this->addDirective(Directive::CONNECT, Keyword::SELF);
+        $this->addDirective(Directive::CONNECT, 'self blob:');
         $this->addNonceForDirective(Directive::DEFAULT);
         $this->addDirective(Directive::FRAME, 'https://*.youtube.com');
     }

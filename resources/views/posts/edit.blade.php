@@ -38,7 +38,7 @@
   </div>
   <p class="font-bold text-2xl">
     Are you sure you want to permanently delete this post?
-    <form action="/posts" method="post">
+    <form action="{{ url('posts') }}" method="post">
       @csrf
       @method('DELETE')
       <input type="hidden" name="url_string" value="{{ $post->url_string }}">
@@ -60,7 +60,7 @@
   </div>
   <p class="font-bold text-2xl">
     Are you sure you want to remove this image from this post?
-    <form action="/imageables" method="post">
+    <form action="{{ url('imageables') }}" method="post">
       @csrf
       @method('DELETE')
       <input type="hidden" name="imageable_type" value="App\Post">
@@ -84,7 +84,7 @@
 </div>
 <div class="max-w-2xl w-10/12 bg-background-primary shadow-lg rounded mx-auto px-8 pt-6 pb-8 mt-8 font-sans">
   <h1 class="font-semibold text-2xl text-copy-primary mb-4">Edit Post</h1>
-  <form action="/posts" method="post">
+  <form action="{{ url('posts') }}" method="post">
     @method('PATCH')
     @csrf
     <input type="hidden" name="url_string" value="{{ $post->url_string }}">
@@ -173,7 +173,7 @@
     <iframe width="560" height="349" src="https://www.youtube.com/embed/{{ $embed->youtubevidcode->vidcode }}"
       frameborder="0" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
   </div>
-  <form action="/youtubevidembeds" method="post" class="mb-16">
+  <form action="{{ url('youtubevidembeds') }}" method="post" class="mb-16">
     @csrf
     @method('DELETE')
     <input type="hidden" name="embed_id" value="{{ $embed->id }}">

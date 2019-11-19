@@ -1,4 +1,4 @@
-# About ArachniCMS v2.0.1
+# About ArachniCMS v2.1.0
 
 ArachniCMS is a Content Management System, designed for small businesses, organizations, or individuals who want simple yet effective blogging and website features. This version of ArachniCMS was built with Laravel 6.0, Tailwind CSS, and a number of the Spatie Laravel packages, being a traditional, server-side rendered web application. ArachniCMS supports one user account, so it may be inappropriate for large organizations with multiple people in different roles involved in the publishing process (e.g. multiple writers, an editor, a proofreader, etc).
 
@@ -47,7 +47,7 @@ You will need to understand the basics of deploying a web application to a VPS p
 
 I'm not going to go over the details of all of that, as there are many different ways for you to configure your application. However, there are some specific deployment details that are relevant to this application that I will go over.
 
-You'll want to checkout the latest tag in this app's git repo for deployment. In this case, v2.0.1.
+You'll want to checkout the latest tag in this app's git repo for deployment. In this case, v2.1.0.
 
 You will want at least PHP 7.3 installed, as well as the other prerequisites specified in the Laravel docs.
 
