@@ -1,4 +1,4 @@
-# About ArachniCMS v2.1.0
+# About ArachniCMS v2.1.1
 
 ArachniCMS is a Content Management System, designed for small businesses, organizations, or individuals who want simple yet effective blogging and website features. This version of ArachniCMS was built with Laravel 6.0, Tailwind CSS, and a number of the Spatie Laravel packages, being a traditional, server-side rendered web application. ArachniCMS supports one user account, so it may be inappropriate for large organizations with multiple people in different roles involved in the publishing process (e.g. multiple writers, an editor, a proofreader, etc).
 
@@ -28,7 +28,6 @@ alt="YouTube Thumbnail of Video Tour of ArachniCMS" width="240" height="180" bor
 -   Easily add logo/icon links in the footer of your site that point to your various social media profiles around the web.
 -   Easily add links to your Patreon and/or Liberapay profiles, and logo links to those pages will automatically generate on your landing page and at end of each blog post.
 -   An RSS Feed for your blog posts is automatically generated and updated regularly.
--   A content-security policy handily protects your website from XSS vulnerabilities. It has the added bonus of blocking ads on youtube videos that you embed.
 -   A clever system allows you to manage a vault of uploaded images, that you can reference dynamically from as many blog posts as you desire. This means you only have to upload each image once, and it can be used an unlimited amount of times on your blog. This helps save space on your web server.
 -   Embedding Youtube Videos has never been easier. Instead of copying and pasting complicated iframe embed code, you can just copy and paste the video code for the video itself one time, and after that you can embed it as many times as you want in blog posts with just the click of a button.
 -   A Cookie Consent pop-up that, after accepted by a user, won't show up again.
@@ -47,7 +46,7 @@ You will need to understand the basics of deploying a web application to a VPS p
 
 I'm not going to go over the details of all of that, as there are many different ways for you to configure your application. However, there are some specific deployment details that are relevant to this application that I will go over.
 
-You'll want to checkout the latest tag in this app's git repo for deployment. In this case, v2.1.0.
+You'll want to checkout the latest tag in this app's git repo for deployment. In this case, v2.1.1.
 
 You will want at least PHP 7.3 installed, as well as the other prerequisites specified in the Laravel docs.
 
